@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace HAN_ASD_ADP.Datasets;
 
-public class DatasetSorteren
+public class DatasetSorteren : IDataset
 {
     [JsonPropertyName("lijst_aflopend_2")]
     public List<int> LijstAflopend2 { get; set; }
