@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HAN_ASD_ADP
+namespace HAN_ASD_ADP.Implementations
 {
     public class CustomArrayList<T>
     {

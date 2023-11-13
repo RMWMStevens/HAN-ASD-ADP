@@ -1,10 +1,11 @@
 ﻿using HAN_ASD_ADP.Datasets;
+using HAN_ASD_ADP.Implementations;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace HAN_ASD_ADP.Tests
+namespace HAN_ASD_ADP.Tests.Implementations
 {
     public class CustomArrayListTests
     {
