@@ -3,25 +3,35 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HAN_ASD_ADP;
+namespace HAN_ASD_ADP.Datasets;
 
-public class JsonFetcher
+public static class DatasetCache<T>
+    where T : IDataset
 {
-    private const string BaseUrl = "https://han-aim.gitlab.io/dt-sd-asd/materials/ADP/bron/";
-    private readonly HttpClient httpClient;
+    private static readonly object lockObject = new();
+    private static Task<T> datasetTask;
 
-    public JsonFetcher(HttpClient httpClient)
-        => this.httpClient = httpClient;
-
-    public async Task<T> FetchJsonAsync<T>()
+    public static async Task<T> GetAsync()
     {
+        lock (lockObject)
+        {
+            datasetTask ??= FetchAsync();
+        }
+
+        return await datasetTask;
+    }
+
+    public static async Task<T> FetchAsync()
+    {
+        using var httpClient = new HttpClient();
+        var baseUrl = "https://han-aim.gitlab.io/dt-sd-asd/materials/ADP/bron/";
         var jsonSuffix = ToSnakeCase(typeof(T).Name) + ".json";
-        var response = await httpClient.GetAsync(BaseUrl + jsonSuffix);
+        var response = await httpClient.GetAsync(baseUrl + jsonSuffix);
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<T>();
     }
 
-    public static string ToSnakeCase(string pascalCaseString)
+    private static string ToSnakeCase(string pascalCaseString)
     {
         var stringBuilder = new StringBuilder();
         stringBuilder.Append(char.ToLowerInvariant(pascalCaseString[0]));

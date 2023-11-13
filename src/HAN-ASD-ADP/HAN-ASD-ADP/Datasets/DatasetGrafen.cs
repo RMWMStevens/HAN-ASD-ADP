@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace HAN_ASD_ADP.Datasets;
 
-public class DatasetGrafen
+public class DatasetGrafen : IDataset
 {
     [JsonPropertyName("lijnlijst")]
     public List<List<int>> Lijnlijst { get; set; }

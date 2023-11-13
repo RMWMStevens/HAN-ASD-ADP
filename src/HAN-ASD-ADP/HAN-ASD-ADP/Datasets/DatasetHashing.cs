@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace HAN_ASD_ADP.Datasets;
 
-public class DatasetHashing
+public class DatasetHashing : IDataset
 {
     [JsonPropertyName("hashtabelsleutelswaardes")]
     public HashtabelSleutelsWaardes HashtabelSleutelsWaardes { get; set; }
