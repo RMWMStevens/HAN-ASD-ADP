@@ -13,15 +13,18 @@ public static class DatasetCache<T>
 
     public static async Task<T> GetAsync()
     {
-        lock (lockObject)
+        if (datasetTask == null)
         {
-            datasetTask ??= FetchAsync();
+            lock (lockObject)
+            {
+                datasetTask = FetchAsync();
+            }
         }
 
         return await datasetTask;
     }
 
-    public static async Task<T> FetchAsync()
+    private static async Task<T> FetchAsync()
     {
         using var httpClient = new HttpClient();
         var baseUrl = "https://han-aim.gitlab.io/dt-sd-asd/materials/ADP/bron/";
