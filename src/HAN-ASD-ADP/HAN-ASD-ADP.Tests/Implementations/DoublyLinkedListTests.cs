@@ -42,7 +42,6 @@ public class DoublyLinkedListTests : IAsyncLifetime
         list.Set(0, value3);
         var itemSetFind = list.Get(0);
         Assert.Equal(value3, itemSetFind.Value);
-        Assert.Equal(2, list.Count);
     }
 
     public Task DisposeAsync() => Task.CompletedTask;

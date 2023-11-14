@@ -50,11 +50,6 @@ public class DynamicArray<T>
         }
     }
 
-    public bool Equals(object obj)
-    {
-        return Equals(obj as DynamicArray<T>);
-    }
-
     public int Find(T t)
     {
         for (int i = 0; i < count; i++)
