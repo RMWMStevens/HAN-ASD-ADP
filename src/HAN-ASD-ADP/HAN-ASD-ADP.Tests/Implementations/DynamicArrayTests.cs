@@ -1,5 +1,6 @@
 ﻿using HAN_ASD_ADP.Datasets;
 using HAN_ASD_ADP.Implementations;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xunit;
@@ -13,6 +14,22 @@ public class DynamicArrayTests : IAsyncLifetime
     public async Task InitializeAsync()
     {
         dataset = await DatasetCache<DatasetSorteren>.GetAsync();
+    }
+
+    [Fact]
+    public void CustomArrayList_LijstAflopend2_IndexOutOfRangeException_Test()
+    {
+        // Arrange
+        DynamicArray<int> listOfInts = new DynamicArray<int>();
+
+        // Act
+        foreach (var value in dataset.LijstAflopend2)
+        {
+            listOfInts.Add(value);
+        }
+
+        // Assert
+        Assert.Throws<IndexOutOfRangeException>(() => listOfInts.Get(5));
     }
 
     [Theory]
