@@ -29,31 +29,24 @@ public class DoublyLinkedList<T>
         Count++;
     }
 
-    public DoublyLinkedListNode<T> Find(T value)
-        => FindNodePosition(value).Node;
+    public T Find(T value)
+        => FindNodeWithIndex(value).Node.Value;
 
-    public DoublyLinkedListNode<T> Get(int index, bool allowFromTail = true)
-    {
-        if (index >= Count)
-            throw new IndexOutOfRangeException();
-
-        return (index > (Count / 2) && allowFromTail)
-            ? GetFromTail(index)
-            : GetFromHead(index);
-    }
+    public T Get(int index, bool allowFromTail = true)
+        => GetNode(index, allowFromTail).Value;
 
     public int IndexOf(T value)
-        => FindNodePosition(value).Index;
+        => FindNodeWithIndex(value).Index;
 
     public void Remove(T value)
-        => Remove(Find(value));
+        => Remove(FindNodeWithIndex(value).Node);
 
     public void RemoveAt(int index)
-        => Remove(Get(index));
+        => Remove(GetNode(index));
 
     public void Set(int index, T value)
     {
-        var node = Get(index);
+        var node = GetNode(index);
         if (node is null)
             return;
         node.Value = value;
@@ -86,7 +79,7 @@ public class DoublyLinkedList<T>
         Count--;
     }
 
-    private (int Index, DoublyLinkedListNode<T> Node) FindNodePosition(T value)
+    private (int Index, DoublyLinkedListNode<T> Node) FindNodeWithIndex(T value)
     {
         var node = Head.Next;
         var index = 0;
@@ -99,6 +92,16 @@ public class DoublyLinkedList<T>
         }
 
         throw new ArgumentException("Value not found");
+    }
+
+    private DoublyLinkedListNode<T> GetNode(int index, bool allowFromTail = true)
+    {
+        if (index >= Count)
+            throw new IndexOutOfRangeException();
+
+        return (index > (Count / 2) && allowFromTail)
+            ? GetFromTail(index)
+            : GetFromHead(index);
     }
 }
 

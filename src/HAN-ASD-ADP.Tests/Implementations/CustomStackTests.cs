@@ -51,10 +51,10 @@ namespace HAN_ASD_ADP.Tests.Implementations
         }
 
         [Theory]
-        [InlineData(new object[] { new int[] { 789, 456, 123 }, false})]
+        [InlineData(new object[] { new int[] { 789, 456, 123 }, false })]
         [InlineData(new object[] { new int[] { -10, 555, -68 }, false })]
         [InlineData(new object[] { new int[] { 7885, 1, 7777 }, false })]
-        [InlineData(new object[] { new int[] {}, true })]
+        [InlineData(new object[] { new int[] { }, true })]
         public void CustomStack_IsEmpty_Test(int[] itemsToPush, Boolean expected)
         {
             // Arrange
@@ -81,7 +81,8 @@ namespace HAN_ASD_ADP.Tests.Implementations
             CustomStack<int> listOfInts = new CustomStack<int>();
 
             // Act
-            for (int i = 0; i < itemsToPush.Length; i++) {
+            for (int i = 0; i < itemsToPush.Length; i++)
+            {
                 listOfInts.Push(itemsToPush[i]);
             }
 

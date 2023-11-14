@@ -33,17 +33,17 @@ public class DoublyLinkedListTests : IAsyncLifetime
 
         var itemFind = list.Find(value1);
         Assert.NotNull(itemFind);
-        Assert.Equal(value1, itemFind.Value);
+        Assert.Equal(value1, itemFind);
 
         var itemGet = list.Get(index: 2);
-        Assert.Equal(value3, itemGet.Value);
+        Assert.Equal(value3, itemGet);
 
         list.Remove(value2);
         Assert.Equal(2, list.Count);
 
         list.Set(0, value3);
         var itemSetFind = list.Get(0);
-        Assert.Equal(value3, itemSetFind.Value);
+        Assert.Equal(value3, itemSetFind);
     }
 
     [Theory]
@@ -61,7 +61,7 @@ public class DoublyLinkedListTests : IAsyncLifetime
         }
 
         // Assert
-        Assert.Equal(expected, list.Get(index).Value);
+        Assert.Equal(expected, list.Get(index));
     }
 
     [Theory]
@@ -79,7 +79,7 @@ public class DoublyLinkedListTests : IAsyncLifetime
         }
 
         // Assert
-        Assert.Equal(expected, list.Get(index).Value);
+        Assert.Equal(expected, list.Get(index));
     }
 
     [Theory]
@@ -101,7 +101,7 @@ public class DoublyLinkedListTests : IAsyncLifetime
         }
 
         // Assert
-        Assert.Equal(expected, list.Get(index).Value);
+        Assert.Equal(expected, list.Get(index));
     }
 
     [Theory]
@@ -121,7 +121,7 @@ public class DoublyLinkedListTests : IAsyncLifetime
         var result = list.Find(expected);
 
         // Assert
-        Assert.Equal(expected, result.Value);
+        Assert.Equal(expected, result);
     }
 
     [Theory]
@@ -201,7 +201,7 @@ public class DoublyLinkedListTests : IAsyncLifetime
         list.Set(index, expected);
 
         // Assert
-        Assert.Equal(expected, list.Get(index).Value);
+        Assert.Equal(expected, list.Get(index));
     }
 
     [Fact]
