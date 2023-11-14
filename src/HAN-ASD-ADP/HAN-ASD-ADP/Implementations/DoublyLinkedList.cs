@@ -4,7 +4,7 @@ namespace HAN_ASD_ADP.Implementations;
 
 public class DoublyLinkedList<T>
 {
-    public int Count { get; internal set; }
+    public int Count { get; private set; }
 
     public DoublyLinkedListNode<T> Head { get; set; }
 
@@ -29,16 +29,8 @@ public class DoublyLinkedList<T>
         Count++;
     }
 
-    public void Remove(T value)
-    {
-        var node = Find(value);
-        if (node is null)
-            return;
-
-        node.Previous.Next = node.Next;
-        node.Next.Previous = node.Previous;
-        Count--;
-    }
+    public DoublyLinkedListNode<T> Find(T value)
+        => FindNodePosition(value).Node;
 
     public DoublyLinkedListNode<T> Get(int index)
     {
@@ -53,27 +45,43 @@ public class DoublyLinkedList<T>
         return node;
     }
 
+    public int IndexOf(T value)
+        => FindNodePosition(value).Index;
+
+    public void Remove(T value)
+        => Remove(Find(value));
+
+    public void RemoveAt(int index)
+        => Remove(Get(index));
+
     public void Set(int index, T value)
     {
-        if (index >= Count)
-            throw new IndexOutOfRangeException();
-
         var node = Get(index);
         if (node is null)
             return;
         node.Value = value;
     }
 
-    public DoublyLinkedListNode<T> Find(T value)
+    private void Remove(DoublyLinkedListNode<T> node)
+    {
+        node.Previous.Next = node.Next;
+        node.Next.Previous = node.Previous;
+        Count--;
+    }
+
+    private (int Index, DoublyLinkedListNode<T> Node) FindNodePosition(T value)
     {
         var node = Head.Next;
+        var index = 0;
         while (node is not null && node.Next is not null)
         {
             if (node.Value.Equals(value))
-                return node;
+                return (index, node);
             node = node.Next;
+            index++;
         }
-        return null;
+
+        throw new ArgumentException("Value not found");
     }
 }
 

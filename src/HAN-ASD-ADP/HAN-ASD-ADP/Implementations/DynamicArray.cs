@@ -6,65 +6,23 @@ public class DynamicArray<T>
 {
     private const int DefaultCapacity = 4;
     private T[] array;
-    private int count;
 
     public DynamicArray()
     {
         array = new T[DefaultCapacity];
-        count = 0;
     }
 
-    public int Count
-    {
-        get { return count; }
-    }
+    public int Count { get; private set; } = 0;
 
     public void Add(T item)
     {
-        if (count == array.Length)
+        if (Count == array.Length)
         {
             ExpandArray();
         }
 
-        array[count] = item;
-        count++;
-    }
-
-    public void Remove(int index)
-    {
-        if (index < 0 || index >= count)
-        {
-            throw new IndexOutOfRangeException();
-        }
-
-        for (int i = index; i < count - 1; i++)
-        {
-            array[i] = array[i + 1];
-        }
-
-        count--;
-
-        if (count < array.Length / 2 && array.Length > DefaultCapacity)
-        {
-            ShrinkArray();
-        }
-    }
-
-    public int Find(T t)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            if (array[i].Equals(t))
-            {
-                return i;
-            };
-        }
-        return -1;
-    }
-
-    public void Set(int index, T value)
-    {
-        array[index] = value;
+        array[Count] = item;
+        Count++;
     }
 
     public T Get(int index)
@@ -72,10 +30,56 @@ public class DynamicArray<T>
         return array[index];
     }
 
+    public int IndexOf(T value)
+    {
+        for (int i = 0; i < Count; i++)
+        {
+            if (array[i].Equals(value))
+            {
+                return i;
+            };
+        }
+        return -1;
+    }
+
+    public void Remove(T value)
+    {
+        for (int index = 0; index < Count; index++)
+        {
+            if (array[index].Equals(value))
+                RemoveAt(index);
+        }
+    }
+
+    public void RemoveAt(int index)
+    {
+        if (index < 0 || index >= Count)
+        {
+            throw new IndexOutOfRangeException();
+        }
+
+        for (int i = index; i < Count - 1; i++)
+        {
+            array[i] = array[i + 1];
+        }
+
+        Count--;
+
+        if (Count < array.Length / 2 && array.Length > DefaultCapacity)
+        {
+            ShrinkArray();
+        }
+    }
+
+    public void Set(int index, T value)
+    {
+        array[index] = value;
+    }
+
     private void ResizeArray(int newCapacity)
     {
         T[] newArray = new T[newCapacity];
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < Count; i++)
         {
             newArray[i] = array[i];
         }

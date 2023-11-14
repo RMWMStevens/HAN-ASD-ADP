@@ -17,7 +17,7 @@ public class DynamicArrayTests : IAsyncLifetime
     }
 
     [Fact]
-    public void CustomArrayList_LijstAflopend2_IndexOutOfRangeException_Test()
+    public void LijstAflopend2_IndexOutOfRangeException_Test()
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -35,7 +35,7 @@ public class DynamicArrayTests : IAsyncLifetime
     [Theory]
     [InlineData(0, 1)]
     [InlineData(1, -10033224)]
-    public void CustomArrayList_LijstAflopend2_Add_Test(int index, int expected)
+    public void LijstAflopend2_Add_Test(int index, int expected)
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -53,7 +53,7 @@ public class DynamicArrayTests : IAsyncLifetime
     [Theory]
     [InlineData(0, -100324)]
     [InlineData(1, 1023)]
-    public void CustomArrayList_LijstOplopend2_Add_Test(int index, int expected)
+    public void LijstOplopend2_Add_Test(int index, int expected)
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -75,7 +75,7 @@ public class DynamicArrayTests : IAsyncLifetime
     [InlineData(3, -0.0)]
     [InlineData(7999, -0.0)]
     [InlineData(8000, 0.0)]
-    public void CustomArrayList_LijstFloat8001_Add_Test(int index, float expected)
+    public void LijstFloat8001_Add_Test(int index, float expected)
     {
         // Arrange
         DynamicArray<float> listOfFloats = new DynamicArray<float>();
@@ -94,7 +94,7 @@ public class DynamicArrayTests : IAsyncLifetime
     [InlineData(2379, 10)]
     [InlineData(2211, 1187)]
     [InlineData(8009, 9998)]
-    public void CustomArrayList_LijstWillekeurig10000_Find_Test(int searchFor, int expected)
+    public void LijstWillekeurig10000_IndexOf_Test(int index, int expected)
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -105,7 +105,7 @@ public class DynamicArrayTests : IAsyncLifetime
             listOfInts.Add(value);
         }
 
-        var result = listOfInts.Find(searchFor);
+        var result = listOfInts.IndexOf(index);
 
         // Assert
         Assert.Equal(expected, result);
@@ -115,7 +115,7 @@ public class DynamicArrayTests : IAsyncLifetime
     [InlineData(10, 2379)]
     [InlineData(1187, 2211)]
     [InlineData(9998, 8009)]
-    public void CustomArrayList_LijstWillekeurig10000_Set_Test(int index, int expected)
+    public void LijstWillekeurig10000_Set_Test(int index, int expected)
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -133,9 +133,28 @@ public class DynamicArrayTests : IAsyncLifetime
     }
 
     [Theory]
+    [InlineData(1, 2)]
+    [InlineData("string", 2)]
+    public void LijstOnsorteerbaar3_Remove_Test(object node, int expected)
+    {
+        // Arrange
+        var list = new DynamicArray<object>();
+        foreach (var value in dataset.LijstOnsorteerbaar3)
+        {
+            list.Add(value);
+        }
+
+        // Act
+        list.Remove(node);
+
+        // Assert
+        Assert.Equal(expected, list.Count);
+    }
+
+    [Theory]
     [InlineData(0, 2)]
     [InlineData(1, 2)]
-    public void CustomArrayList_LijstOnsorteerbaar3_Remove_Test(int index, int expected)
+    public void LijstOnsorteerbaar3_RemoveAt_Test(int index, int expected)
     {
         // Arrange
         DynamicArray<object> listOfObjects = new DynamicArray<object>();
@@ -146,7 +165,7 @@ public class DynamicArrayTests : IAsyncLifetime
             listOfObjects.Add(value);
         }
 
-        listOfObjects.Remove(index);
+        listOfObjects.RemoveAt(index);
 
         // Assert
         Assert.Equal(expected, listOfObjects.Count);
@@ -154,7 +173,7 @@ public class DynamicArrayTests : IAsyncLifetime
 
     [Theory]
     [InlineData(0, 99980000)]
-    public void CustomArrayList_LijstWillekeurig10000_RemoveLast100xSlowerThanRemoveFirst_Test(int lowIndex, int highIndex)
+    public void LijstWillekeurig10000_RemoveAtLast100xSlowerThanRemoveFirst_Test(int lowIndex, int highIndex)
     {
         // Arrange
         DynamicArray<int> listOfInts = new DynamicArray<int>();
@@ -169,11 +188,11 @@ public class DynamicArrayTests : IAsyncLifetime
         }
 
         Stopwatch stopwatchLast = Stopwatch.StartNew();
-        listOfInts.Remove(highIndex);
+        listOfInts.RemoveAt(highIndex);
         stopwatchLast.Stop();
 
         Stopwatch stopwatchFirst = Stopwatch.StartNew();
-        listOfInts.Remove(lowIndex);
+        listOfInts.RemoveAt(lowIndex);
         stopwatchFirst.Stop();
 
         var removeLastSlowerThanRemoveFirst = (stopwatchLast.ElapsedMilliseconds + 1) * 100 < stopwatchFirst.ElapsedMilliseconds;

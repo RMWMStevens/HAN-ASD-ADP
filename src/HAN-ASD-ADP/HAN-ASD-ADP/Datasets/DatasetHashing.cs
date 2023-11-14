@@ -12,83 +12,83 @@ public class DatasetHashing : IDataset
 public class HashtabelSleutelsWaardes
 {
     [JsonPropertyName("a")]
-    public List<int> A { get; set; }
+    public IReadOnlyCollection<int> A { get; set; }
 
     [JsonPropertyName("b")]
-    public List<int> B { get; set; }
+    public IReadOnlyCollection<int> B { get; set; }
 
     [JsonPropertyName("c")]
-    public List<int> C { get; set; }
+    public IReadOnlyCollection<int> C { get; set; }
 
     [JsonPropertyName("d")]
-    public List<int> D { get; set; }
+    public IReadOnlyCollection<int> D { get; set; }
 
     [JsonPropertyName("e")]
-    public List<int> E { get; set; }
+    public IReadOnlyCollection<int> E { get; set; }
 
     [JsonPropertyName("f")]
-    public List<int> F { get; set; }
+    public IReadOnlyCollection<int> F { get; set; }
 
     [JsonPropertyName("g")]
-    public List<int> G { get; set; }
+    public IReadOnlyCollection<int> G { get; set; }
 
     [JsonPropertyName("h")]
-    public List<int> H { get; set; }
+    public IReadOnlyCollection<int> H { get; set; }
 
     [JsonPropertyName("i")]
-    public List<int> I { get; set; }
+    public IReadOnlyCollection<int> I { get; set; }
 
     [JsonPropertyName("j")]
-    public List<int> J { get; set; }
+    public IReadOnlyCollection<int> J { get; set; }
 
     [JsonPropertyName("k")]
-    public List<int> K { get; set; }
+    public IReadOnlyCollection<int> K { get; set; }
 
     [JsonPropertyName("l")]
-    public List<int> L { get; set; }
+    public IReadOnlyCollection<int> L { get; set; }
 
     [JsonPropertyName("m")]
-    public List<int> M { get; set; }
+    public IReadOnlyCollection<int> M { get; set; }
 
     [JsonPropertyName("n")]
-    public List<int> N { get; set; }
+    public IReadOnlyCollection<int> N { get; set; }
 
     [JsonPropertyName("o")]
-    public List<int> O { get; set; }
+    public IReadOnlyCollection<int> O { get; set; }
 
     [JsonPropertyName("p")]
-    public List<int> P { get; set; }
+    public IReadOnlyCollection<int> P { get; set; }
 
     [JsonPropertyName("q")]
-    public List<int> Q { get; set; }
+    public IReadOnlyCollection<int> Q { get; set; }
 
     [JsonPropertyName("r")]
-    public List<int> R { get; set; }
+    public IReadOnlyCollection<int> R { get; set; }
 
     [JsonPropertyName("s")]
-    public List<int> S { get; set; }
+    public IReadOnlyCollection<int> S { get; set; }
 
     [JsonPropertyName("t")]
-    public List<int> T { get; set; }
+    public IReadOnlyCollection<int> T { get; set; }
 
     [JsonPropertyName("u")]
-    public List<int> U { get; set; }
+    public IReadOnlyCollection<int> U { get; set; }
 
     [JsonPropertyName("v")]
-    public List<int> V { get; set; }
+    public IReadOnlyCollection<int> V { get; set; }
 
     [JsonPropertyName("w")]
-    public List<int> W { get; set; }
+    public IReadOnlyCollection<int> W { get; set; }
 
     [JsonPropertyName("x")]
-    public List<int> X { get; set; }
+    public IReadOnlyCollection<int> X { get; set; }
 
     [JsonPropertyName("y")]
-    public List<int> Y { get; set; }
+    public IReadOnlyCollection<int> Y { get; set; }
 
     [JsonPropertyName("z")]
-    public List<int> Z { get; set; }
+    public IReadOnlyCollection<int> Z { get; set; }
 
     [JsonPropertyName("z0")]
-    public List<int> Z0 { get; set; }
+    public IReadOnlyCollection<int> Z0 { get; set; }
 }

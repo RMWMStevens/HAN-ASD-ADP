@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace HAN_ASD_ADP.Datasets;
@@ -31,7 +32,10 @@ public static class DatasetCache<T>
         var jsonSuffix = ToSnakeCase(typeof(T).Name) + ".json";
         var response = await httpClient.GetAsync(baseUrl + jsonSuffix);
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<T>();
+        return await response.Content.ReadFromJsonAsync<T>(new JsonSerializerOptions
+        {
+            Converters = { new PlainObjectConverter() }
+        });
     }
 
     private static string ToSnakeCase(string pascalCaseString)
