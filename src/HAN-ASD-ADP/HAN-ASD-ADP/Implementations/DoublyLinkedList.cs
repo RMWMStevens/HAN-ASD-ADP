@@ -33,12 +33,12 @@ public class DoublyLinkedList<T>
     public DoublyLinkedListNode<T> Find(T value)
         => FindNodePosition(value).Node;
 
-    public DoublyLinkedListNode<T> Get(int index, bool allowTailSearch = true)
+    public DoublyLinkedListNode<T> Get(int index, bool allowFromTail = true)
     {
         if (index >= Count)
             throw new IndexOutOfRangeException();
 
-        return (index > (Count / 2) && allowTailSearch)
+        return (index > (Count / 2) && allowFromTail)
             ? GetFromTail(index)
             : GetFromHead(index);
     }

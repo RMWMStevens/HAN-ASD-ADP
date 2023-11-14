@@ -221,6 +221,51 @@ public class DoublyLinkedListTests : IAsyncLifetime
     /// <summary>
     /// The Dataset 'Willekeurig10000' has 9999 items on which a 'Get' can be performed.
     /// As the DoublyLinkedList has both a Head and a Tail, the index could be retrieved from both ends.
+    /// This test has AllowFromTail disabled. 
+    /// In this test the retrieved value is not important, only the time it took to do so.
+    /// </summary>
+    /// <param name="lowIndex">Low index.</param>
+    /// <param name="highIndex">High index.</param>
+    [Theory]
+    [InlineData(50, 500)]
+    [InlineData(100, 1000)]
+    [InlineData(40, 4000)]
+    [InlineData(5001, 9001)]
+    [InlineData(6001, 8001)]
+    [InlineData(6750, 7250)]
+    [InlineData(1000, 8000)]
+    [InlineData(2000, 9000)]
+    public void LijstWillekeurig10000_Get_PerformanceWithoutAllowFromTail_Test(int lowIndex, int highIndex)
+    {
+        // Arrange
+        var list = new DoublyLinkedList<int>();
+        foreach (var value in dataset.LijstWillekeurig10000)
+        {
+            list.Add(value);
+        }
+        var stopwatchLow = new Stopwatch();
+        var stopwatchHigh = new Stopwatch();
+
+        // Warmup for more accurate results
+        list.Get(3500, false);
+        list.Get(6500, false);
+
+        // Act
+        stopwatchLow.Start();
+        list.Get(lowIndex, false);
+        stopwatchLow.Stop();
+
+        stopwatchHigh.Start();
+        list.Get(highIndex, false);
+        stopwatchHigh.Stop();
+
+        // Assert
+        Assert.True(stopwatchLow.ElapsedTicks < stopwatchHigh.ElapsedTicks);
+    }
+
+    /// <summary>
+    /// The Dataset 'Willekeurig10000' has 9999 items on which a 'Get' can be performed.
+    /// As the DoublyLinkedList has both a Head and a Tail, the index could be retrieved from both ends.
     /// For indexes with values under ~5000, the search will be performed from the Head.
     /// For indexes with values over 5000, the search will be performed from the Tail.
     /// In this test the retrieved value is not important, only the time it took to do so.
@@ -234,10 +279,10 @@ public class DoublyLinkedListTests : IAsyncLifetime
     [InlineData(40, 4000, true)] // Both search from Head, Low should be faster. 
     [InlineData(5001, 9001, false)] // Both search from Tail, High should be faster. 
     [InlineData(6001, 8001, false)] // Both search from Tail, High should be faster. 
-    [InlineData(6999, 7001, false)] // Both search from Tail, High should be faster. 
+    [InlineData(6750, 7250, false)] // Both search from Tail, High should be faster. 
     [InlineData(1000, 8000, true)] // Low from Head, High from Tail. Low faster because it's closer to Head. 
     [InlineData(2000, 9000, false)] // Low from Head, High from Tail. High faster because it's closer to Tail. 
-    public void LijstWillekeurig10000_Get_Performance_Test(int lowIndex, int highIndex, bool expectedLowFaster)
+    public void LijstWillekeurig10000_Get_PerformanceWithAllowFromTail_Test(int lowIndex, int highIndex, bool expectedLowFaster)
     {
         // Arrange
         var list = new DoublyLinkedList<int>();
