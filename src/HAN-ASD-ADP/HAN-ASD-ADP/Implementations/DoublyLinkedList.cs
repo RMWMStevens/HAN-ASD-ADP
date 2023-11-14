@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace HAN_ASD_ADP.Implementations;
 
@@ -32,17 +33,14 @@ public class DoublyLinkedList<T>
     public DoublyLinkedListNode<T> Find(T value)
         => FindNodePosition(value).Node;
 
-    public DoublyLinkedListNode<T> Get(int index)
+    public DoublyLinkedListNode<T> Get(int index, bool allowTailSearch = true)
     {
         if (index >= Count)
             throw new IndexOutOfRangeException();
 
-        var node = Head.Next;
-        for (var position = 0; position < index; position++)
-        {
-            node = node.Next;
-        }
-        return node;
+        return (index > (Count / 2) && allowTailSearch)
+            ? GetFromTail(index)
+            : GetFromHead(index);
     }
 
     public int IndexOf(T value)
@@ -60,6 +58,26 @@ public class DoublyLinkedList<T>
         if (node is null)
             return;
         node.Value = value;
+    }
+
+    private DoublyLinkedListNode<T> GetFromHead(int index)
+    {
+        var node = Head.Next;
+        for (var position = 0; position < index; position++)
+        {
+            node = node.Next;
+        }
+        return node;
+    }
+
+    private DoublyLinkedListNode<T> GetFromTail(int index)
+    {
+        var node = Tail.Previous;
+        for (var position = Count - 1; position > index; position--)
+        {
+            node = node.Previous;
+        }
+        return node;
     }
 
     private void Remove(DoublyLinkedListNode<T> node)
