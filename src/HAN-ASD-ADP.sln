@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN-ASD-ADP", "HAN-ASD-ADP\HAN-ASD-ADP.csproj", "{485526C2-B29E-4DD2-AA76-9C857D8D7006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HAN-ASD-ADP", "HAN-ASD-ADP\HAN-ASD-ADP.csproj", "{485526C2-B29E-4DD2-AA76-9C857D8D7006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN-ASD-ADP.Tests", "HAN-ASD-ADP.Tests\HAN-ASD-ADP.Tests.csproj", "{79A89F7E-DE20-4C26-B14D-15276037A887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HAN-ASD-ADP.Tests", "HAN-ASD-ADP.Tests\HAN-ASD-ADP.Tests.csproj", "{79A89F7E-DE20-4C26-B14D-15276037A887}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

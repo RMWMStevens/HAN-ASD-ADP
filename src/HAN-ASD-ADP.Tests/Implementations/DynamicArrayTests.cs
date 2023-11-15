@@ -195,7 +195,7 @@ public class DynamicArrayTests : IAsyncLifetime
         listOfInts.RemoveAt(lowIndex);
         stopwatchFirst.Stop();
 
-        var removeLastSlowerThanRemoveFirst = (stopwatchLast.ElapsedMilliseconds + 1) * 100 < stopwatchFirst.ElapsedMilliseconds;
+        var removeLastSlowerThanRemoveFirst = (stopwatchLast.ElapsedTicks * 100) < stopwatchFirst.ElapsedTicks;
 
         // Assert
         Assert.True(removeLastSlowerThanRemoveFirst);
