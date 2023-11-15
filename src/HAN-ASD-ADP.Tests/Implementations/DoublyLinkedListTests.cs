@@ -31,10 +31,6 @@ public class DoublyLinkedListTests : IAsyncLifetime
         list.Add(value3);
         Assert.Equal(3, list.Count);
 
-        var itemFind = list.Find(value1);
-        Assert.NotNull(itemFind);
-        Assert.Equal(value1, itemFind);
-
         var itemGet = list.Get(index: 2);
         Assert.Equal(value3, itemGet);
 
@@ -102,26 +98,6 @@ public class DoublyLinkedListTests : IAsyncLifetime
 
         // Assert
         Assert.Equal(expected, list.Get(index));
-    }
-
-    [Theory]
-    [InlineData(2379)]
-    [InlineData(2211)]
-    [InlineData(8009)]
-    public void LijstWillekeurig10000_Find_Test(int expected)
-    {
-        // Arrange
-        var list = new DoublyLinkedList<int>();
-        foreach (var value in dataset.LijstWillekeurig10000)
-        {
-            list.Add(value);
-        }
-
-        // Act
-        var result = list.Find(expected);
-
-        // Assert
-        Assert.Equal(expected, result);
     }
 
     [Theory]

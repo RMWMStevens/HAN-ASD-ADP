@@ -29,9 +29,6 @@ public class DoublyLinkedList<T>
         Count++;
     }
 
-    public T Find(T value)
-        => FindNodeWithIndex(value).Node.Value;
-
     public T Get(int index, bool allowFromTail = true)
         => GetNode(index, allowFromTail).Value;
 
