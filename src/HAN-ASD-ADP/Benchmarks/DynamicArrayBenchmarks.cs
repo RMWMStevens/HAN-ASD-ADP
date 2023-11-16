@@ -17,9 +17,11 @@ public class DynamicArrayBenchmarks
         dataset = await DatasetCache<DatasetSorteren>.GetAsync();
     }
 
-    public static List<Type> Get() => new List<Type>
+    public static List<Type> Get() => new()
     {
         typeof(DynamicArrayAddBenchmarks),
+        typeof(DynamicArrayCountBenchmarks),
+        typeof(DynamicArrayGetBenchmarks),
         typeof(DynamicArrayRemoveBenchmarks),
         typeof(DynamicArrayRemoveAtBenchmarks),
     };
@@ -45,7 +47,7 @@ public class DynamicArrayAddBenchmarks : DynamicArrayBenchmarks
         {
             oplopend2.Add(value);
         }
-        
+
         float8001 = new();
         foreach (var value in dataset.LijstFloat8001)
         {
@@ -179,6 +181,114 @@ public class DynamicArrayAddBenchmarks : DynamicArrayBenchmarks
 
     [Benchmark]
     public void Add_Willekeurig10000() => willekeurig10000.Add(Number);
+}
+
+public class DynamicArrayGetBenchmarks : DynamicArrayBenchmarks
+{
+    private DynamicArray<int> gesorteerdOplopend3;
+    private DynamicArray<float> float8001;
+    private DynamicArray<int> oplopend10000;
+
+    public override async Task GlobalSetup()
+    {
+        await base.GlobalSetup();
+
+        gesorteerdOplopend3 = new();
+        foreach (var value in dataset.LijstGesorteerdOplopend3)
+        {
+            gesorteerdOplopend3.Add(value);
+        }
+
+        float8001 = new();
+        foreach (var value in dataset.LijstFloat8001)
+        {
+            float8001.Add(value);
+        }
+
+        oplopend10000 = new();
+        foreach (var value in dataset.LijstOplopend10000)
+        {
+            oplopend10000.Add(value);
+        }
+    }
+
+    [Benchmark(Baseline = true)]
+    public void Get_GesorteerdOplopend3_0() => gesorteerdOplopend3.Get(0);
+
+    [Benchmark]
+    public void Get_GesorteerdOplopend3_1() => gesorteerdOplopend3.Get(1);
+
+    [Benchmark]
+    public void Get_GesorteerdOplopend3_2() => gesorteerdOplopend3.Get(2);
+
+    [Benchmark]
+    public void Get_Float8001_0() => float8001.Get(0);
+
+    [Benchmark]
+    public void Get_Float8001_1() => float8001.Get(1);
+
+    [Benchmark]
+    public void Get_Float8001_2() => float8001.Get(2);
+
+    [Benchmark]
+    public void Get_Float8001_4000() => float8001.Get(4000);
+
+    [Benchmark]
+    public void Get_Float8001_8000() => float8001.Get(8000);
+
+    [Benchmark]
+    public void Get_Oplopend10000_0() => oplopend10000.Get(0);
+
+    [Benchmark]
+    public void Get_Oplopend10000_1() => oplopend10000.Get(1);
+
+    [Benchmark]
+    public void Get_Oplopend10000_2() => oplopend10000.Get(2);
+
+    [Benchmark]
+    public void Get_Oplopend10000_4000() => oplopend10000.Get(4000);
+
+    [Benchmark]
+    public void Get_Oplopend10000_8000() => oplopend10000.Get(8000);
+}
+
+public class DynamicArrayCountBenchmarks : DynamicArrayBenchmarks
+{
+    private DynamicArray<int> aflopend2;
+    private DynamicArray<float> float8001;
+    private DynamicArray<int> willekeurig10000;
+
+    public override async Task GlobalSetup()
+    {
+        await base.GlobalSetup();
+
+        aflopend2 = new();
+        foreach (var value in dataset.LijstAflopend2)
+        {
+            aflopend2.Add(value);
+        }
+
+        float8001 = new();
+        foreach (var value in dataset.LijstFloat8001)
+        {
+            float8001.Add(value);
+        }
+
+        willekeurig10000 = new();
+        foreach (var value in dataset.LijstWillekeurig10000)
+        {
+            willekeurig10000.Add(value);
+        }
+    }
+
+    [Benchmark(Baseline = true)]
+    public int Count_Aflopend2() => aflopend2.Count;
+
+    [Benchmark]
+    public int Count_Float8001() => float8001.Count;
+
+    [Benchmark]
+    public int Count_Willekeurig10000() => willekeurig10000.Count;
 }
 
 public class DynamicArrayRemoveBenchmarks : DynamicArrayBenchmarks

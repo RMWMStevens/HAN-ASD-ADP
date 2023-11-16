@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Loggers;
 
 namespace HAN_ASD_ADP.Benchmarks.Config;
 
@@ -10,6 +11,7 @@ public class BenchmarkConfig : ManualConfig
     {
         AddColumnProvider(DefaultColumnProviders.Instance);
         AddExporter(HtmlExporter.Default);
-        AddLogger(new SummaryOnlyLogger());
+        AddExporter(MarkdownExporter.Default);
+        AddLogger(new ConsoleLogger());
     }
 }
