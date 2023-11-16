@@ -3,7 +3,7 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Loggers;
 
-namespace HAN_ASD_ADP.Benchmarks.Config;
+namespace HAN_ASD_ADP.Benchmarks;
 
 public class BenchmarkConfig : ManualConfig
 {
