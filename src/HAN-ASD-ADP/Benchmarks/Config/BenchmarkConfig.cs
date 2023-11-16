@@ -12,6 +12,6 @@ public class BenchmarkConfig : ManualConfig
         AddColumnProvider(DefaultColumnProviders.Instance);
         AddExporter(HtmlExporter.Default);
         AddExporter(MarkdownExporter.Default);
-        AddLogger(new ConsoleLogger());
+        AddLogger(ConsoleLogger.Default);
     }
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.DynamicArrayAddBenchmarks-20231116-125159</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-QZSNDR : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method           </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Ratio</th><th>RatioSD</th>
+</tr>
+</thead><tbody><tr><td>Add_Oplopend2_1x</td><td>74.00 ns</td><td>21.352 ns</td><td>62.957 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Oplopend2_2x</td><td>148.00 ns</td><td>20.154 ns</td><td>59.425 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Oplopend2_3x</td><td>475.84 ns</td><td>28.545 ns</td><td>79.097 ns</td><td>450.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Oplopend2_4x</td><td>472.53 ns</td><td>24.400 ns</td><td>68.420 ns</td><td>500.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Float8001</td><td>74.67 ns</td><td>17.326 ns</td><td>43.785 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_GesorteerdAflopend3</td><td>84.44 ns</td><td>13.074 ns</td><td>36.446 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_1x</td><td>100.00 ns</td><td>0.000 ns</td><td>0.000 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_2x</td><td>100.00 ns</td><td>0.000 ns</td><td>0.000 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_3x</td><td>223.00 ns</td><td>27.207 ns</td><td>80.221 ns</td><td>200.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_4x</td><td>216.00 ns</td><td>23.967 ns</td><td>70.668 ns</td><td>200.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_5x</td><td>725.25 ns</td><td>68.427 ns</td><td>200.684 ns</td><td>700.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Leeg0_6x</td><td>779.00 ns</td><td>67.020 ns</td><td>197.609 ns</td><td>700.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Null3_1x</td><td>157.00 ns</td><td>22.741 ns</td><td>67.052 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Null3_2x</td><td>722.00 ns</td><td>55.085 ns</td><td>162.419 ns</td><td>700.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Onsorteerbaar3</td><td>463.04 ns</td><td>21.491 ns</td><td>60.615 ns</td><td>500.0 ns</td><td>?</td><td>?</td>
+</tr><tr><td>Add_Willekeurig10000</td><td>90.80 ns</td><td>10.617 ns</td><td>29.064 ns</td><td>100.0 ns</td><td>?</td><td>?</td>
+</tr></tbody></table>
+</body>
+</html>
