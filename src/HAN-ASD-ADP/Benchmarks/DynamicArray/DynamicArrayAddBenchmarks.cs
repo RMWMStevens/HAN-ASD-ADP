@@ -18,46 +18,67 @@ public class DynamicArrayAddBenchmarks : SetupDynamicArrayBenchmarks
     [IterationSetup]
     public void IterationSetup()
     {
-        oplopend2 = new();
-        foreach (var value in dataset.LijstOplopend2)
+        if (dataset.LijstOplopend2.Count != oplopend2.Count)
         {
-            oplopend2.Add(value);
+            oplopend2 = new();
+            foreach (var value in dataset.LijstOplopend2)
+            {
+                oplopend2.Add(value);
+            }
+        };
+        
+        if (dataset.LijstFloat8001.Count != float8001.Count)
+        {
+            float8001 = new();
+            foreach (var value in dataset.LijstFloat8001)
+            {
+                float8001.Add(value);
+            }
         }
 
-        float8001 = new();
-        foreach (var value in dataset.LijstFloat8001)
+        if (dataset.LijstGesorteerdAflopend3.Count != gesorteerdAflopend3.Count)
         {
-            float8001.Add(value);
+            gesorteerdAflopend3 = new();
+            foreach (var value in dataset.LijstGesorteerdAflopend3)
+            {
+                gesorteerdAflopend3.Add(value);
+            }
         }
 
-        gesorteerdAflopend3 = new();
-        foreach (var value in dataset.LijstGesorteerdAflopend3)
+        if (dataset.LijstLeeg0.Count != leeg0.Count)
         {
-            gesorteerdAflopend3.Add(value);
+            leeg0 = new();
+            foreach (var value in dataset.LijstLeeg0)
+            {
+                leeg0.Add(value);
+            }
         }
 
-        leeg0 = new();
-        foreach (var value in dataset.LijstLeeg0)
+        if (dataset.LijstNull3.Count != null3.Count)
         {
-            leeg0.Add(value);
+            null3 = new();
+            foreach (var value in dataset.LijstNull3)
+            {
+                null3.Add(value);
+            }
+        }
+        
+        if (dataset.LijstOnsorteerbaar3.Count != onsorteerbaar3.Count)
+        {
+            onsorteerbaar3 = new();
+            foreach (var value in dataset.LijstOnsorteerbaar3)
+            {
+                onsorteerbaar3.Add(value);
+            }
         }
 
-        null3 = new();
-        foreach (var value in dataset.LijstNull3)
+        if (dataset.LijstWillekeurig10000.Count != willekeurig10000.Count)
         {
-            null3.Add(value);
-        }
-
-        onsorteerbaar3 = new();
-        foreach (var value in dataset.LijstOnsorteerbaar3)
-        {
-            onsorteerbaar3.Add(value);
-        }
-
-        willekeurig10000 = new();
-        foreach (var value in dataset.LijstWillekeurig10000)
-        {
-            willekeurig10000.Add(value);
+            willekeurig10000 = new();
+            foreach (var value in dataset.LijstWillekeurig10000)
+            {
+                willekeurig10000.Add(value);
+            }
         }
     }
 

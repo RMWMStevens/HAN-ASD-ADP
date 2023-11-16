@@ -14,22 +14,31 @@ public class DynamicArrayGetBenchmarks : SetupDynamicArrayBenchmarks
     {
         await base.GlobalSetup();
 
-        gesorteerdOplopend3 = new();
-        foreach (var value in dataset.LijstGesorteerdOplopend3)
+        if (dataset.LijstGesorteerdAflopend3.Count != gesorteerdOplopend3.Count)
         {
-            gesorteerdOplopend3.Add(value);
+            gesorteerdOplopend3 = new();
+            foreach (var value in dataset.LijstGesorteerdOplopend3)
+            {
+                gesorteerdOplopend3.Add(value);
+            }
         }
 
-        float8001 = new();
-        foreach (var value in dataset.LijstFloat8001)
+        if (dataset.LijstFloat8001.Count != float8001.Count)
         {
-            float8001.Add(value);
+            float8001 = new();
+            foreach (var value in dataset.LijstFloat8001)
+            {
+                float8001.Add(value);
+            }
         }
 
-        oplopend10000 = new();
-        foreach (var value in dataset.LijstOplopend10000)
+        if (dataset.LijstOplopend10000.Count != oplopend10000.Count)
         {
-            oplopend10000.Add(value);
+            oplopend10000 = new();
+            foreach (var value in dataset.LijstOplopend10000)
+            {
+                oplopend10000.Add(value);
+            }
         }
     }
 

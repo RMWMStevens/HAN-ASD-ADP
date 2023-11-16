@@ -12,30 +12,36 @@ public class DynamicArrayRemoveAtBenchmarks : SetupDynamicArrayBenchmarks
     [IterationSetup]
     public void IterationSetup()
     {
-        aflopend2 = new();
-        foreach (var value in dataset.LijstAflopend2)
+        if (dataset.LijstAflopend2.Count != aflopend2.Count)
         {
-            aflopend2.Add(value);
+            aflopend2 = new();
+            foreach (var value in dataset.LijstAflopend2)
+            {
+                aflopend2.Add(value);
+            }
         }
 
-        float8001 = new();
-        foreach (var value in dataset.LijstFloat8001)
+        if (dataset.LijstFloat8001.Count != float8001.Count)
         {
-            float8001.Add(value);
+            float8001 = new();
+            foreach (var value in dataset.LijstFloat8001)
+            {
+                float8001.Add(value);
+            }
         }
 
-        willekeurig10000 = new();
-        foreach (var value in dataset.LijstWillekeurig10000)
+        if (dataset.LijstWillekeurig10000.Count != willekeurig10000.Count)
         {
-            willekeurig10000.Add(value);
+            willekeurig10000 = new();
+            foreach (var value in dataset.LijstWillekeurig10000)
+            {
+                willekeurig10000.Add(value);
+            }
         }
     }
 
     [Benchmark(Baseline = true)]
     public void RemoveAt_Aflopend2_1() => RemoveAt(aflopend2, 1);
-
-    [Benchmark]
-    public void RemoveAt_Aflopend2_1_Again() => RemoveAt(aflopend2, 1);
 
     [Benchmark]
     public void RemoveAt_Float8001_0() => RemoveAt(float8001, 0);
