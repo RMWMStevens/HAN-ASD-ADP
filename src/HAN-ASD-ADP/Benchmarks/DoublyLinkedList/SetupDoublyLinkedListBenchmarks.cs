@@ -8,7 +8,7 @@ public class SetupDoublyLinkedListBenchmarks : BenchmarkSetup
 {
     protected DoublyLinkedList<int> list;
 
-    [Params(10, 100, 1000, 10000, 100000, 1000000)]
+    [Params(100, 10000, 1000000)]
     public virtual int Size { get; set; }
 
     public SetupDoublyLinkedListBenchmarks()
