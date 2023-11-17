@@ -1,11 +1,27 @@
-﻿using System;
+﻿using BenchmarkDotNet.Attributes;
+using HAN_ASD_ADP.Implementations;
 
 namespace HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 
-public class SetupDoublyLinkedListBenchmarks : IBenchmarkSetup
+[MemoryDiagnoser]
+public class SetupDoublyLinkedListBenchmarks : BenchmarkSetup
 {
-    public Type[] GetBenchmarks() => new[]
+    protected DoublyLinkedList<int> list;
+
+    [Params(1, 10, 100, 1000, 10000, 100000, 1000000)]
+    public int Size { get; set; }
+
+    public SetupDoublyLinkedListBenchmarks()
+        : base(nameof(SetupDoublyLinkedListBenchmarks))
+    { }
+
+    [IterationSetup]
+    public void Setup()
     {
-        typeof(DoublyLinkedListAddBenchmarks),
-    };
+        list = new();
+        for (int i = 0; i < Size; i++)
+        {
+            list.Add(i);
+        }
+    }
 }

@@ -1,25 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
-using HAN_ASD_ADP.Implementations;
 
 namespace HAN_ASD_ADP.Benchmarks.DynamicArray;
 
-public class DynamicArrayAddBenchmarks
+public class DynamicArrayAddBenchmarks : SetupDynamicArrayBenchmarks
 {
-    private DynamicArray<int> array;
-
-    [Params(3, 4, 5, 31, 32, 33, 100, 1000, 10000)]
-    public int ArraySize;
-
-    [IterationSetup]
-    public void Setup()
-    {
-        array = new();
-        for (int i = 0; i < ArraySize; i++)
-        {
-            array.Add(i);
-        }
-    }
+    [Params(3, 4, 5, 31, 32, 33, 100, 1000, 10000, 100000, 1000000)]
+    public new int Size { get; set; }
 
     [Benchmark]
-    public void Add() => array.Add(ArraySize);
+    public void Add() => array.Add(Size);
 }
