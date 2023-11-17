@@ -2,11 +2,11 @@
 
 namespace HAN_ASD_ADP.Implementations;
 
-public class CustomStack<T>
+public class Stack<T>
 {
     private T[] array;
 
-    public CustomStack()
+    public Stack()
     {
         array = new T[0];
     }

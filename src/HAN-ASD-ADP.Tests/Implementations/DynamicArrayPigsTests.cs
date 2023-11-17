@@ -1,6 +1,5 @@
 ﻿using HAN_ASD_ADP.Implementations;
 using HAN_ASD_ADP.Tests.TestClasses;
-using System;
 using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations;

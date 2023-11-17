@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.Deque.DequeSizeBenchmarks-20231117-160938</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-GGXILR : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Size</td><td>1</td><td>44.44 ns</td><td>20.79 ns</td><td>60.98 ns</td><td>0.0000 ns</td><td>544 B</td>
+</tr><tr><td>Size</td><td>100</td><td>46.46 ns</td><td>19.67 ns</td><td>57.70 ns</td><td>0.0000 ns</td><td>544 B</td>
+</tr><tr><td>Size</td><td>10000</td><td>73.74 ns</td><td>22.10 ns</td><td>64.82 ns</td><td>100.0000 ns</td><td>544 B</td>
+</tr><tr><td>Size</td><td>1000000</td><td>315.38 ns</td><td>76.10 ns</td><td>213.40 ns</td><td>200.0000 ns</td><td>496 B</td>
+</tr></tbody></table>
+</body>
+</html>

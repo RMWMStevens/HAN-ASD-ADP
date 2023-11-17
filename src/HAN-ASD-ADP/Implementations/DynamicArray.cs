@@ -78,7 +78,7 @@ public class DynamicArray<T>
 
     public bool Contains(T value)
     {
-        for(int i = 0; i < Count; i++)
+        for (int i = 0; i < Count; i++)
         {
             if (array[i].Equals(value))
             {
