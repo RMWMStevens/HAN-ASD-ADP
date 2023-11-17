@@ -9,7 +9,10 @@ public class SetupDynamicArrayBenchmarks : BenchmarkSetup
     protected DynamicArray<int> array;
 
     [Params(100, 10000, 1000000)]
-    public virtual int Size { get; set; }
+    public virtual int Length { get; set; }
+
+    [Params(1)]
+    public virtual int Times { get; set; }
 
     public SetupDynamicArrayBenchmarks()
         : base(nameof(SetupDynamicArrayBenchmarks))
@@ -19,7 +22,7 @@ public class SetupDynamicArrayBenchmarks : BenchmarkSetup
     public void Setup()
     {
         array = new();
-        for (int i = 0; i < Size; i++)
+        for (int i = 0; i < Length; i++)
         {
             array.Add(i);
         }

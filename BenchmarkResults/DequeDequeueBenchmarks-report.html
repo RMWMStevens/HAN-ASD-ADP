@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HAN_ASD_ADP.Benchmarks.Deque.DequeDequeueBenchmarks-20231117-160900</title>
+<title>HAN_ASD_ADP.Benchmarks.Deque.DequeDequeueBenchmarks-20231117-170935</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,30 +17,26 @@ BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3
 AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.100
   [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-GGXILR : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+  Job-BIRKPB : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
 
 <table>
-<thead><tr><th>Method          </th><th>Times</th><th>Mean    </th><th>Error  </th><th>StdDev </th><th>Median  </th><th>Allocated</th>
+<thead><tr><th>Method</th><th>Length</th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>DequeueLeft</td><td>1</td><td>158.0 ns</td><td>20.55 ns</td><td>60.60 ns</td><td>200.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight</td><td>1</td><td>148.0 ns</td><td>23.85 ns</td><td>70.32 ns</td><td>100.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft_Prefilled</td><td>1</td><td>160.2 ns</td><td>22.95 ns</td><td>66.95 ns</td><td>150.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight_Prefilled</td><td>1</td><td>164.6 ns</td><td>24.51 ns</td><td>71.87 ns</td><td>200.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft</td><td>100</td><td>1,474.1 ns</td><td>31.42 ns</td><td>68.98 ns</td><td>1,500.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight</td><td>100</td><td>1,250.8 ns</td><td>26.93 ns</td><td>61.89 ns</td><td>1,200.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft_Prefilled</td><td>100</td><td>1,422.2 ns</td><td>52.63 ns</td><td>146.71 ns</td><td>1,400.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight_Prefilled</td><td>100</td><td>1,309.8 ns</td><td>31.14 ns</td><td>82.57 ns</td><td>1,300.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft</td><td>10000</td><td>113,650.0 ns</td><td>1,268.56 ns</td><td>990.41 ns</td><td>113,650.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight</td><td>10000</td><td>103,576.9 ns</td><td>1,863.03 ns</td><td>1,555.72 ns</td><td>103,100.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft_Prefilled</td><td>10000</td><td>115,715.4 ns</td><td>1,882.62 ns</td><td>1,572.07 ns</td><td>115,600.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight_Prefilled</td><td>10000</td><td>104,092.3 ns</td><td>1,290.22 ns</td><td>1,077.39 ns</td><td>104,100.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueLeft</td><td>1000000</td><td>6,875,100.0 ns</td><td>62,424.69 ns</td><td>58,392.10 ns</td><td>6,862,500.0 ns</td><td>496 B</td>
-</tr><tr><td>DequeueRight</td><td>1000000</td><td>5,974,669.2 ns</td><td>75,343.71 ns</td><td>62,915.41 ns</td><td>5,970,700.0 ns</td><td>496 B</td>
-</tr><tr><td>DequeueLeft_Prefilled</td><td>1000000</td><td>6,732,035.7 ns</td><td>75,472.16 ns</td><td>66,904.11 ns</td><td>6,725,000.0 ns</td><td>544 B</td>
-</tr><tr><td>DequeueRight_Prefilled</td><td>1000000</td><td>6,079,732.0 ns</td><td>120,393.73 ns</td><td>160,722.17 ns</td><td>6,019,500.0 ns</td><td>496 B</td>
+</thead><tbody><tr><td>DequeueLeft</td><td>0</td><td>100</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueRight</td><td>0</td><td>100</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueLeft</td><td>0</td><td>10000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueRight</td><td>0</td><td>10000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueLeft</td><td>0</td><td>1000000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueRight</td><td>0</td><td>1000000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueLeft</td><td>1000</td><td>100</td><td>1.595 &mu;s</td><td>0.0447 &mu;s</td><td>0.1185 &mu;s</td><td>544 B</td>
+</tr><tr><td>DequeueRight</td><td>1000</td><td>100</td><td>1.442 &mu;s</td><td>0.0579 &mu;s</td><td>0.1660 &mu;s</td><td>544 B</td>
+</tr><tr><td>DequeueLeft</td><td>1000</td><td>10000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueRight</td><td>1000</td><td>10000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueLeft</td><td>1000</td><td>1000000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
+</tr><tr><td>DequeueRight</td><td>1000</td><td>1000000</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td>
 </tr></tbody></table>
 </body>
 </html>

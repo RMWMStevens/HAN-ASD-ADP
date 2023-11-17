@@ -11,9 +11,9 @@ using System.IO;
 var config = new BenchmarkConfig();
 var setups = new List<IBenchmarkSetup>
 {
-    //new SetupDynamicArrayBenchmarks(),
-    //new SetupDoublyLinkedListBenchmarks(),
-    //new SetupStackBenchmarks(),
+    new SetupDynamicArrayBenchmarks(),
+    new SetupDoublyLinkedListBenchmarks(),
+    new SetupStackBenchmarks(),
     new SetupDequeBenchmarks(),
 };
 

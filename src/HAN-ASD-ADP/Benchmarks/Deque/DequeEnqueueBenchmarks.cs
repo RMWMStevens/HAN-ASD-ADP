@@ -5,38 +5,20 @@ namespace HAN_ASD_ADP.Benchmarks.Deque;
 public class DequeEnqueueBenchmarks : SetupDequeBenchmarks
 {
     [Benchmark]
-    public void EnqueueLeft_Empty()
+    public void EnqueueLeft()
     {
         for (int i = 0; i < Times; i++)
         {
-            emptyDeque.EnqueueLeft(i);
+            deque.EnqueueLeft(i);
         }
     }
 
     [Benchmark]
-    public void EnqueueRight_Empty()
+    public void EnqueueRight()
     {
         for (int i = 0; i < Times; i++)
         {
-            emptyDeque.EnqueueRight(i);
-        }
-    }
-
-    [Benchmark]
-    public void EnqueueLeft_Prefilled()
-    {
-        for (int i = 0; i < Times; i++)
-        {
-            prefilledDeque.EnqueueLeft(i);
-        }
-    }
-
-    [Benchmark]
-    public void EnqueueRight_Prefilled()
-    {
-        for (int i = 0; i < Times; i++)
-        {
-            prefilledDeque.EnqueueRight(i);
+            deque.EnqueueRight(i);
         }
     }
 }

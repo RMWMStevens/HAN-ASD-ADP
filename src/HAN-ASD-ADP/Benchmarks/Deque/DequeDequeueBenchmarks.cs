@@ -9,7 +9,7 @@ public class DequeDequeueBenchmarks : SetupDequeBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            prefilledDeque.DequeueLeft();
+            deque.DequeueLeft();
         }
     }
 
@@ -18,25 +18,7 @@ public class DequeDequeueBenchmarks : SetupDequeBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            prefilledDeque.DequeueRight();
-        }
-    }
-
-    [Benchmark]
-    public void DequeueLeft_Prefilled()
-    {
-        for (int i = 0; i < Times; i++)
-        {
-            prefilledDeque.DequeueLeft();
-        }
-    }
-
-    [Benchmark]
-    public void DequeueRight_Prefilled()
-    {
-        for (int i = 0; i < Times; i++)
-        {
-            prefilledDeque.DequeueRight();
+            deque.DequeueRight();
         }
     }
 }

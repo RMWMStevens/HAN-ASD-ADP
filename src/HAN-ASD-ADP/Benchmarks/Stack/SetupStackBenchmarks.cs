@@ -11,6 +11,9 @@ public class SetupStackBenchmarks : BenchmarkSetup
     [Params(100, 10000, 1000000)]
     public virtual int Size { get; set; }
 
+    [Params(1)]
+    public virtual int Times { get; set; }
+
     public SetupStackBenchmarks()
         : base(nameof(SetupStackBenchmarks))
     { }

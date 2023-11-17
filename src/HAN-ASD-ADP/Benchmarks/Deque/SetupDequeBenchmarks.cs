@@ -6,10 +6,12 @@ namespace HAN_ASD_ADP.Benchmarks.Deque;
 [MemoryDiagnoser]
 public class SetupDequeBenchmarks : BenchmarkSetup
 {
-    protected Deque<int> emptyDeque;
-    protected Deque<int> prefilledDeque;
+    protected Deque<int> deque;
 
-    [Params(1, 100, 10000, 1000000)]
+    [Params(0, 1000)]
+    public virtual int Length { get; set; }
+
+    [Params(100, 10000, 1000000)]
     public virtual int Times { get; set; }
 
     public SetupDequeBenchmarks()
@@ -19,11 +21,10 @@ public class SetupDequeBenchmarks : BenchmarkSetup
     [IterationSetup]
     public void Setup()
     {
-        emptyDeque = new();
-        prefilledDeque = new();
-        for (int i = 0; i < Times; i++)
+        deque = new();
+        for (int i = 0; i < Length; i++)
         {
-            prefilledDeque.EnqueueLeft(i);
+            deque.EnqueueLeft(i);
         }
     }
 }

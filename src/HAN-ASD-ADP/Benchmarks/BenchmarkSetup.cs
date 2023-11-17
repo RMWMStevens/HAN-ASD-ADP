@@ -24,7 +24,6 @@ public class BenchmarkSetup : IBenchmarkSetup
     {
         name = name.Replace("Setup", string.Empty);
         name = name.Replace("Benchmarks", string.Empty);
-        Console.WriteLine(Name);
         return name;
     }
 }
