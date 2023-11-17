@@ -89,6 +89,26 @@ public class DynamicArrayTests : IAsyncLifetime
     }
 
     [Theory]
+    [InlineData(1.0, true)]
+    [InlineData(-0.0, true)]
+    [InlineData(-9371, false)]
+    [InlineData(7331, false)]
+    public void LijstFloat8001_Contains_Test(int containsValue, bool expected)
+    {
+        // Arrange
+        DynamicArray<float> listOfFloats = new DynamicArray<float>();
+
+        // Act
+        foreach (var value in dataset.LijstFloat8001)
+        {
+            listOfFloats.Add(value);
+        }
+
+        // Assert
+        Assert.Equal(expected, listOfFloats.Contains(containsValue));
+    }
+
+    [Theory]
     [InlineData(2379, 10)]
     [InlineData(2211, 1187)]
     [InlineData(8009, 9998)]

@@ -76,6 +76,18 @@ public class DynamicArray<T>
         array[index] = value;
     }
 
+    public bool Contains(T value)
+    {
+        for(int i = 0; i < Count; i++)
+        {
+            if (array[i].Equals(value))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void ResizeArray(int newCapacity)
     {
         T[] newArray = new T[newCapacity];
