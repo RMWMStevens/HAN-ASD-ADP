@@ -11,9 +11,7 @@ public class CustomStackTests : IAsyncLifetime
     private DatasetSorteren dataset;
 
     public async Task InitializeAsync()
-    {
-        dataset = await DatasetCache<DatasetSorteren>.GetAsync();
-    }
+        => dataset = await DatasetCache<DatasetSorteren>.GetAsync();
 
     [Fact]
     public void CustomStack_LijstAflopend2_PopEmptyArrayInvalidOperationException_Test()

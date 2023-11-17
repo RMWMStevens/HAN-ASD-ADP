@@ -29,6 +29,9 @@ public class DoublyLinkedList<T>
         Count++;
     }
 
+    public bool Contains(T value)
+        => IndexOf(value) >= 0;
+
     public T Get(int index, bool allowFromTail = true)
         => GetNode(index, allowFromTail).Value;
 
@@ -36,7 +39,13 @@ public class DoublyLinkedList<T>
         => FindNodeWithIndex(value).Index;
 
     public void Remove(T value)
-        => Remove(FindNodeWithIndex(value).Node);
+    {
+        var node = FindNodeWithIndex(value).Node;
+        if (node is null)
+            throw new ArgumentException("Value not found");
+
+        Remove(node);
+    }
 
     public void RemoveAt(int index)
         => Remove(GetNode(index));
@@ -88,7 +97,7 @@ public class DoublyLinkedList<T>
             index++;
         }
 
-        throw new ArgumentException("Value not found");
+        return (-1, null);
     }
 
     private DoublyLinkedListNode<T> GetNode(int index, bool allowFromTail = true)
