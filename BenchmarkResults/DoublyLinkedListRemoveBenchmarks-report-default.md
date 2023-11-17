@@ -3,44 +3,36 @@ BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3
 AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.100
   [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-BIRKPB : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+  Job-WSLHHA : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
 
 InvocationCount=1  UnrollFactor=1  
 
  Method     | Times | Length  | Mean            | Error         | StdDev          | Median          | Gen0      | Allocated   |
 ----------- |------ |-------- |----------------:|--------------:|----------------:|----------------:|----------:|------------:|
- **Remove_Min** | **1**     | **100**     |        **410.0 ns** |      **30.44 ns** |        **84.87 ns** |        **400.0 ns** |         **-** |       **568 B** |
- Remove_Mid | 1     | 100     |        479.5 ns |      33.10 ns |        91.17 ns |        500.0 ns |         - |      1768 B |
- Remove_Max | 1     | 100     |        527.1 ns |      24.47 ns |        66.17 ns |        500.0 ns |         - |      2944 B |
- **Remove_Min** | **1**     | **10000**   |        **554.1 ns** |      **67.16 ns** |       **195.92 ns** |        **500.0 ns** |         **-** |       **568 B** |
- Remove_Mid | 1     | 10000   |      9,877.3 ns |     196.15 ns |       240.89 ns |      9,850.0 ns |         - |    120568 B |
- Remove_Max | 1     | 10000   |     19,336.0 ns |     368.80 ns |       492.34 ns |     19,200.0 ns |         - |    240544 B |
- **Remove_Min** | **1**     | **1000000** |      **1,321.9 ns** |     **129.41 ns** |       **373.38 ns** |      **1,200.0 ns** |         **-** |       **520 B** |
- Remove_Mid | 1     | 1000000 |  1,051,115.4 ns |  19,608.05 ns |    34,341.91 ns |  1,047,000.0 ns |         - |  12000520 B |
- Remove_Max | 1     | 1000000 |  2,170,801.8 ns |  43,232.21 ns |    93,061.88 ns |  2,145,800.0 ns |         - |  24000496 B |
- **Remove_Min** | **5**     | **100**     |        **525.3 ns** |      **26.06 ns** |        **69.57 ns** |        **500.0 ns** |         **-** |       **664 B** |
- Remove_Mid | 5     | 100     |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 5     | 100     |      1,490.0 ns |      52.43 ns |       146.15 ns |      1,500.0 ns |         - |     12304 B |
- **Remove_Min** | **5**     | **10000**   |        **636.0 ns** |      **77.81 ns** |       **229.41 ns** |        **500.0 ns** |         **-** |       **664 B** |
- Remove_Mid | 5     | 10000   |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 5     | 10000   |     92,980.0 ns |   1,857.04 ns |     1,737.07 ns |     92,600.0 ns |         - |   1200304 B |
- **Remove_Min** | **5**     | **1000000** |      **1,382.7 ns** |      **90.90 ns** |       **265.17 ns** |      **1,300.0 ns** |         **-** |       **616 B** |
- Remove_Mid | 5     | 1000000 |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 5     | 1000000 | 14,022,366.0 ns | 539,790.85 ns | 1,566,031.12 ns | 14,640,100.0 ns | 2000.0000 | 120000256 B |
- **Remove_Min** | **10**    | **100**     |        **702.2 ns** |      **50.39 ns** |       **142.93 ns** |        **600.0 ns** |         **-** |       **784 B** |
- Remove_Mid | 10    | 100     |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 10    | 100     |      2,637.2 ns |     119.88 ns |       342.03 ns |      2,500.0 ns |         - |     23464 B |
- **Remove_Min** | **10**    | **10000**   |        **742.6 ns** |      **69.05 ns** |       **197.02 ns** |        **700.0 ns** |         **-** |       **784 B** |
- Remove_Mid | 10    | 10000   |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 10    | 10000   |    190,219.4 ns |   3,685.40 ns |     5,627.99 ns |    188,900.0 ns |         - |   2399464 B |
- **Remove_Min** | **10**    | **1000000** |      **1,257.4 ns** |      **78.37 ns** |       **223.60 ns** |      **1,200.0 ns** |         **-** |       **736 B** |
- Remove_Mid | 10    | 1000000 |              NA |            NA |              NA |              NA |        NA |          NA |
- Remove_Max | 10    | 1000000 | 24,681,368.1 ns | 558,995.67 ns | 1,594,846.09 ns | 25,005,350.0 ns | 4000.0000 | 239999416 B |
-
-Benchmarks with issues:
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=5, Length=100]
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=5, Length=10000]
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=5, Length=1000000]
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=10, Length=100]
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=10, Length=10000]
-  DoublyLinkedListRemoveBenchmarks.Remove_Mid: Job-BIRKPB(InvocationCount=1, UnrollFactor=1) [Times=10, Length=1000000]
+ **Remove_Min** | **1**     | **100**     |        **412.4 ns** |      **25.99 ns** |        **72.02 ns** |        **400.0 ns** |         **-** |       **568 B** |
+ Remove_Mid | 1     | 100     |        522.1 ns |      27.85 ns |        75.77 ns |        500.0 ns |         - |      1768 B |
+ Remove_Max | 1     | 100     |        620.7 ns |      30.07 ns |        82.32 ns |        600.0 ns |         - |      2944 B |
+ **Remove_Min** | **1**     | **10000**   |        **480.0 ns** |      **45.06 ns** |       **125.60 ns** |        **400.0 ns** |         **-** |       **568 B** |
+ Remove_Mid | 1     | 10000   |      9,818.2 ns |     145.64 ns |       310.37 ns |      9,700.0 ns |         - |    120568 B |
+ Remove_Max | 1     | 10000   |     18,962.5 ns |     265.19 ns |       260.45 ns |     18,850.0 ns |         - |    240544 B |
+ **Remove_Min** | **1**     | **1000000** |      **1,201.0 ns** |     **120.63 ns** |       **351.87 ns** |      **1,100.0 ns** |         **-** |       **520 B** |
+ Remove_Mid | 1     | 1000000 |  1,030,212.5 ns |  17,517.75 ns |    22,778.03 ns |  1,030,800.0 ns |         - |  12000520 B |
+ Remove_Max | 1     | 1000000 |  2,183,829.4 ns |  43,592.82 ns |    89,048.57 ns |  2,163,900.0 ns |         - |  24000496 B |
+ **Remove_Min** | **5**     | **100**     |        **637.0 ns** |      **68.79 ns** |       **202.84 ns** |        **550.0 ns** |         **-** |       **664 B** |
+ Remove_Mid | 5     | 100     |      1,108.0 ns |      83.45 ns |       246.05 ns |      1,000.0 ns |         - |      6664 B |
+ Remove_Max | 5     | 100     |      1,726.0 ns |     101.98 ns |       294.24 ns |      1,650.0 ns |         - |     12304 B |
+ **Remove_Min** | **5**     | **10000**   |        **702.0 ns** |      **81.80 ns** |       **241.20 ns** |        **600.0 ns** |         **-** |       **664 B** |
+ Remove_Mid | 5     | 10000   |     47,260.3 ns |     946.22 ns |     2,442.50 ns |     46,250.0 ns |         - |    600664 B |
+ Remove_Max | 5     | 10000   |     93,073.7 ns |     846.03 ns |       940.36 ns |     92,900.0 ns |         - |   1200304 B |
+ **Remove_Min** | **5**     | **1000000** |      **1,184.2 ns** |      **71.59 ns** |       **205.41 ns** |      **1,100.0 ns** |         **-** |       **616 B** |
+ Remove_Mid | 5     | 1000000 |  8,161,040.9 ns | 518,771.44 ns | 1,471,668.23 ns |  8,888,300.0 ns | 1000.0000 |  60000616 B |
+ Remove_Max | 5     | 1000000 | 13,423,250.5 ns | 537,998.17 ns | 1,560,830.24 ns | 14,061,100.0 ns | 2000.0000 | 120000256 B |
+ **Remove_Min** | **10**    | **100**     |        **615.4 ns** |      **30.50 ns** |        **85.54 ns** |        **600.0 ns** |         **-** |       **784 B** |
+ Remove_Mid | 10    | 100     |      1,600.0 ns |      42.07 ns |       113.01 ns |      1,600.0 ns |         - |     12784 B |
+ Remove_Max | 10    | 100     |      2,357.8 ns |      44.10 ns |        83.91 ns |      2,300.0 ns |         - |     23464 B |
+ **Remove_Min** | **10**    | **10000**   |        **632.6 ns** |      **27.62 ns** |        **76.54 ns** |        **600.0 ns** |         **-** |       **784 B** |
+ Remove_Mid | 10    | 10000   |     92,992.3 ns |   1,444.89 ns |     1,206.55 ns |     92,500.0 ns |         - |   1200784 B |
+ Remove_Max | 10    | 10000   |    193,173.7 ns |   3,466.21 ns |     3,852.68 ns |    192,600.0 ns |         - |   2399464 B |
+ **Remove_Min** | **10**    | **1000000** |      **1,143.3 ns** |      **76.25 ns** |       **221.22 ns** |      **1,100.0 ns** |         **-** |       **736 B** |
+ Remove_Mid | 10    | 1000000 | 13,299,469.9 ns | 486,452.44 ns | 1,379,984.60 ns | 13,902,500.0 ns | 2000.0000 | 120000736 B |
+ Remove_Max | 10    | 1000000 | 24,860,946.9 ns | 641,165.17 ns | 1,849,908.13 ns | 25,464,500.0 ns | 4000.0000 | 239999416 B |

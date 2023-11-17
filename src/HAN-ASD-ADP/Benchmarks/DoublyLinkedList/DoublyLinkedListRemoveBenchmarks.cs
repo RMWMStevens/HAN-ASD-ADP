@@ -21,7 +21,7 @@ public class DoublyLinkedListRemoveBenchmarks : SetupDoublyLinkedListBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            list.Remove(list.Count / 2);
+            list.Remove(Length / 2 + i);
         }
     }
 

@@ -21,7 +21,7 @@ public class DynamicArrayRemoveBenchmarks : SetupDynamicArrayBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            array.Remove(array.Count / 2);
+            array.Remove(Length / 2 + i);
         }
     }
 
