@@ -1,18 +1,30 @@
 ﻿using BenchmarkDotNet.Attributes;
-using HAN_ASD_ADP.Datasets;
 using System;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Reflection;
 
-public abstract class BenchmarkSetup<T> : IBenchmarkSetup
-    where T : IDataset
+namespace HAN_ASD_ADP.Benchmarks;
+
+public class BenchmarkSetup : IBenchmarkSetup
 {
-    protected T dataset;
+    public string Name { get; set; }
 
-    [GlobalSetup]
-    public virtual async Task GlobalSetup()
+    public BenchmarkSetup(string name) => Name = StripToFolderName(name);
+
+    public Type[] GetBenchmarks()
     {
-        dataset = await DatasetCache<T>.GetAsync();
+        var benchmarkAssembly = Assembly.GetExecutingAssembly();
+        var benchmarkTypes = benchmarkAssembly.GetTypes()
+            .Where(t => t.Namespace == $"{typeof(BenchmarkSetup).Namespace}.{Name}")
+            .Where(t => t.GetMethods().Any(m => m.GetCustomAttributes(typeof(BenchmarkAttribute), false).Any()));
+        return benchmarkTypes.ToArray();
     }
 
-    public abstract Type[] GetBenchmarks();
+    private string StripToFolderName(string name)
+    {
+        name = name.Replace("Setup", string.Empty);
+        name = name.Replace("Benchmarks", string.Empty);
+        Console.WriteLine(Name);
+        return name;
+    }
 }

@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HAN_ASD_ADP.Benchmarks.DynamicArrayCountBenchmarks-20231116-125233</title>
+<title>HAN_ASD_ADP.Benchmarks.DynamicArray.DynamicArrayCountBenchmarks-20231117-120529</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -16,17 +16,20 @@
 BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
 AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.100
-  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
-  DefaultJob : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+  Job-VWFLJL : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
 </code></pre>
-<pre><code></code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
 
 <table>
-<thead><tr><th>Method          </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Ratio</th><th>RatioSD</th>
+<thead><tr><th>Method</th><th>ArraySize</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th>
 </tr>
-</thead><tbody><tr><td>Count_Aflopend2</td><td>0.0011 ns</td><td>0.0021 ns</td><td>0.0019 ns</td><td>0.0000 ns</td><td>?</td><td>?</td>
-</tr><tr><td>Count_Float8001</td><td>0.0022 ns</td><td>0.0018 ns</td><td>0.0015 ns</td><td>0.0021 ns</td><td>?</td><td>?</td>
-</tr><tr><td>Count_Willekeurig10000</td><td>0.0006 ns</td><td>0.0010 ns</td><td>0.0009 ns</td><td>0.0000 ns</td><td>?</td><td>?</td>
+</thead><tbody><tr><td>Count</td><td>1</td><td>39.0000 ns</td><td>19.2187 ns</td><td>56.6667 ns</td><td>0.0 ns</td>
+</tr><tr><td>Count</td><td>10</td><td>42.0000 ns</td><td>18.7814 ns</td><td>55.3775 ns</td><td>0.0 ns</td>
+</tr><tr><td>Count</td><td>100</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0 ns</td>
+</tr><tr><td>Count</td><td>1000</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0 ns</td>
+</tr><tr><td>Count</td><td>10000</td><td>28.5714 ns</td><td>15.5663 ns</td><td>45.4077 ns</td><td>0.0 ns</td>
 </tr></tbody></table>
 </body>
 </html>

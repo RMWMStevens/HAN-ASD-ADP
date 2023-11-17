@@ -3,63 +3,29 @@ using HAN_ASD_ADP.Implementations;
 
 namespace HAN_ASD_ADP.Benchmarks.DynamicArray;
 
-public class DynamicArrayRemoveBenchmarks : SetupDynamicArrayBenchmarks
+public class DynamicArrayRemoveBenchmarks
 {
-    private DynamicArray<int> aflopend2;
-    private DynamicArray<float> float8001;
-    private DynamicArray<int> willekeurig10000;
+    private DynamicArray<int> array;
+
+    [Params(10, 100, 1000, 10000)]
+    public int ArraySize;
 
     [IterationSetup]
-    public void IterationSetup()
+    public void Setup()
     {
-        if (dataset.LijstAflopend2.Count != aflopend2.Count)
+        array = new();
+        for (int i = 0; i < ArraySize; i++)
         {
-            aflopend2 = new();
-            foreach (var value in dataset.LijstAflopend2)
-            {
-                aflopend2.Add(value);
-            }
-        }
-
-        if (dataset.LijstFloat8001.Count != float8001.Count)
-        {
-            float8001 = new();
-            foreach (var value in dataset.LijstFloat8001)
-            {
-                float8001.Add(value);
-            }
-        }
-
-        if (dataset.LijstWillekeurig10000.Count != willekeurig10000.Count)
-        {
-            willekeurig10000 = new();
-            foreach (var value in dataset.LijstWillekeurig10000)
-            {
-                willekeurig10000.Add(value);
-            }
+            array.Add(i);
         }
     }
 
-    [Benchmark(Baseline = true)]
-    public void Remove_Aflopend2_1() => Remove(aflopend2, 1);
+    [Benchmark]
+    public void Remove_Min() => array.Remove(0);
 
     [Benchmark]
-    public void Remove_Aflopend2_N10033224() => Remove(aflopend2, -10033224);
+    public void Remove_Mid() => array.Remove(ArraySize / 2);
 
     [Benchmark]
-    public void Remove_Float8001_11312312312312_324() => Remove(float8001, 11312312312312.324f);
-
-    [Benchmark]
-    public void Remove_Float8001_1() => Remove(float8001, 1);
-
-    [Benchmark]
-    public void Remove_Willekeurig10000_5824() => Remove(willekeurig10000, 5824);
-
-    [Benchmark]
-    public void Remove_Willekeurig10000_8541() => Remove(willekeurig10000, 8541);
-
-    [Benchmark]
-    public void Remove_Willekeurig10000_8009() => Remove(willekeurig10000, 8009);
-
-    private void Remove<T>(DynamicArray<T> aflopend2, T value) => aflopend2.Remove(value);
+    public void Remove_Max() => array.Remove(ArraySize - 1);
 }

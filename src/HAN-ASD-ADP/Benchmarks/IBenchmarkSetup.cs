@@ -1,11 +1,6 @@
-﻿using BenchmarkDotNet.Attributes;
-using System;
-using System.Threading.Tasks;
+﻿using System;
 
 public interface IBenchmarkSetup
 {
-    [GlobalSetup]
-    public Task GlobalSetup();
-
     public abstract Type[] GetBenchmarks();
 }

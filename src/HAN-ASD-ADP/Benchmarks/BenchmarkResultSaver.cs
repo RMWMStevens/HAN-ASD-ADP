@@ -4,7 +4,7 @@ namespace HAN_ASD_ADP.Benchmarks;
 
 public static class BenchmarkResultSaver
 {
-    public static void Copy(DirectoryInfo currentDirectory)
+    public static string Copy(DirectoryInfo currentDirectory)
     {
         var sourcePath = Path.Combine(currentDirectory.FullName, "BenchmarkDotNet.Artifacts", "results");
         var projectRootDirectory = currentDirectory.Parent.Parent.Parent.Parent.Parent;
@@ -18,6 +18,7 @@ public static class BenchmarkResultSaver
             string destFile = Path.Combine(targetPath, destFileName);
             File.Copy(sourceFile, destFile, true);
         }
+        return targetPath;
     }
 
     /// <summary>

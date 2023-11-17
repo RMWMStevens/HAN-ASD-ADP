@@ -1,11 +1,10 @@
-﻿using HAN_ASD_ADP.Datasets;
-using System;
+﻿using System;
 
 namespace HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 
-public class SetupDoublyLinkedListBenchmarks : BenchmarkSetup<DatasetSorteren>
+public class SetupDoublyLinkedListBenchmarks : IBenchmarkSetup
 {
-    public override Type[] GetBenchmarks() => new[]
+    public Type[] GetBenchmarks() => new[]
     {
         typeof(DoublyLinkedListAddBenchmarks),
     };

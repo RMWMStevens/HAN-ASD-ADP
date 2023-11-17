@@ -1,16 +1,6 @@
-﻿using HAN_ASD_ADP.Datasets;
-using System;
+﻿namespace HAN_ASD_ADP.Benchmarks.DynamicArray;
 
-namespace HAN_ASD_ADP.Benchmarks.DynamicArray;
-
-public class SetupDynamicArrayBenchmarks : BenchmarkSetup<DatasetSorteren>
+public class SetupDynamicArrayBenchmarks : BenchmarkSetup
 {
-    public override Type[] GetBenchmarks() => new[]
-    {
-        typeof(DynamicArrayAddBenchmarks),
-        typeof(DynamicArrayCountBenchmarks),
-        typeof(DynamicArrayGetBenchmarks),
-        typeof(DynamicArrayRemoveBenchmarks),
-        typeof(DynamicArrayRemoveAtBenchmarks),
-    };
+    public SetupDynamicArrayBenchmarks() : base(nameof(SetupDynamicArrayBenchmarks)) { }
 }
