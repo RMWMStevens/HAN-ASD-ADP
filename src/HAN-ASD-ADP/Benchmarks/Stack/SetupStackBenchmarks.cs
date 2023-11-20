@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using HAN_ASD_ADP.Implementations;
+using System;
 
 namespace HAN_ASD_ADP.Benchmarks.Stack;
 
@@ -8,10 +9,10 @@ public class SetupStackBenchmarks : BenchmarkSetup
 {
     protected Stack<int> stack;
 
-    [Params(100, 10000, 1000000)]
-    public virtual int Size { get; set; }
+    [Params(100, 10000)]
+    public virtual int Length { get; set; }
 
-    [Params(1)]
+    [Params(1, 10, 100)]
     public virtual int Times { get; set; }
 
     public SetupStackBenchmarks()
@@ -22,5 +23,9 @@ public class SetupStackBenchmarks : BenchmarkSetup
     public void Setup()
     {
         stack = new();
+        for (int i = 0; i < Length; i++)
+        {
+            stack.Push(i);
+        }
     }
 }

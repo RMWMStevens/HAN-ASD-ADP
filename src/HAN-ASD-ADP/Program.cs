@@ -12,10 +12,10 @@ using System.Linq;
 var config = new BenchmarkConfig();
 var benchmarks = new List<IBenchmarkSetup>
 {
-    new SetupDynamicArrayBenchmarks(),
-    new SetupDoublyLinkedListBenchmarks(),
+    //new SetupDynamicArrayBenchmarks(),
+    //new SetupDoublyLinkedListBenchmarks(),
     new SetupStackBenchmarks(),
-    new SetupDequeBenchmarks(),
+    //new SetupDequeBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

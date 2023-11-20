@@ -47,6 +47,7 @@ public class Stack<T>
             throw new InvalidOperationException("Stack is empty.");
         }
     }
+
     public T Top()
     {
         if (!IsEmpty())
