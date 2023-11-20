@@ -1,5 +1,9 @@
 ﻿using BenchmarkDotNet.Running;
 using HAN_ASD_ADP.Benchmarks;
+using HAN_ASD_ADP.Benchmarks.Deque;
+using HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
+using HAN_ASD_ADP.Benchmarks.DynamicArray;
+using HAN_ASD_ADP.Benchmarks.PriorityQueue;
 using HAN_ASD_ADP.Benchmarks.Stack;
 using System;
 using System.Collections.Generic;
@@ -9,10 +13,11 @@ using System.Linq;
 var config = new BenchmarkConfig();
 var benchmarks = new List<IBenchmarkSetup>
 {
-    //new SetupDynamicArrayBenchmarks(),
-    //new SetupDoublyLinkedListBenchmarks(),
+    new SetupDynamicArrayBenchmarks(),
+    new SetupDoublyLinkedListBenchmarks(),
     new SetupStackBenchmarks(),
-    //new SetupDequeBenchmarks(),
+    new SetupDequeBenchmarks(),
+    new SetupPriorityQueueBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");
