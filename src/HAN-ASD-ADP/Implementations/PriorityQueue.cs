@@ -1,44 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HAN_ASD_ADP.Implementations;
 
 public class PriorityQueue<T>
+    where T : IComparable<T>
 {
-    public void Add(T value)
-    {
-        throw new NotImplementedException();
-    }
+    private readonly List<T> list = new();
 
-    public void DeleteMin()
+    public void Add(T value)
+        => list.Add(value);
+
+    public T DeleteMin()
     {
-        throw new NotImplementedException();
+        if (!list.Any())
+            throw new InvalidOperationException("Queue is empty.");
+
+        var min = FindMin();
+        list.Remove(min);
+        return min;
     }
 
     public T FindMin()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Insert(T value)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Returns the head element of the queue.
-    /// </summary>
-    /// <returns>T</returns>
-    public T Peek()
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Returns the head element and removes it from the queue. 
-    /// </summary>
-    /// <returns>T</returns>
-    public T Poll()
-    {
-        throw new NotImplementedException();
-    }
+        => list.Min();
 }
