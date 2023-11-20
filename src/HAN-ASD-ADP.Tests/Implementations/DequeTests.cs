@@ -83,6 +83,29 @@ public class DequeTests : IAsyncLifetime
     }
 
     [Theory]
+    [InlineData("string", 1)]
+    [InlineData(1, 3)]
+    public void LijstOnsorteerbaar3_EnqueueRight_Test(object expected, int times)
+    {
+        // Arrange
+        var deque = new Deque<object>();
+        foreach (var value in dataset.LijstOnsorteerbaar3)
+        {
+            deque.EnqueueRight(value);
+        }
+        var dequeuedItem = new object();
+
+        // Act
+        for (int i = 0; i < times; i++)
+        {
+            dequeuedItem = deque.DequeueRight();
+        }
+
+        // Assert
+        Assert.Equal(expected, dequeuedItem);
+    }
+
+    [Theory]
     [InlineData(0, 1)]
     [InlineData(3, 4)]
     public void LijstOplopend10000_DequeueLeft_Test(int dequeueCount, float expected)

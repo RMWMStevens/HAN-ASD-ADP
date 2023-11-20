@@ -1,6 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
 using HAN_ASD_ADP.Implementations;
-using System;
 
 namespace HAN_ASD_ADP.Benchmarks.Stack;
 

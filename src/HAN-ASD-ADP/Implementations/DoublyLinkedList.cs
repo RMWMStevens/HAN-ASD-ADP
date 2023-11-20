@@ -3,6 +3,7 @@
 namespace HAN_ASD_ADP.Implementations;
 
 public class DoublyLinkedList<T>
+    where T : IComparable<T>
 {
     public int Count { get; private set; }
 
