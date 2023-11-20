@@ -8,10 +8,10 @@ public class SetupDequeBenchmarks : BenchmarkSetup
 {
     protected Deque<int> deque;
 
-    [Params(0, 100, 10000)]
+    [Params(1, 100, 10000)]
     public virtual int Length { get; set; }
 
-    [Params(100, 100, 10000)]
+    [Params(1, 100, 10000)]
     public virtual int Times { get; set; }
 
     public SetupDequeBenchmarks()
