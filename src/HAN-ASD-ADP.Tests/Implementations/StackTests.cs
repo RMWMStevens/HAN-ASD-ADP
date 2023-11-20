@@ -6,7 +6,7 @@ using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations;
 
-public class CustomStackTests : IAsyncLifetime
+public class StackTests : IAsyncLifetime
 {
     private DatasetSorteren dataset;
 
@@ -14,20 +14,20 @@ public class CustomStackTests : IAsyncLifetime
         => dataset = await DatasetCache<DatasetSorteren>.GetAsync();
 
     [Fact]
-    public void CustomStack_LijstAflopend2_PopEmptyArrayInvalidOperationException_Test()
+    public void LijstAflopend2_PopEmptyArrayInvalidOperationException_Test()
     {
         // Arrange
-        CustomStack<int> listOfInts = new CustomStack<int>();
+        Stack<int> listOfInts = new Stack<int>();
 
         // Assert
         Assert.Throws<InvalidOperationException>(() => listOfInts.Pop());
     }
 
     [Fact]
-    public void CustomStack_LijstAflopend2_TopEmptyArrayInvalidOperationException_Test()
+    public void LijstAflopend2_TopEmptyArrayInvalidOperationException_Test()
     {
         // Arrange
-        CustomStack<int> listOfInts = new CustomStack<int>();
+        Stack<int> listOfInts = new Stack<int>();
 
         // Assert
         Assert.Throws<InvalidOperationException>(() => listOfInts.Top());
@@ -36,10 +36,10 @@ public class CustomStackTests : IAsyncLifetime
     [Theory]
     [InlineData("John Doe")]
     [InlineData("Jane Doe")]
-    public void CustomStack_Push_Test(String itemToPush)
+    public void Push_Test(String itemToPush)
     {
         // Arrange
-        CustomStack<String> listOfStrings = new CustomStack<String>();
+        Stack<String> listOfStrings = new Stack<String>();
 
         // Act
         listOfStrings.Push(itemToPush);
@@ -53,10 +53,10 @@ public class CustomStackTests : IAsyncLifetime
     [InlineData(new object[] { new int[] { -10, 555, -68 }, false })]
     [InlineData(new object[] { new int[] { 7885, 1, 7777 }, false })]
     [InlineData(new object[] { new int[] { }, true })]
-    public void CustomStack_IsEmpty_Test(int[] itemsToPush, Boolean expected)
+    public void IsEmpty_Test(int[] itemsToPush, Boolean expected)
     {
         // Arrange
-        CustomStack<int> listOfInts = new CustomStack<int>();
+        Stack<int> listOfInts = new Stack<int>();
 
         // Act
         for (int i = 0; i < itemsToPush.Length; i++)
@@ -73,10 +73,10 @@ public class CustomStackTests : IAsyncLifetime
     [InlineData(new object[] { new int[] { -10, 555, -68 }, -68 })]
     [InlineData(new object[] { new int[] { 7885, 1, 7777 }, 7777 })]
     [InlineData(new object[] { new int[] { 8, 8, 7, 7, 1, 7, 2, 1, 2, 7 }, 7 })]
-    public void CustomStack_Top_Test(int[] itemsToPush, int expected)
+    public void Top_Test(int[] itemsToPush, int expected)
     {
         // Arrange
-        CustomStack<int> listOfInts = new CustomStack<int>();
+        Stack<int> listOfInts = new Stack<int>();
 
         // Act
         for (int i = 0; i < itemsToPush.Length; i++)
@@ -92,10 +92,10 @@ public class CustomStackTests : IAsyncLifetime
     [InlineData(0, 1)]
     [InlineData(1, 2)]
     [InlineData(2, 3)]
-    public void CustomStack_LijstGesorteerdAflopend3_Pop_Test(int numberOfItemsToPop, int expected)
+    public void LijstGesorteerdAflopend3_Pop_Test(int numberOfItemsToPop, int expected)
     {
         // Arrange
-        CustomStack<int> listOfInts = new CustomStack<int>();
+        Stack<int> listOfInts = new Stack<int>();
 
         // Act
         foreach (var value in dataset.LijstGesorteerdAflopend3)

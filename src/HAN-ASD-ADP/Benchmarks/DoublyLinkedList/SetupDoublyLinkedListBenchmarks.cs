@@ -8,8 +8,11 @@ public class SetupDoublyLinkedListBenchmarks : BenchmarkSetup
 {
     protected DoublyLinkedList<int> list;
 
-    [Params(10, 100, 1000, 10000, 100000, 1000000)]
-    public virtual int Size { get; set; }
+    [Params(100, 10000, 1000000)]
+    public virtual int Length { get; set; }
+
+    [Params(1)]
+    public virtual int Times { get; set; }
 
     public SetupDoublyLinkedListBenchmarks()
         : base(nameof(SetupDoublyLinkedListBenchmarks))
@@ -19,7 +22,7 @@ public class SetupDoublyLinkedListBenchmarks : BenchmarkSetup
     public void Setup()
     {
         list = new();
-        for (int i = 0; i < Size; i++)
+        for (int i = 0; i < Length; i++)
         {
             list.Add(i);
         }

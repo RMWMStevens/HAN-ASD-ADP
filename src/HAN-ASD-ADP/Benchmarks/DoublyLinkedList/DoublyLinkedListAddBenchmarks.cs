@@ -4,9 +4,18 @@ namespace HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 
 public class DoublyLinkedListAddBenchmarks : SetupDoublyLinkedListBenchmarks
 {
-    [Params(3, 4, 5, 31, 32, 33, 100, 1000, 10000, 100000, 1000000)]
-    public override int Size { get; set; }
+    [Params(100, 10000, 1000000)]
+    public override int Length { get; set; }
+
+    [Params(1, 5, 10)]
+    public override int Times { get; set; }
 
     [Benchmark]
-    public void Add() => list.Add(Size);
+    public void Add()
+    {
+        for (int i = 0; i < Times; i++)
+        {
+            list.Add(i);
+        }
+    }
 }

@@ -8,8 +8,8 @@ public class DynamicArrayGetBenchmarks : SetupDynamicArrayBenchmarks
     public void Get_First() => array.Get(0);
 
     [Benchmark]
-    public void Get_Mid() => array.Get(Size / 2);
+    public void Get_Mid() => array.Get(Length / 2);
 
     [Benchmark]
-    public void Get_Last() => array.Get(Size - 1);
+    public void Get_Last() => array.Get(Length - 1);
 }
