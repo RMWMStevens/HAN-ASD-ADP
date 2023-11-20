@@ -14,11 +14,11 @@ public class DynamicArray<T>
 
     public int Count { get; private set; } = 0;
 
-    public void Add(T item)
+    public void Add(T item, bool doubleSize = true)
     {
         if (Count == array.Length)
         {
-            ExpandArray();
+            ExpandArray(doubleSize);
         }
 
         array[Count] = item;
@@ -51,7 +51,7 @@ public class DynamicArray<T>
         }
     }
 
-    public void RemoveAt(int index)
+    public void RemoveAt(int index, bool halfSize = true)
     {
         if (index < 0 || index >= Count)
         {
@@ -67,7 +67,7 @@ public class DynamicArray<T>
 
         if (Count < array.Length / 2 && array.Length > DefaultCapacity)
         {
-            ShrinkArray();
+            ShrinkArray(halfSize);
         }
     }
 
@@ -98,15 +98,30 @@ public class DynamicArray<T>
         array = newArray;
     }
 
-    private void ExpandArray()
+    private void ExpandArray(bool doubleSize)
     {
-        int newCapacity = array.Length * 2;
+        int newCapacity;
+        if (doubleSize)
+        {
+            newCapacity = array.Length * 2;
+        } else
+        {
+            newCapacity = array.Length + 1;
+        }
         ResizeArray(newCapacity);
     }
 
-    private void ShrinkArray()
+    private void ShrinkArray(bool halfSize)
     {
-        int newCapacity = array.Length / 2;
+        int newCapacity;
+        if (halfSize)
+        {
+            newCapacity = array.Length / 2;
+        }
+        else
+        {
+            newCapacity = array.Length - 1;
+        }
         ResizeArray(newCapacity);
     }
 }

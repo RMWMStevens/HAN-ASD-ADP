@@ -9,4 +9,7 @@ public class DynamicArrayAddBenchmarks : SetupDynamicArrayBenchmarks
 
     [Benchmark]
     public void Add() => array.Add(Size);
+
+    [Benchmark]
+    public void Add_alwaysExpandBy1() => array.Add(Size, false);
 }
