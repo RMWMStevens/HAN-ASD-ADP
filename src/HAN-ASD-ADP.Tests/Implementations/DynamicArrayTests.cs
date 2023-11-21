@@ -151,45 +151,6 @@ public class DynamicArrayTests : IAsyncLifetime
     }
 
     [Theory]
-    [InlineData(1, 2)]
-    [InlineData("string", 2)]
-    public void LijstOnsorteerbaar3_Remove_Test(object node, int expected)
-    {
-        // Arrange
-        var list = new DynamicArray<object>();
-        foreach (var value in dataset.LijstOnsorteerbaar3)
-        {
-            list.Add(value);
-        }
-
-        // Act
-        list.Remove(node);
-
-        // Assert
-        Assert.Equal(expected, list.Count);
-    }
-
-    [Theory]
-    [InlineData(0, 2)]
-    [InlineData(1, 2)]
-    public void LijstOnsorteerbaar3_RemoveAt_Test(int index, int expected)
-    {
-        // Arrange
-        DynamicArray<object> listOfObjects = new DynamicArray<object>();
-
-        // Act
-        foreach (var value in dataset.LijstOnsorteerbaar3)
-        {
-            listOfObjects.Add(value);
-        }
-
-        listOfObjects.RemoveAt(index);
-
-        // Assert
-        Assert.Equal(expected, listOfObjects.Count);
-    }
-
-    [Theory]
     [InlineData(0, 99980000)]
     public void LijstWillekeurig10000_RemoveAtLast100xSlowerThanRemoveFirst_Test(int lowIndex, int highIndex)
     {

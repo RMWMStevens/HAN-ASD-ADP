@@ -2,7 +2,7 @@
 
 namespace HAN_ASD_ADP.Tests.TestClasses;
 
-public class Pig
+public class Pig : IComparable<Pig>
 {
     public string TattooNumber { get; }
     private int[] DNA { get; set; }
@@ -45,5 +45,20 @@ public class Pig
             }
         }
         return false;
+    }
+
+    public int CompareTo(Pig other)
+    {
+        return SumDna() - other.SumDna();
+    }
+
+    private int SumDna()
+    {
+        int sum = 0;
+        foreach (int i in DNA)
+        {
+            sum += DNA[i];
+        }
+        return sum;
     }
 }

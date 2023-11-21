@@ -2,7 +2,7 @@
 
 namespace HAN_ASD_ADP.Implementations;
 
-public class DynamicArray<T>
+public class DynamicArray<T> where T : IComparable<T>
 {
     private const int DefaultCapacity = 4;
     private T[] array;
