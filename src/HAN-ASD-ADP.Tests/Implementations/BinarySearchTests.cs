@@ -86,8 +86,8 @@ namespace HAN_ASD_ADP.Tests.Implementations
         {
             BinarySearch<string> binarySearch = new BinarySearch<string>();
 
-            binarySearch.array = new List<string> { "Stef", "Ruud", "Tom", "Kris", "Tim", "Nick", "Otis", "Rosie", "Lola", "Sophie" };
-            binarySearch.array.Sort();
+            binarySearch.list = new List<string> { "Stef", "Ruud", "Tom", "Kris", "Tim", "Nick", "Otis", "Rosie", "Lola", "Sophie" };
+            binarySearch.list.Sort();
             return binarySearch;
         }
     }

@@ -26,11 +26,13 @@ namespace HAN_ASD_ADP.Benchmarks.BinarySearch
         [IterationSetup]
         public void Setup()
         {
-            binarySearch = new BinarySearch<int>();
+            List<int> intList = new List<int>();
             for (int i = 0; i < Length; i++)
             {
-                binarySearch.Add(i);
+                intList.Add(i);
             }
+            binarySearch = new BinarySearch<int>();
+            binarySearch.list = intList;
         }
     }
 }
