@@ -16,7 +16,7 @@ public class DynamicArray<T>
 
     public void Add(T item, bool doubleSize = true)
     {
-        if (Count == array.Length)
+        if (Count == array.Length || !doubleSize)
         {
             ExpandArray(doubleSize);
         }
@@ -65,7 +65,7 @@ public class DynamicArray<T>
 
         Count--;
 
-        if (Count < array.Length / 2 && array.Length > DefaultCapacity)
+        if ((Count < array.Length / 2 && array.Length > DefaultCapacity) || !halfSize)
         {
             ShrinkArray(halfSize);
         }

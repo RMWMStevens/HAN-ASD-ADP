@@ -18,4 +18,13 @@ public class DynamicArrayAddBenchmarks : SetupDynamicArrayBenchmarks
             array.Add(Length);
         }
     }
+
+    [Benchmark]
+    public void Add_AlwaysResize()
+    {
+        for (int i = 0; i < Times; i++)
+        {
+            array.Add(Length, false);
+        }
+    }
 }

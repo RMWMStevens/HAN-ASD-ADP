@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HAN_ASD_ADP.Benchmarks.DynamicArray.DynamicArrayCountBenchmarks-20231117-172637</title>
+<title>HAN_ASD_ADP.Benchmarks.DynamicArray.DynamicArrayCountBenchmarks-20231121-113929</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,11 +13,11 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
-AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
-.NET SDK 8.0.100
-  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-WSLHHA : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22621.2715/22H2/2022Update/SunValley2)
+11th Gen Intel Core i7-11370H 3.30GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.202
+  [Host]     : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-HSCGVF : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
@@ -25,9 +25,9 @@ AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
 <table>
 <thead><tr><th>Method</th><th>Length</th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>Count</td><td>100</td><td>1</td><td>40.00 ns</td><td>16.70 ns</td><td>49.24 ns</td><td>0.0000 ns</td><td>544 B</td>
-</tr><tr><td>Count</td><td>10000</td><td>1</td><td>46.00 ns</td><td>17.66 ns</td><td>52.07 ns</td><td>0.0000 ns</td><td>544 B</td>
-</tr><tr><td>Count</td><td>1000000</td><td>1</td><td>116.33 ns</td><td>22.39 ns</td><td>65.32 ns</td><td>100.0000 ns</td><td>544 B</td>
+</thead><tbody><tr><td>Count</td><td>100</td><td>1</td><td>57.73 ns</td><td>23.77 ns</td><td>68.97 ns</td><td>0.0000 ns</td><td>544 B</td>
+</tr><tr><td>Count</td><td>10000</td><td>1</td><td>48.98 ns</td><td>20.44 ns</td><td>59.63 ns</td><td>0.0000 ns</td><td>544 B</td>
+</tr><tr><td>Count</td><td>1000000</td><td>1</td><td>255.85 ns</td><td>57.86 ns</td><td>165.08 ns</td><td>250.0000 ns</td><td>544 B</td>
 </tr></tbody></table>
 </body>
 </html>
