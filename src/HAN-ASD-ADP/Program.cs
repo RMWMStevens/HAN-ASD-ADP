@@ -5,6 +5,7 @@ using HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 using HAN_ASD_ADP.Benchmarks.DynamicArray;
 using HAN_ASD_ADP.Benchmarks.PriorityQueue;
 using HAN_ASD_ADP.Benchmarks.Stack;
+using HAN_ASD_ADP.Benchmarks.BinarySearch;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,7 @@ var benchmarks = new List<IBenchmarkSetup>
     new SetupStackBenchmarks(),
     new SetupDequeBenchmarks(),
     new SetupPriorityQueueBenchmarks(),
+    new SetupBinarySearchBenchmarks()
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");
