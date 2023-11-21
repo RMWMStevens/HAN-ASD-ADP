@@ -1,12 +1,19 @@
-﻿using HAN_ASD_ADP.Implementations;
+﻿using HAN_ASD_ADP.Datasets;
+using HAN_ASD_ADP.Implementations;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations
 {
 
-    public class BinarySearchTests
+    public class BinarySearchTests : IAsyncLifetime
     {
+        private DatasetSorteren dataset;
+
+        public async Task InitializeAsync()
+            => dataset = await DatasetCache<DatasetSorteren>.GetAsync();
+
         [Theory]
         [InlineData(0, "Kris")]
         [InlineData(1, "Ruud")]
@@ -82,6 +89,45 @@ namespace HAN_ASD_ADP.Tests.Implementations
             Assert.Equal(index, listOfNames.IndexOfLinearSearch(name));
         }
 
+        [Theory]
+        [InlineData(1, 0)]
+        [InlineData(4444, 4443)]
+        [InlineData(9999, 9998)]
+        public void LijstOplopend10000_Add_Test(int searchFor, int expected)
+        {
+            // Arrange
+            BinarySearch<int> listOfInts = new BinarySearch<int>();
+
+            // Act
+            foreach (var value in dataset.LijstOplopend10000)
+            {
+                listOfInts.Add(value);
+            }
+
+            // Assert
+            Assert.Equal(expected, listOfInts.IndexOfBinarySearchRecursive(searchFor));
+        }
+
+        [Theory]
+        [InlineData(1, 0)]
+        [InlineData(4444, 4443)]
+        [InlineData(9999, 9998)]
+        [InlineData(34, 33)]
+        public void LijstWillekeurig10000_Add_Test(int searchFor, int expected)
+        {
+            // Arrange
+            BinarySearch<int> listOfInts = new BinarySearch<int>();
+
+            // Act
+            foreach (var value in dataset.LijstWillekeurig10000)
+            {
+                listOfInts.Add(value);
+            }
+
+            // Assert
+            Assert.Equal(expected, listOfInts.IndexOfBinarySearchRecursive(searchFor));
+        }
+
         private BinarySearch<string> GetListOfNames()
         {
             BinarySearch<string> binarySearch = new BinarySearch<string>();
@@ -90,5 +136,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             binarySearch.list.Sort();
             return binarySearch;
         }
+
+        public Task DisposeAsync() => Task.CompletedTask;
     }
 }

@@ -137,13 +137,26 @@ public class DynamicArrayPigsTests
     }
 
     [Fact]
-    public void Pig_CompareToEqual_Test()
+    public void Pig_CompareToEqualSamePig_Test()
     {
         // Arrange
         var listOfPigs = FillListOfPigs();
 
         // Assert
         Assert.Equal(0, listOfPigs.Get(35).CompareTo(listOfPigs.Get(35)));
+    }
+
+    [Fact]
+    public void Pig_CompareToEqualOtherPig_Test()
+    {
+        // Arrange
+        // Arrange
+        // Two pigs with different tattoos but DNA similar enough to match
+        Pig pig1 = new Pig("DL6547", new int[] { 2, 1, 0, 1, 0, 0, 2, 1, 1, 1, 2, 1, 2, 0, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 2, 2, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 2, 1, 1, 1, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 2, 2, 1, 0, 0, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 1 });
+        Pig pig2 = new Pig("DL6637", new int[] { 2, 1, 0, 1, 0, 0, 2, 1, 1, 1, 2, 1, 2, 0, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 2, 2, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 2, 1, 1, 1, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 2, 2, 1, 0, 0, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 1 });
+
+        // Assert
+        Assert.Equal(0, pig1.CompareTo(pig2));
     }
 
     private DynamicArray<Pig> FillListOfPigs()
