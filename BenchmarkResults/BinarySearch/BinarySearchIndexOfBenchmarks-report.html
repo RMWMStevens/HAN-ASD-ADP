@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.BinarySearch.BinarySearchIndexOfBenchmarks-20231121-195258</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-FJSBUM : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                          </th><th>Length</th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th>
+</tr>
+</thead><tbody><tr><td>Get_First_IndexOfLinearSearch</td><td>100</td><td>1</td><td>174.7 ns</td><td>23.83 ns</td><td>68.37 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>100</td><td>1</td><td>263.3 ns</td><td>23.29 ns</td><td>67.94 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>100</td><td>1</td><td>249.0 ns</td><td>24.73 ns</td><td>72.15 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>100</td><td>1</td><td>174.1 ns</td><td>16.74 ns</td><td>44.10 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>100</td><td>1</td><td>247.4 ns</td><td>26.34 ns</td><td>75.57 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>100</td><td>1</td><td>232.3 ns</td><td>29.10 ns</td><td>83.97 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfLinearSearch</td><td>100</td><td>10</td><td>177.9 ns</td><td>21.68 ns</td><td>62.19 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>100</td><td>10</td><td>241.0 ns</td><td>31.65 ns</td><td>93.31 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>100</td><td>10</td><td>200.0 ns</td><td>0.00 ns</td><td>0.00 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>100</td><td>10</td><td>175.9 ns</td><td>16.55 ns</td><td>43.01 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>100</td><td>10</td><td>248.9 ns</td><td>24.20 ns</td><td>67.45 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>100</td><td>10</td><td>170.6 ns</td><td>16.95 ns</td><td>45.83 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfLinearSearch</td><td>100</td><td>100</td><td>189.4 ns</td><td>23.25 ns</td><td>66.35 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>100</td><td>100</td><td>260.0 ns</td><td>26.84 ns</td><td>79.14 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>100</td><td>100</td><td>250.0 ns</td><td>23.05 ns</td><td>66.49 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>100</td><td>100</td><td>212.9 ns</td><td>27.61 ns</td><td>78.33 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>100</td><td>100</td><td>174.7 ns</td><td>17.33 ns</td><td>43.78 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>100</td><td>100</td><td>172.0 ns</td><td>17.89 ns</td><td>45.20 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_First_IndexOfLinearSearch</td><td>10000</td><td>1</td><td>168.4 ns</td><td>24.90 ns</td><td>72.65 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>10000</td><td>1</td><td>829.6 ns</td><td>18.44 ns</td><td>48.59 ns</td><td>800.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>10000</td><td>1</td><td>1,400.0 ns</td><td>0.00 ns</td><td>0.00 ns</td><td>1,400.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>10000</td><td>1</td><td>249.5 ns</td><td>23.02 ns</td><td>65.31 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>10000</td><td>1</td><td>300.0 ns</td><td>0.00 ns</td><td>0.00 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>10000</td><td>1</td><td>321.6 ns</td><td>28.24 ns</td><td>81.94 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_First_IndexOfLinearSearch</td><td>10000</td><td>10</td><td>177.6 ns</td><td>15.50 ns</td><td>41.91 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>10000</td><td>10</td><td>867.0 ns</td><td>33.36 ns</td><td>91.88 ns</td><td>800.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>10000</td><td>10</td><td>1,442.4 ns</td><td>30.74 ns</td><td>72.45 ns</td><td>1,400.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>10000</td><td>10</td><td>295.8 ns</td><td>28.85 ns</td><td>83.25 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>10000</td><td>10</td><td>278.7 ns</td><td>24.62 ns</td><td>68.21 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>10000</td><td>10</td><td>311.7 ns</td><td>28.09 ns</td><td>80.13 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_First_IndexOfLinearSearch</td><td>10000</td><td>100</td><td>185.4 ns</td><td>13.41 ns</td><td>35.56 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfLinearSearch</td><td>10000</td><td>100</td><td>824.7 ns</td><td>23.26 ns</td><td>64.46 ns</td><td>800.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfLinearSearch</td><td>10000</td><td>100</td><td>1,407.0 ns</td><td>29.77 ns</td><td>55.19 ns</td><td>1,400.0 ns</td>
+</tr><tr><td>Get_First_IndexOfBinarySearchRecursive</td><td>10000</td><td>100</td><td>255.9 ns</td><td>22.93 ns</td><td>65.05 ns</td><td>200.0 ns</td>
+</tr><tr><td>Get_Mid_IndexOfBinarySearchRecursive</td><td>10000</td><td>100</td><td>302.0 ns</td><td>37.48 ns</td><td>109.34 ns</td><td>300.0 ns</td>
+</tr><tr><td>Get_Last_IndexOfBinarySearchRecursive</td><td>10000</td><td>100</td><td>276.2 ns</td><td>16.36 ns</td><td>42.82 ns</td><td>300.0 ns</td>
+</tr></tbody></table>
+</body>
+</html>

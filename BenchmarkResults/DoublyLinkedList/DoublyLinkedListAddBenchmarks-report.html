@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.DoublyLinkedList.DoublyLinkedListAddBenchmarks-20231121-194840</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-FJSBUM : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Length</th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Add</td><td>100</td><td>1</td><td>509.3 ns</td><td>55.20 ns</td><td>160.13 ns</td><td>400.0 ns</td><td>584 B</td>
+</tr><tr><td>Add</td><td>100</td><td>5</td><td>614.8 ns</td><td>47.21 ns</td><td>130.02 ns</td><td>600.0 ns</td><td>744 B</td>
+</tr><tr><td>Add</td><td>100</td><td>10</td><td>776.1 ns</td><td>46.53 ns</td><td>131.24 ns</td><td>700.0 ns</td><td>944 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>1</td><td>456.7 ns</td><td>36.49 ns</td><td>101.73 ns</td><td>400.0 ns</td><td>584 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>5</td><td>616.7 ns</td><td>39.96 ns</td><td>107.36 ns</td><td>600.0 ns</td><td>744 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>10</td><td>735.3 ns</td><td>27.79 ns</td><td>75.13 ns</td><td>700.0 ns</td><td>944 B</td>
+</tr><tr><td>Add</td><td>1000000</td><td>1</td><td>969.2 ns</td><td>65.26 ns</td><td>183.00 ns</td><td>900.0 ns</td><td>536 B</td>
+</tr><tr><td>Add</td><td>1000000</td><td>5</td><td>1,125.0 ns</td><td>77.26 ns</td><td>222.90 ns</td><td>1,100.0 ns</td><td>696 B</td>
+</tr><tr><td>Add</td><td>1000000</td><td>10</td><td>1,140.2 ns</td><td>70.92 ns</td><td>200.03 ns</td><td>1,100.0 ns</td><td>896 B</td>
+</tr></tbody></table>
+</body>
+</html>

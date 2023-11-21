@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.PriorityQueue.PriorityQueueAddBenchmarks-20231121-195239</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.100
+  [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-FJSBUM : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Length</th><th>Times</th><th>Mean  </th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Add</td><td>100</td><td>1</td><td>137.00 ns</td><td>17.148 ns</td><td>50.56 ns</td><td>100.0 ns</td><td>544 B</td>
+</tr><tr><td>Add</td><td>100</td><td>100</td><td>1,044.68 ns</td><td>69.839 ns</td><td>199.26 ns</td><td>1,000.0 ns</td><td>1592 B</td>
+</tr><tr><td>Add</td><td>100</td><td>10000</td><td>27,606.67 ns</td><td>503.816 ns</td><td>471.27 ns</td><td>27,600.0 ns</td><td>130760 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>1</td><td>92.05 ns</td><td>9.881 ns</td><td>27.21 ns</td><td>100.0 ns</td><td>544 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>100</td><td>357.58 ns</td><td>20.137 ns</td><td>59.06 ns</td><td>400.0 ns</td><td>544 B</td>
+</tr><tr><td>Add</td><td>10000</td><td>10000</td><td>27,733.33 ns</td><td>541.584 ns</td><td>422.83 ns</td><td>27,600.0 ns</td><td>131640 B</td>
+</tr></tbody></table>
+</body>
+</html>

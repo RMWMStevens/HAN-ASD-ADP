@@ -104,7 +104,8 @@ public class DynamicArray<T> where T : IComparable<T>
         if (doubleSize)
         {
             newCapacity = array.Length * 2;
-        } else
+        }
+        else
         {
             newCapacity = array.Length + 1;
         }
