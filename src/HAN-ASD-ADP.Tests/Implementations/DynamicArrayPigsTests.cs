@@ -118,6 +118,34 @@ public class DynamicArrayPigsTests
         Assert.True(pig1.Equals(pig2));
     }
 
+    [Theory]
+    [InlineData(10, 0, false)]
+    [InlineData(0, 10, true)]
+    [InlineData(44, 12, true)]
+    [InlineData(18, 89, false)]
+    [InlineData(99, 0, true)]
+    public void Pig_CompareTo_Test(int indexOfPig1, int indexOfPig2, bool expected)
+    {
+        // Arrange
+        var listOfPigs = FillListOfPigs();
+
+        // Act
+        var result = listOfPigs.Get(indexOfPig1).CompareTo(listOfPigs.Get(indexOfPig2)) > 0;
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Pig_CompareToEqual_Test()
+    {
+        // Arrange
+        var listOfPigs = FillListOfPigs();
+
+        // Assert
+        Assert.Equal(0, listOfPigs.Get(35).CompareTo(listOfPigs.Get(35)));
+    }
+
     private DynamicArray<Pig> FillListOfPigs()
     {
         DynamicArray<Pig> listOfPigs = new DynamicArray<Pig>();
