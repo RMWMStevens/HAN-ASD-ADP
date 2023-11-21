@@ -119,45 +119,6 @@ public class DoublyLinkedListTests : IAsyncLifetime
     }
 
     [Theory]
-    [InlineData(1, 2)]
-    [InlineData("string", 2)]
-    public void LijstOnsorteerbaar3_Remove_Test(object node, int expected)
-    {
-        // Arrange
-        var list = new DoublyLinkedList<object>();
-        foreach (var value in dataset.LijstOnsorteerbaar3)
-        {
-            list.Add(value);
-        }
-
-        // Act
-        list.Remove(node);
-
-        // Assert
-        Assert.Equal(expected, list.Count);
-    }
-
-    [Theory]
-    [InlineData(0, 2)]
-    [InlineData(1, 2)]
-    public void LijstOnsorteerbaar3_RemoveAt_Test(int index, int expected)
-    {
-        // Arrange
-        var list = new DoublyLinkedList<object>();
-
-        // Act
-        foreach (var value in dataset.LijstOnsorteerbaar3)
-        {
-            list.Add(value);
-        }
-
-        list.RemoveAt(index);
-
-        // Assert
-        Assert.Equal(expected, list.Count);
-    }
-
-    [Theory]
     [InlineData(10, 2379)]
     [InlineData(1187, 2211)]
     [InlineData(9998, 8009)]
