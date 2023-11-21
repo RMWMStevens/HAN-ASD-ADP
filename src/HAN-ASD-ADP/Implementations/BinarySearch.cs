@@ -30,6 +30,11 @@ namespace HAN_ASD_ADP.Implementations
             return array.IndexOf(item);
         }
 
+        public int IndexOfBinarySearchRecursive(T searchedItem)
+        {
+            return IndexOfBinarySearchRecursive(array, 0, array.Count, searchedItem);
+        }
+
         public int IndexOfBinarySearchRecursive(List<T> sortedList, int left, int right, T searchedItem)
         {
             if (right >= left)

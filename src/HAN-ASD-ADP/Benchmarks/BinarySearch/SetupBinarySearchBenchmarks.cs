@@ -11,7 +11,7 @@ namespace HAN_ASD_ADP.Benchmarks.BinarySearch
 {
     public class SetupBinarySearchBenchmarks : BenchmarkSetup
     {
-        protected BinarySearch<int> array;
+        protected BinarySearch<int> binarySearch;
 
         [Params(100, 10000)]
         public virtual int Length { get; set; }
@@ -26,10 +26,10 @@ namespace HAN_ASD_ADP.Benchmarks.BinarySearch
         [IterationSetup]
         public void Setup()
         {
-            array = new();
+            binarySearch = new BinarySearch<int>();
             for (int i = 0; i < Length; i++)
             {
-                array.Add(i);
+                binarySearch.Add(i);
             }
         }
     }

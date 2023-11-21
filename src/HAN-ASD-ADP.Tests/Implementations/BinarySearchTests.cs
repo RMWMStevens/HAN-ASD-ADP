@@ -51,7 +51,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             var listOfNames = GetListOfNames();
 
             // Assert
-            Assert.Equal(index, listOfNames.IndexOfBinarySearchRecursive(listOfNames.array, 0, listOfNames.array.Count - 1, name));
+            Assert.Equal(index, listOfNames.IndexOfBinarySearchRecursive(name));
         }
 
         [Theory]
