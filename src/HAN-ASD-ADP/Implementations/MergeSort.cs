@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace HAN_ASD_ADP.Implementations
 {
     public static class MergeSort
     {
-        public static void Sort<T>(T[] inputArray) where T : IComparable<T>
+        public static void Sort<T>(T[] inputArray, bool parallel = false) where T : IComparable<T>
         {
             int inputLenth = inputArray.Length;
             if(inputLenth < 2)
@@ -25,8 +26,17 @@ namespace HAN_ASD_ADP.Implementations
                 rightHalf[i - midIndex] = inputArray[i];
             }
 
-            Sort(leftHalf);
-            Sort(rightHalf);
+            if (parallel)
+            {
+                Parallel.Invoke(
+                () => Sort(leftHalf, parallel),
+                () => Sort(rightHalf, parallel)
+                );
+            } else
+            {
+                Sort(leftHalf, parallel);
+                Sort(rightHalf, parallel);
+            }
 
             Merge(inputArray, leftHalf, rightHalf);
         }
