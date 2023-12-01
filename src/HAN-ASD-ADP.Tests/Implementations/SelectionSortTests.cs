@@ -4,18 +4,17 @@ using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations
 {
-    public class OrganizerTests
+    public class SelectionSortTests
     {
         [Fact]
         public void SelectionSortIntsTest()
         {
             // Arrange
-            Organizer<int> organizer = new Organizer<int>();
             int[] arrayOfInts = { 5, 6, 8, 0, 7, 4, 1, 3, 2, 9 };
             int[] sortedArrayOfInts = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             // Act
-            organizer.SelectionSort(arrayOfInts);
+            SelectionSort.Sort(arrayOfInts);
             bool theSame = true;
             for (int i = 0; i < arrayOfInts.Length; i++)
             {
@@ -32,12 +31,11 @@ namespace HAN_ASD_ADP.Tests.Implementations
         public void SelectionSortFloatsTest()
         {
             // Arrange
-            Organizer<float> organizer = new Organizer<float>();
             float[] arrayOfFloats = { 7.5f, 7.6f, 7.8f, 7.0f, 7.7f, 7.4f, 7.1f, 7.3f, 7.2f, 7.9f };
             float[] sortedArrayOfFloats = { 7.0f, 7.1f, 7.2f, 7.3f, 7.4f, 7.5f, 7.6f, 7.7f, 7.8f, 7.9f };
 
             // Act
-            organizer.SelectionSort(arrayOfFloats);
+            SelectionSort.Sort(arrayOfFloats);
             bool theSame = true;
             for (int i = 0; i < arrayOfFloats.Length; i++)
             {
@@ -55,12 +53,11 @@ namespace HAN_ASD_ADP.Tests.Implementations
         public void SelectionSortCharsTest()
         {
             // Arrange
-            Organizer<char> organizer = new Organizer<char>();
             char[] arrayOfChars = { 'i', 'd', 'c', 'b', 'f', 'g', 'a', 'e', 'h', 'j' };
             char[] sortedArrayOfChars = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
 
             // Act
-            organizer.SelectionSort(arrayOfChars);
+            SelectionSort.Sort(arrayOfChars);
             bool theSame = true;
             for (int i = 0; i < arrayOfChars.Length; i++)
             {
@@ -78,12 +75,11 @@ namespace HAN_ASD_ADP.Tests.Implementations
         public void SelectionSortStringsTest()
         {
             // Arrange
-            Organizer<string> organizer = new Organizer<string>();
             string[] arrayOfStrings = { "II", "DD", "CC", "BB", "FF", "GG", "AA", "EE", "HH", "JJ" };
             string[] sortedArrayOfStrings = { "AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ" };
 
             // Act
-            organizer.SelectionSort(arrayOfStrings);
+            SelectionSort.Sort(arrayOfStrings);
             bool theSame = true;
             for (int i = 0; i < arrayOfStrings.Length; i++)
             {
@@ -101,7 +97,6 @@ namespace HAN_ASD_ADP.Tests.Implementations
         public void SelectionSortPigsTest()
         {
             // Arrange
-            Organizer<Pig> organizer = new Organizer<Pig>();
             Pig pig0 = new Pig("DL6540", new int[] { 1, 1, 0, 1, 0, 0, 2, 1, 1, 1, 2, 1, 2, 0, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 2, 2, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 2, 1, 1, 1, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 2, 2, 1, 0, 0, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 1 });
             Pig pig1 = new Pig("DL6541", new int[] { 2, 1, 0, 1, 0, 0, 2, 1, 1, 1, 2, 1, 2, 0, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 2, 2, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 2, 1, 1, 1, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 2, 2, 1, 0, 0, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 1 });
             Pig pig2 = new Pig("DL6542", new int[] { 2, 2, 0, 1, 0, 0, 2, 1, 1, 1, 2, 1, 2, 0, 0, 2, 1, 0, 1, 1, 1, 2, 1, 2, 2, 2, 0, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 0, 2, 1, 1, 1, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 2, 0, 0, 1, 1, 0, 2, 2, 1, 0, 0, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 2, 1, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 1 });
@@ -122,7 +117,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             sortedArrayOfPigs[4] = pig4;
 
             // Act
-            organizer.SelectionSort(arrayOfPigs);
+            SelectionSort.Sort(arrayOfPigs);
             bool theSame = true;
             for (int i = 0; i < arrayOfPigs.Length; i++)
             {

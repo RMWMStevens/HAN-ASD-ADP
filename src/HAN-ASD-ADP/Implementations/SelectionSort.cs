@@ -2,9 +2,9 @@
 
 namespace HAN_ASD_ADP.Implementations
 {
-    public class Organizer<T> where T : IComparable<T>
+    public static class SelectionSort
     {
-        public void SelectionSort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             int length = array.Length;
             for (int i = 0; i < length - 1; i++)
