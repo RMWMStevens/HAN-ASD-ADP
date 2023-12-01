@@ -1,10 +1,4 @@
 ﻿using HAN_ASD_ADP.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations
@@ -21,7 +15,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             // Act
             Organizer.SelectionSort(arrayOfInts);
             bool theSame = true;
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (arrayOfInts[i] != sortedArrayOfInts[i])
                 {

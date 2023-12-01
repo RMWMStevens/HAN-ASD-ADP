@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HAN_ASD_ADP.Implementations
+﻿namespace HAN_ASD_ADP.Implementations
 {
     public static class Organizer
     {
