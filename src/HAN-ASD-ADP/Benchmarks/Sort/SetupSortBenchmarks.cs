@@ -25,6 +25,9 @@ public class SetupSortBenchmarks : BenchmarkSetup
     {
         new("Insertion", InsertionSort.Sort),
         new("Selection", SelectionSort.Sort),
+        new("Merge", MergeSort.Sort),
+        new("Merge (Parallel)", MergeSort.SortParallel),
+        new("Merge (Async)", MergeSort.SortAsync),
     };
 
     public SetupSortBenchmarks()
