@@ -5,6 +5,7 @@ using HAN_ASD_ADP.Benchmarks.Deque;
 using HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 using HAN_ASD_ADP.Benchmarks.DynamicArray;
 using HAN_ASD_ADP.Benchmarks.PriorityQueue;
+using HAN_ASD_ADP.Benchmarks.Sort;
 using HAN_ASD_ADP.Benchmarks.Stack;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ var benchmarks = new List<IBenchmarkSetup>
     new SetupStackBenchmarks(),
     new SetupDequeBenchmarks(),
     new SetupPriorityQueueBenchmarks(),
-    new SetupBinarySearchBenchmarks()
+    new SetupBinarySearchBenchmarks(),
+    new SetupSortBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

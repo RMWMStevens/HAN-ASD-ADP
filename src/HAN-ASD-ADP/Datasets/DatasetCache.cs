@@ -18,7 +18,7 @@ public static class DatasetCache<T>
         {
             lock (lockObject)
             {
-                datasetTask = FetchAsync();
+                datasetTask ??= FetchAsync();
             }
         }
 
