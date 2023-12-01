@@ -8,7 +8,7 @@ namespace HAN_ASD_ADP.Implementations
         public static void Sort<T>(T[] inputArray, bool parallel = false) where T : IComparable<T>
         {
             int inputLenth = inputArray.Length;
-            if(inputLenth < 2)
+            if (inputLenth < 2)
             {
                 return;
             }
@@ -16,7 +16,7 @@ namespace HAN_ASD_ADP.Implementations
             T[] leftHalf = new T[midIndex];
             T[] rightHalf = new T[inputLenth - midIndex];
 
-            for(int i = 0; i < midIndex; i++)
+            for (int i = 0; i < midIndex; i++)
             {
                 leftHalf[i] = inputArray[i];
             }
@@ -32,7 +32,8 @@ namespace HAN_ASD_ADP.Implementations
                 () => Sort(leftHalf, parallel),
                 () => Sort(rightHalf, parallel)
                 );
-            } else
+            }
+            else
             {
                 Sort(leftHalf, parallel);
                 Sort(rightHalf, parallel);
@@ -49,13 +50,14 @@ namespace HAN_ASD_ADP.Implementations
             int j = 0; // rightHalf
             int k = 0; // merged
 
-            while(i < leftLength && j < rightLength)
+            while (i < leftLength && j < rightLength)
             {
                 if (leftHalf[i].CompareTo(rightHalf[j]) <= 0)
                 {
                     inputArray[k] = leftHalf[i];
                     i++;
-                } else
+                }
+                else
                 {
                     inputArray[k] = rightHalf[j];
                     j++;
@@ -63,7 +65,7 @@ namespace HAN_ASD_ADP.Implementations
                 k++;
             }
 
-            while(i < leftLength)
+            while (i < leftLength)
             {
                 inputArray[k] = leftHalf[i];
                 i++;
