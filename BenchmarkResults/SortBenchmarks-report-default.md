@@ -3,141 +3,89 @@ BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.2715/23H2/2023Update/SunValley3
 AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.100
   [Host]     : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-SVPVCU : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
+  Job-CXVDAV : .NET 6.0.25 (6.0.2523.51912), X64 RyuJIT AVX2
 
 InvocationCount=1  UnrollFactor=1  
 
- Method     | Length | Algorithm           | Mean             | Error            | StdDev           | Median          | Gen0      | Allocated   |
------------ |------- |-------------------- |-----------------:|-----------------:|-----------------:|----------------:|----------:|------------:|
- **Ascending**  | **5**      | **Insertion**           |        **614.74 ns** |        **49.543 ns** |       **142.148 ns** |        **600.0 ns** |         **-** |       **640 B** |
- Descending | 5      | Insertion           |        801.52 ns |        71.649 ns |       210.133 ns |        750.0 ns |         - |       640 B |
- Random     | 5      | Insertion           |        752.13 ns |        52.601 ns |       150.074 ns |        700.0 ns |         - |       712 B |
- SameValue  | 5      | Insertion           |        683.67 ns |        77.315 ns |       225.532 ns |        600.0 ns |         - |       640 B |
- **Ascending**  | **5**      | **Merge V1**            |        **870.41 ns** |        **63.653 ns** |       **185.677 ns** |        **900.0 ns** |         **-** |       **808 B** |
- Descending | 5      | Merge V1            |        654.17 ns |        63.595 ns |       183.485 ns |        600.0 ns |         - |       808 B |
- Random     | 5      | Merge V1            |        687.10 ns |        45.377 ns |       128.728 ns |        600.0 ns |         - |       808 B |
- SameValue  | 5      | Merge V1            |        708.00 ns |        78.721 ns |       232.109 ns |        600.0 ns |         - |       808 B |
- **Ascending**  | **5**      | **Merge V1 (Async)**    |      **5,829.79 ns** |       **110.024 ns** |       **214.593 ns** |      **5,800.0 ns** |         **-** |      **1448 B** |
- Descending | 5      | Merge V1 (Async)    |      5,833.33 ns |       145.990 ns |       406.962 ns |      5,700.0 ns |         - |      1448 B |
- Random     | 5      | Merge V1 (Async)    |      6,028.67 ns |       123.481 ns |       312.052 ns |      5,950.0 ns |         - |      1448 B |
- SameValue  | 5      | Merge V1 (Async)    |      5,912.79 ns |       164.169 ns |       446.634 ns |      5,750.0 ns |         - |      1448 B |
- **Ascending**  | **5**      | **Merge V1 (Parallel)** |     **55,723.20 ns** |     **2,951.068 ns** |     **8,561.585 ns** |     **55,650.0 ns** |         **-** |      **4824 B** |
- Descending | 5      | Merge V1 (Parallel) |     54,289.00 ns |     2,837.413 ns |     8,366.176 ns |     53,700.0 ns |         - |      4624 B |
- Random     | 5      | Merge V1 (Parallel) |     54,279.80 ns |     2,558.618 ns |     7,503.985 ns |     53,600.0 ns |         - |      4912 B |
- SameValue  | 5      | Merge V1 (Parallel) |     54,965.66 ns |     2,841.794 ns |     8,334.489 ns |     55,100.0 ns |         - |      4624 B |
- **Ascending**  | **5**      | **Merge V2**            |        **565.79 ns** |        **56.226 ns** |       **161.322 ns** |        **550.0 ns** |         **-** |       **592 B** |
- Descending | 5      | Merge V2            |        497.59 ns |        26.797 ns |        71.527 ns |        500.0 ns |         - |       592 B |
- Random     | 5      | Merge V2            |        586.00 ns |        71.503 ns |       210.828 ns |        500.0 ns |         - |       592 B |
- SameValue  | 5      | Merge V2            |        663.64 ns |        64.336 ns |       188.687 ns |        600.0 ns |         - |       592 B |
- **Ascending**  | **5**      | **Merge V2 (Async)**    |      **6,332.29 ns** |       **318.234 ns** |       **918.178 ns** |      **5,800.0 ns** |         **-** |      **1232 B** |
- Descending | 5      | Merge V2 (Async)    |      5,673.68 ns |       107.470 ns |       119.453 ns |      5,700.0 ns |         - |      1232 B |
- Random     | 5      | Merge V2 (Async)    |      6,465.26 ns |       309.187 ns |       887.114 ns |      6,000.0 ns |         - |      1232 B |
- SameValue  | 5      | Merge V2 (Async)    |      5,926.44 ns |       173.273 ns |       474.332 ns |      5,800.0 ns |         - |      1232 B |
- **Ascending**  | **5**      | **Merge V2 (Parallel)** |     **36,117.00 ns** |     **1,549.252 ns** |     **4,568.006 ns** |     **33,950.0 ns** |         **-** |      **4392 B** |
- Descending | 5      | Merge V2 (Parallel) |     35,388.54 ns |     1,284.841 ns |     3,707.059 ns |     33,650.0 ns |         - |      4392 B |
- Random     | 5      | Merge V2 (Parallel) |     33,829.27 ns |       678.264 ns |     1,798.661 ns |     33,250.0 ns |         - |      4392 B |
- SameValue  | 5      | Merge V2 (Parallel) |     36,459.79 ns |     1,333.211 ns |     3,867.888 ns |     35,400.0 ns |         - |      4280 B |
- **Ascending**  | **5**      | **Quick (High)**        |        **762.37 ns** |        **49.283 ns** |       **139.809 ns** |        **700.0 ns** |         **-** |       **784 B** |
- Descending | 5      | Quick (High)        |        678.05 ns |        22.190 ns |        58.846 ns |        700.0 ns |         - |       784 B |
- Random     | 5      | Quick (High)        |        851.58 ns |        67.227 ns |       192.886 ns |        800.0 ns |         - |       688 B |
- SameValue  | 5      | Quick (High)        |        787.37 ns |        55.047 ns |       157.940 ns |        700.0 ns |         - |       784 B |
- **Ascending**  | **5**      | **Quick (Middle)**      |        **811.46 ns** |        **52.472 ns** |       **151.393 ns** |        **800.0 ns** |         **-** |       **688 B** |
- Descending | 5      | Quick (Middle)      |        729.63 ns |        25.068 ns |        66.039 ns |        700.0 ns |         - |       688 B |
- Random     | 5      | Quick (Middle)      |        602.38 ns |        25.171 ns |        67.621 ns |        600.0 ns |         - |       688 B |
- SameValue  | 5      | Quick (Middle)      |        773.63 ns |        64.856 ns |       181.864 ns |        700.0 ns |         - |       784 B |
- **Ascending**  | **5**      | **Quick (Random)**      |        **973.00 ns** |        **89.388 ns** |       **263.563 ns** |        **800.0 ns** |         **-** |       **736 B** |
- Descending | 5      | Quick (Random)      |        857.22 ns |        80.414 ns |       233.295 ns |        750.0 ns |         - |       688 B |
- Random     | 5      | Quick (Random)      |        832.10 ns |        26.042 ns |        68.606 ns |        800.0 ns |         - |       688 B |
- SameValue  | 5      | Quick (Random)      |        810.84 ns |        27.451 ns |        73.272 ns |        800.0 ns |         - |       784 B |
- **Ascending**  | **5**      | **Selection**           |         **84.42 ns** |        **14.242 ns** |        **36.509 ns** |        **100.0 ns** |         **-** |       **544 B** |
- Descending | 5      | Selection           |        152.53 ns |        23.025 ns |        67.527 ns |        100.0 ns |         - |       544 B |
- Random     | 5      | Selection           |        211.11 ns |        29.181 ns |        85.582 ns |        200.0 ns |         - |       544 B |
- SameValue  | 5      | Selection           |        165.00 ns |        22.287 ns |        65.713 ns |        200.0 ns |         - |       544 B |
- **Ascending**  | **50**     | **Insertion**           |        **700.00 ns** |         **0.000 ns** |         **0.000 ns** |        **700.0 ns** |         **-** |      **1720 B** |
- Descending | 50     | Insertion           |        823.81 ns |        38.598 ns |       103.690 ns |        800.0 ns |         - |      1720 B |
- Random     | 50     | Insertion           |      4,126.88 ns |       181.250 ns |       514.177 ns |      4,000.0 ns |         - |     18232 B |
- SameValue  | 50     | Insertion           |        822.62 ns |        30.220 ns |        81.183 ns |        800.0 ns |         - |      1720 B |
- **Ascending**  | **50**     | **Merge V1**            |      **1,366.28 ns** |        **48.045 ns** |       **130.709 ns** |      **1,300.0 ns** |         **-** |      **4320 B** |
- Descending | 50     | Merge V1            |      1,374.39 ns |        49.862 ns |       132.228 ns |      1,300.0 ns |         - |      4320 B |
- Random     | 50     | Merge V1            |      2,486.73 ns |       154.306 ns |       450.117 ns |      2,300.0 ns |         - |      4320 B |
- SameValue  | 50     | Merge V1            |      1,343.18 ns |        50.989 ns |       140.439 ns |      1,300.0 ns |         - |      4320 B |
- **Ascending**  | **50**     | **Merge V1 (Async)**    |     **46,223.08 ns** |       **700.252 ns** |       **584.742 ns** |     **46,100.0 ns** |         **-** |     **12160 B** |
- Descending | 50     | Merge V1 (Async)    |     46,248.48 ns |       887.734 ns |     1,408.040 ns |     45,700.0 ns |         - |     12160 B |
- Random     | 50     | Merge V1 (Async)    |     47,368.00 ns |       656.089 ns |     1,325.332 ns |     47,100.0 ns |         - |     12160 B |
- SameValue  | 50     | Merge V1 (Async)    |     45,958.33 ns |       733.675 ns |       572.805 ns |     45,950.0 ns |         - |     12160 B |
- **Ascending**  | **50**     | **Merge V1 (Parallel)** |    **115,042.86 ns** |     **3,460.174 ns** |    **10,093.491 ns** |    **115,300.0 ns** |         **-** |     **39056 B** |
- Descending | 50     | Merge V1 (Parallel) |    105,489.01 ns |     2,210.668 ns |     6,198.951 ns |    105,100.0 ns |         - |     40120 B |
- Random     | 50     | Merge V1 (Parallel) |    109,612.63 ns |     2,700.517 ns |     7,748.291 ns |    109,200.0 ns |         - |     39968 B |
- SameValue  | 50     | Merge V1 (Parallel) |    108,010.53 ns |     2,756.055 ns |     7,907.638 ns |    107,200.0 ns |         - |     39760 B |
- **Ascending**  | **50**     | **Merge V2**            |      **1,130.68 ns** |        **57.303 ns** |       **157.829 ns** |      **1,100.0 ns** |         **-** |       **768 B** |
- Descending | 50     | Merge V2            |      1,397.96 ns |       124.723 ns |       363.823 ns |      1,250.0 ns |         - |       768 B |
- Random     | 50     | Merge V2            |      2,257.14 ns |       135.078 ns |       394.028 ns |      2,100.0 ns |         - |       768 B |
- SameValue  | 50     | Merge V2            |      1,168.48 ns |        73.384 ns |       206.982 ns |      1,100.0 ns |         - |       768 B |
- **Ascending**  | **50**     | **Merge V2 (Async)**    |     **45,346.15 ns** |       **697.621 ns** |       **582.545 ns** |     **45,200.0 ns** |         **-** |      **8608 B** |
- Descending | 50     | Merge V2 (Async)    |     45,107.14 ns |       697.444 ns |       618.266 ns |     44,900.0 ns |         - |      8608 B |
- Random     | 50     | Merge V2 (Async)    |     45,550.00 ns |       581.853 ns |       454.273 ns |     45,550.0 ns |         - |      8608 B |
- SameValue  | 50     | Merge V2 (Async)    |     44,700.00 ns |       629.895 ns |       525.991 ns |     44,600.0 ns |         - |      8608 B |
- **Ascending**  | **50**     | **Merge V2 (Parallel)** |    **103,423.40 ns** |     **2,718.120 ns** |     **7,754.949 ns** |    **102,150.0 ns** |         **-** |     **36624 B** |
- Descending | 50     | Merge V2 (Parallel) |    104,832.29 ns |     3,257.844 ns |     9,399.625 ns |    102,750.0 ns |         - |     37144 B |
- Random     | 50     | Merge V2 (Parallel) |    106,423.71 ns |     3,691.258 ns |    10,709.009 ns |    103,400.0 ns |         - |     36944 B |
- SameValue  | 50     | Merge V2 (Parallel) |    102,608.33 ns |     2,488.481 ns |     7,179.835 ns |    101,500.0 ns |         - |     37296 B |
- **Ascending**  | **50**     | **Quick (High)**        |      **7,006.25 ns** |       **141.421 ns** |       **138.894 ns** |      **7,000.0 ns** |         **-** |     **29944 B** |
- Descending | 50     | Quick (High)        |      6,611.90 ns |       134.068 ns |       245.150 ns |      6,600.0 ns |         - |     29944 B |
- Random     | 50     | Quick (High)        |      2,829.17 ns |       146.609 ns |       423.001 ns |      2,700.0 ns |         - |      7120 B |
- SameValue  | 50     | Quick (High)        |      7,346.88 ns |       149.067 ns |       232.079 ns |      7,350.0 ns |         - |     29944 B |
- **Ascending**  | **50**     | **Quick (Middle)**      |      **1,844.44 ns** |        **87.601 ns** |       **244.196 ns** |      **1,750.0 ns** |         **-** |      **5176 B** |
- Descending | 50     | Quick (Middle)      |      2,043.43 ns |       137.872 ns |       404.354 ns |      1,900.0 ns |         - |      5176 B |
- Random     | 50     | Quick (Middle)      |      2,851.09 ns |        94.974 ns |       267.875 ns |      2,800.0 ns |         - |      5968 B |
- SameValue  | 50     | Quick (Middle)      |      7,338.24 ns |       144.641 ns |       233.569 ns |      7,300.0 ns |         - |     29944 B |
- **Ascending**  | **50**     | **Quick (Random)**      |      **2,910.31 ns** |       **172.737 ns** |       **501.141 ns** |      **2,700.0 ns** |         **-** |      **6568 B** |
- Descending | 50     | Quick (Random)      |      2,701.09 ns |       115.932 ns |       326.989 ns |      2,600.0 ns |         - |      7024 B |
- Random     | 50     | Quick (Random)      |      3,013.48 ns |        77.551 ns |       214.895 ns |      3,000.0 ns |         - |      6688 B |
- SameValue  | 50     | Quick (Random)      |      7,285.19 ns |       147.661 ns |       207.000 ns |      7,300.0 ns |         - |     29944 B |
- **Ascending**  | **50**     | **Selection**           |      **1,020.21 ns** |        **53.312 ns** |       **152.103 ns** |      **1,000.0 ns** |         **-** |       **544 B** |
- Descending | 50     | Selection           |      1,064.29 ns |        57.879 ns |       168.835 ns |      1,000.0 ns |         - |       544 B |
- Random     | 50     | Selection           |      2,043.33 ns |        42.327 ns |       106.965 ns |      2,050.0 ns |         - |       544 B |
- SameValue  | 50     | Selection           |        902.35 ns |        24.863 ns |        67.218 ns |        900.0 ns |         - |       544 B |
- **Ascending**  | **5000**   | **Insertion**           |     **23,332.00 ns** |       **456.529 ns** |       **609.453 ns** |     **23,400.0 ns** |         **-** |    **120520 B** |
- Descending | 5000   | Insertion           |     23,831.25 ns |       356.064 ns |       349.702 ns |     23,850.0 ns |         - |    120520 B |
- Random     | 5000   | Insertion           | 23,717,261.54 ns |   456,347.289 ns |   624,653.321 ns | 23,717,400.0 ns | 3000.0000 | 151605256 B |
- SameValue  | 5000   | Insertion           |     25,052.00 ns |       483.103 ns |       644.929 ns |     25,300.0 ns |         - |    120520 B |
- **Ascending**  | **5000**   | **Merge V1**            |    **116,453.33 ns** |     **2,185.929 ns** |     **3,271.795 ns** |    **115,300.0 ns** |         **-** |    **516528 B** |
- Descending | 5000   | Merge V1            |    118,436.00 ns |     2,139.896 ns |     2,856.700 ns |    117,300.0 ns |         - |    516528 B |
- Random     | 5000   | Merge V1            |    280,421.43 ns |     4,484.662 ns |     3,975.536 ns |    280,300.0 ns |         - |    516528 B |
- SameValue  | 5000   | Merge V1            |    112,626.67 ns |     1,714.533 ns |     1,603.775 ns |    111,800.0 ns |         - |    516528 B |
- **Ascending**  | **5000**   | **Merge V1 (Async)**    |  **4,610,330.30 ns** |    **86,038.900 ns** |   **136,466.813 ns** |  **4,560,500.0 ns** |         **-** |   **1316368 B** |
- Descending | 5000   | Merge V1 (Async)    |  4,517,561.54 ns |    68,952.500 ns |    94,382.961 ns |  4,483,100.0 ns |         - |   1316368 B |
- Random     | 5000   | Merge V1 (Async)    |  4,776,373.33 ns |    92,448.323 ns |    86,476.219 ns |  4,744,000.0 ns |         - |   1316368 B |
- SameValue  | 5000   | Merge V1 (Async)    |  4,555,013.95 ns |    90,821.025 ns |   168,342.594 ns |  4,469,300.0 ns |         - |   1316368 B |
- **Ascending**  | **5000**   | **Merge V1 (Parallel)** |  **6,254,944.90 ns** |   **123,194.019 ns** |   **246,031.768 ns** |  **6,242,400.0 ns** |         **-** |   **3765608 B** |
- Descending | 5000   | Merge V1 (Parallel) |  6,111,065.12 ns |   122,058.293 ns |   332,068.587 ns |  6,093,700.0 ns |         - |   3767720 B |
- Random     | 5000   | Merge V1 (Parallel) |  6,160,710.84 ns |   130,110.690 ns |   347,291.771 ns |  6,182,500.0 ns |         - |   3828248 B |
- SameValue  | 5000   | Merge V1 (Parallel) |  6,101,493.33 ns |   121,670.524 ns |   182,110.711 ns |  6,100,150.0 ns |         - |   3767552 B |
- **Ascending**  | **5000**   | **Merge V2**            |     **90,600.00 ns** |       **483.980 ns** |       **404.145 ns** |     **90,500.0 ns** |         **-** |     **20568 B** |
- Descending | 5000   | Merge V2            |     91,653.85 ns |     1,325.988 ns |     1,107.260 ns |     92,000.0 ns |         - |     20568 B |
- Random     | 5000   | Merge V2            |    258,169.23 ns |     3,338.604 ns |     2,787.886 ns |    258,000.0 ns |         - |     20568 B |
- SameValue  | 5000   | Merge V2            |     94,707.69 ns |       589.642 ns |       492.378 ns |     94,700.0 ns |         - |     20568 B |
- **Ascending**  | **5000**   | **Merge V2 (Async)**    |  **4,532,676.92 ns** |    **56,365.703 ns** |    **47,067.915 ns** |  **4,529,800.0 ns** |         **-** |    **820408 B** |
- Descending | 5000   | Merge V2 (Async)    |  4,513,959.09 ns |    89,308.597 ns |   141,652.900 ns |  4,447,450.0 ns |         - |    820408 B |
- Random     | 5000   | Merge V2 (Async)    |  4,619,100.00 ns |    49,171.431 ns |    38,389.819 ns |  4,607,300.0 ns |         - |    820408 B |
- SameValue  | 5000   | Merge V2 (Async)    |  4,467,893.33 ns |    34,082.621 ns |    31,880.905 ns |  4,464,700.0 ns |         - |    820408 B |
- **Ascending**  | **5000**   | **Merge V2 (Parallel)** |  **6,082,215.15 ns** |   **116,184.206 ns** |   **184,280.462 ns** |  **6,071,800.0 ns** |         **-** |   **3427824 B** |
- Descending | 5000   | Merge V2 (Parallel) |  8,803,957.00 ns |   895,661.547 ns | 2,640,878.278 ns |  9,636,100.0 ns |         - |   3429872 B |
- Random     | 5000   | Merge V2 (Parallel) |  6,106,302.33 ns |   119,298.400 ns |   221,127.234 ns |  6,119,600.0 ns |         - |   3427432 B |
- SameValue  | 5000   | Merge V2 (Parallel) |  8,762,987.00 ns | 1,189,572.759 ns | 3,507,482.118 ns |  6,417,750.0 ns |         - |  29215840 B |
- **Ascending**  | **5000**   | **Quick (High)**        | **43,806,080.95 ns** |   **868,511.545 ns** | **1,033,901.213 ns** | **43,721,900.0 ns** | **5000.0000** | **299940496 B** |
- Descending | 5000   | Quick (High)        | 46,273,682.35 ns |   905,758.822 ns |   930,147.624 ns | 46,203,500.0 ns | 5000.0000 | 299940496 B |
- Random     | 5000   | Quick (High)        |    505,667.35 ns |     9,070.026 ns |    18,113.823 ns |    505,200.0 ns |         - |   1747168 B |
- SameValue  | 5000   | Quick (High)        | 42,558,685.71 ns |   838,976.764 ns | 1,534,116.453 ns | 42,349,350.0 ns | 5000.0000 | 299940496 B |
- **Ascending**  | **5000**   | **Quick (Middle)**      |    **269,888.89 ns** |     **5,249.079 ns** |     **5,616.456 ns** |    **272,100.0 ns** |         **-** |   **1244272 B** |
- Descending | 5000   | Quick (Middle)      |    276,952.00 ns |     5,537.499 ns |     7,392.402 ns |    274,400.0 ns |         - |   1244272 B |
- Random     | 5000   | Quick (Middle)      |    491,903.77 ns |     9,160.181 ns |    19,120.709 ns |    487,200.0 ns |         - |   1835080 B |
- SameValue  | 5000   | Quick (Middle)      | 43,084,938.89 ns |   850,635.576 ns |   910,170.536 ns | 43,376,750.0 ns | 5000.0000 | 299940496 B |
- **Ascending**  | **5000**   | **Quick (Random)**      |    **399,987.88 ns** |     **7,545.798 ns** |    **17,786.335 ns** |    **398,300.0 ns** |         **-** |   **1685464 B** |
- Descending | 5000   | Quick (Random)      |    419,924.00 ns |     8,267.627 ns |    16,701.015 ns |    418,050.0 ns |         - |   1716280 B |
- Random     | 5000   | Quick (Random)      |    507,757.50 ns |    10,079.435 ns |    17,916.185 ns |    505,050.0 ns |         - |   1744720 B |
- SameValue  | 5000   | Quick (Random)      | 50,703,333.84 ns | 1,056,966.260 ns | 3,099,899.072 ns | 51,624,050.0 ns | 5000.0000 | 299940496 B |
- **Ascending**  | **5000**   | **Selection**           |  **7,766,550.00 ns** |   **105,985.469 ns** |    **93,953.358 ns** |  **7,755,300.0 ns** |         **-** |       **544 B** |
- Descending | 5000   | Selection           |  7,738,364.29 ns |   108,772.437 ns |    96,423.933 ns |  7,708,250.0 ns |         - |       544 B |
- Random     | 5000   | Selection           |  6,640,561.54 ns |    47,351.800 ns |    39,540.897 ns |  6,643,000.0 ns |         - |       544 B |
- SameValue  | 5000   | Selection           |  6,283,876.19 ns |   114,471.471 ns |   136,270.143 ns |  6,222,300.0 ns |         - |       544 B |
+ Method     | Length | Algorithm      | Mean                | Error             | StdDev            | Median              | Gen0         | Gen1      | Allocated      |
+----------- |------- |--------------- |--------------------:|------------------:|------------------:|--------------------:|-------------:|----------:|---------------:|
+ **Ascending**  | **10**     | **Insertion**      |            **625.3 ns** |          **48.75 ns** |         **139.88 ns** |            **600.0 ns** |            **-** |         **-** |          **760 B** |
+ Descending | 10     | Insertion      |            683.0 ns |          75.92 ns |         223.86 ns |            600.0 ns |            - |         - |          760 B |
+ Random     | 10     | Insertion      |            911.3 ns |          74.61 ns |         216.45 ns |            800.0 ns |            - |         - |         1120 B |
+ SameValue  | 10     | Insertion      |            556.5 ns |          23.84 ns |          64.45 ns |            500.0 ns |            - |         - |          760 B |
+ **Ascending**  | **10**     | **Merge [V2]**     |            **740.4 ns** |          **68.53 ns** |         **200.98 ns** |            **700.0 ns** |            **-** |         **-** |          **608 B** |
+ Descending | 10     | Merge [V2]     |            584.6 ns |          55.48 ns |         155.58 ns |            500.0 ns |            - |         - |          608 B |
+ Random     | 10     | Merge [V2]     |            867.3 ns |          68.17 ns |         198.85 ns |            800.0 ns |            - |         - |          608 B |
+ SameValue  | 10     | Merge [V2]     |            617.4 ns |          47.77 ns |         134.74 ns |            600.0 ns |            - |         - |          608 B |
+ **Ascending**  | **10**     | **Quick (Middle)** |            **812.1 ns** |          **50.39 ns** |         **141.29 ns** |            **800.0 ns** |            **-** |         **-** |         **1000 B** |
+ Descending | 10     | Quick (Middle) |            780.6 ns |          61.77 ns |         175.24 ns |            700.0 ns |            - |         - |         1000 B |
+ Random     | 10     | Quick (Middle) |          1,008.2 ns |          85.92 ns |         250.64 ns |            900.0 ns |            - |         - |         1168 B |
+ SameValue  | 10     | Quick (Middle) |            883.5 ns |          79.08 ns |         221.74 ns |            800.0 ns |            - |         - |         1624 B |
+ **Ascending**  | **10**     | **Selection**      |            **154.6 ns** |          **22.81 ns** |          **66.18 ns** |            **100.0 ns** |            **-** |         **-** |          **544 B** |
+ Descending | 10     | Selection      |            156.1 ns |          23.64 ns |          68.96 ns |            100.0 ns |            - |         - |          544 B |
+ Random     | 10     | Selection      |            278.8 ns |          15.73 ns |          41.17 ns |            300.0 ns |            - |         - |          544 B |
+ SameValue  | 10     | Selection      |            141.4 ns |          21.79 ns |          63.90 ns |            100.0 ns |            - |         - |          544 B |
+ **Ascending**  | **100**    | **Insertion**      |            **996.7 ns** |          **41.87 ns** |         **118.09 ns** |          **1,000.0 ns** |            **-** |         **-** |         **2920 B** |
+ Descending | 100    | Insertion      |          1,056.5 ns |          57.41 ns |         161.93 ns |          1,000.0 ns |            - |         - |         2920 B |
+ Random     | 100    | Insertion      |         13,676.1 ns |         332.26 ns |         915.13 ns |         13,800.0 ns |            - |         - |        67456 B |
+ SameValue  | 100    | Insertion      |          1,126.5 ns |          78.23 ns |         228.19 ns |          1,000.0 ns |            - |         - |         2920 B |
+ **Ascending**  | **100**    | **Merge [V2]**     |          **1,844.3 ns** |          **59.76 ns** |         **164.60 ns** |          **1,800.0 ns** |            **-** |         **-** |          **968 B** |
+ Descending | 100    | Merge [V2]     |          1,800.0 ns |          43.00 ns |         114.76 ns |          1,800.0 ns |            - |         - |          968 B |
+ Random     | 100    | Merge [V2]     |          3,711.8 ns |          75.87 ns |         122.51 ns |          3,700.0 ns |            - |         - |          968 B |
+ SameValue  | 100    | Merge [V2]     |          1,840.7 ns |          81.84 ns |         229.48 ns |          1,700.0 ns |            - |         - |          968 B |
+ **Ascending**  | **100**    | **Quick (Middle)** |          **3,364.4 ns** |         **104.22 ns** |         **285.29 ns** |          **3,300.0 ns** |            **-** |         **-** |        **12064 B** |
+ Descending | 100    | Quick (Middle) |          3,374.1 ns |          64.86 ns |         170.86 ns |          3,300.0 ns |            - |         - |        12064 B |
+ Random     | 100    | Quick (Middle) |          6,268.8 ns |         199.20 ns |         565.10 ns |          6,200.0 ns |            - |         - |        14776 B |
+ SameValue  | 100    | Quick (Middle) |         24,894.4 ns |         481.08 ns |         514.75 ns |         25,000.0 ns |            - |         - |       119344 B |
+ **Ascending**  | **100**    | **Selection**      |          **3,494.7 ns** |          **70.16 ns** |          **77.99 ns** |          **3,500.0 ns** |            **-** |         **-** |          **544 B** |
+ Descending | 100    | Selection      |          3,460.9 ns |          70.48 ns |          89.13 ns |          3,400.0 ns |            - |         - |          544 B |
+ Random     | 100    | Selection      |          6,551.5 ns |         285.76 ns |         829.04 ns |          6,200.0 ns |            - |         - |          544 B |
+ SameValue  | 100    | Selection      |          2,889.7 ns |          58.64 ns |          85.96 ns |          2,900.0 ns |            - |         - |          544 B |
+ **Ascending**  | **1000**   | **Insertion**      |          **5,216.4 ns** |          **62.75 ns** |         **141.63 ns** |          **5,200.0 ns** |            **-** |         **-** |        **24520 B** |
+ Descending | 1000   | Insertion      |          5,287.0 ns |         107.43 ns |         135.86 ns |          5,300.0 ns |            - |         - |        24520 B |
+ Random     | 1000   | Insertion      |      1,243,096.0 ns |      21,797.34 ns |      29,098.82 ns |      1,243,500.0 ns |            - |         - |      6168808 B |
+ SameValue  | 1000   | Insertion      |          5,424.0 ns |          97.38 ns |         130.00 ns |          5,400.0 ns |            - |         - |        24520 B |
+ **Ascending**  | **1000**   | **Merge [V2]**     |         **16,576.9 ns** |         **313.63 ns** |         **261.90 ns** |         **16,600.0 ns** |            **-** |         **-** |         **4568 B** |
+ Descending | 1000   | Merge [V2]     |         17,081.2 ns |         324.59 ns |         318.79 ns |         17,050.0 ns |            - |         - |         4568 B |
+ Random     | 1000   | Merge [V2]     |         44,314.3 ns |         874.75 ns |         775.45 ns |         44,050.0 ns |            - |         - |         4568 B |
+ SameValue  | 1000   | Merge [V2]     |         17,034.7 ns |         169.95 ns |         429.49 ns |         17,000.0 ns |            - |         - |         4568 B |
+ **Ascending**  | **1000**   | **Quick (Middle)** |         **41,725.0 ns** |         **460.60 ns** |         **359.61 ns** |         **41,800.0 ns** |            **-** |         **-** |       **192232 B** |
+ Descending | 1000   | Quick (Middle) |         41,959.1 ns |         824.28 ns |       1,548.19 ns |         41,300.0 ns |            - |         - |       192232 B |
+ Random     | 1000   | Quick (Middle) |         79,168.4 ns |       1,512.49 ns |       3,288.03 ns |         78,100.0 ns |            - |         - |       252424 B |
+ SameValue  | 1000   | Quick (Middle) |      2,564,924.5 ns |      50,401.22 ns |     105,206.11 ns |      2,561,500.0 ns |            - |         - |     11988544 B |
+ **Ascending**  | **1000**   | **Selection**      |        **312,000.0 ns** |       **5,493.96 ns** |       **5,878.48 ns** |        **309,350.0 ns** |            **-** |         **-** |          **544 B** |
+ Descending | 1000   | Selection      |        308,214.3 ns |       3,313.12 ns |       2,936.99 ns |        308,000.0 ns |            - |         - |          544 B |
+ Random     | 1000   | Selection      |        302,160.9 ns |       3,519.65 ns |       4,451.22 ns |        301,300.0 ns |            - |         - |          544 B |
+ SameValue  | 1000   | Selection      |        245,737.7 ns |       4,347.54 ns |       9,074.93 ns |        243,800.0 ns |            - |         - |          544 B |
+ **Ascending**  | **10000**  | **Insertion**      |         **48,192.9 ns** |         **927.55 ns** |         **822.25 ns** |         **48,100.0 ns** |            **-** |         **-** |       **240520 B** |
+ Descending | 10000  | Insertion      |         47,746.2 ns |         636.72 ns |         531.69 ns |         47,600.0 ns |            - |         - |       240520 B |
+ Random     | 10000  | Insertion      |     91,603,110.5 ns |   1,818,402.58 ns |   4,628,415.16 ns |     91,903,650.0 ns |   11000.0000 |         - |    596445736 B |
+ SameValue  | 10000  | Insertion      |         50,693.8 ns |         998.13 ns |       1,553.96 ns |         50,550.0 ns |            - |         - |       240520 B |
+ **Ascending**  | **10000**  | **Merge [V2]**     |        **197,453.8 ns** |       **2,136.98 ns** |       **1,784.48 ns** |        **197,500.0 ns** |            **-** |         **-** |        **40568 B** |
+ Descending | 10000  | Merge [V2]     |        197,400.0 ns |       1,675.84 ns |       1,399.40 ns |        197,500.0 ns |            - |         - |        40568 B |
+ Random     | 10000  | Merge [V2]     |        581,267.0 ns |      16,976.28 ns |      48,434.29 ns |        558,200.0 ns |            - |         - |        40568 B |
+ SameValue  | 10000  | Merge [V2]     |        201,665.2 ns |       3,845.98 ns |       4,863.93 ns |        201,200.0 ns |            - |         - |        40568 B |
+ **Ascending**  | **10000**  | **Quick (Middle)** |        **590,473.5 ns** |      **11,548.81 ns** |      **18,649.17 ns** |        **588,550.0 ns** |            **-** |         **-** |      **2727688 B** |
+ Descending | 10000  | Quick (Middle) |        597,350.0 ns |      11,627.74 ns |      14,279.91 ns |        601,650.0 ns |            - |         - |      2727688 B |
+ Random     | 10000  | Quick (Middle) |      1,079,787.0 ns |      20,927.80 ns |      26,466.97 ns |      1,088,300.0 ns |            - |         - |      3571720 B |
+ SameValue  | 10000  | Quick (Middle) |    179,814,303.8 ns |   3,493,898.88 ns |   2,917,563.81 ns |    179,820,950.0 ns |   23000.0000 |         - |   1199880496 B |
+ **Ascending**  | **10000**  | **Selection**      |     **31,082,515.4 ns** |     **261,894.48 ns** |     **218,693.75 ns** |     **31,006,200.0 ns** |            **-** |         **-** |          **544 B** |
+ Descending | 10000  | Selection      |     31,114,023.1 ns |     268,803.87 ns |     224,463.41 ns |     31,005,900.0 ns |            - |         - |          544 B |
+ Random     | 10000  | Selection      |     26,549,321.4 ns |     368,182.11 ns |     326,383.85 ns |     26,530,900.0 ns |            - |         - |          544 B |
+ SameValue  | 10000  | Selection      |     25,084,057.1 ns |     251,538.40 ns |     222,982.24 ns |     25,083,300.0 ns |            - |         - |          544 B |
+ **Ascending**  | **100000** | **Insertion**      |        **493,739.4 ns** |       **9,714.74 ns** |      **15,408.60 ns** |        **498,200.0 ns** |            **-** |         **-** |      **2400520 B** |
+ Descending | 100000 | Insertion      |        484,397.8 ns |      15,559.09 ns |      43,629.35 ns |        482,500.0 ns |            - |         - |      2400520 B |
+ Random     | 100000 | Insertion      |  8,718,296,963.2 ns | 167,390,642.62 ns | 186,054,255.75 ns |  8,771,282,400.0 ns | 1196000.0000 |         - |  60044908144 B |
+ SameValue  | 100000 | Insertion      |        507,338.8 ns |      10,069.20 ns |      20,109.28 ns |        506,300.0 ns |            - |         - |      2400520 B |
+ **Ascending**  | **100000** | **Merge [V2]**     |      **2,405,840.0 ns** |      **47,704.82 ns** |      **44,623.12 ns** |      **2,396,700.0 ns** |            **-** |         **-** |       **400568 B** |
+ Descending | 100000 | Merge [V2]     |      2,403,146.7 ns |      47,703.29 ns |      71,400.04 ns |      2,390,000.0 ns |            - |         - |       400568 B |
+ Random     | 100000 | Merge [V2]     |      6,841,593.8 ns |     131,697.14 ns |     129,344.20 ns |      6,784,050.0 ns |            - |         - |       400568 B |
+ SameValue  | 100000 | Merge [V2]     |      2,402,693.8 ns |      45,702.21 ns |      44,885.68 ns |      2,396,550.0 ns |            - |         - |       400568 B |
+ **Ascending**  | **100000** | **Quick (Middle)** |      **5,075,359.4 ns** |     **100,495.01 ns** |     **156,458.62 ns** |      **5,019,500.0 ns** |            **-** |         **-** |     **35255248 B** |
+ Descending | 100000 | Quick (Middle) |      5,049,852.6 ns |      99,803.52 ns |     172,156.17 ns |      4,987,200.0 ns |            - |         - |     35255248 B |
+ Random     | 100000 | Quick (Middle) |     10,101,958.3 ns |     199,852.60 ns |     333,908.80 ns |      9,994,000.0 ns |            - |         - |     48306544 B |
+ SameValue  | 100000 | Quick (Middle) | 17,476,358,353.3 ns |  93,609,405.27 ns |  87,562,295.77 ns | 17,478,878,900.0 ns | 2391000.0000 | 1000.0000 | 119998897600 B |
+ **Ascending**  | **100000** | **Selection**      |  **3,068,018,350.0 ns** |  **33,237,506.92 ns** |  **29,464,184.15 ns** |  **3,073,699,150.0 ns** |            **-** |         **-** |        **16720 B** |
+ Descending | 100000 | Selection      |  3,091,050,146.2 ns |   7,541,808.76 ns |   6,297,751.89 ns |  3,093,437,900.0 ns |            - |         - |        16720 B |
+ Random     | 100000 | Selection      |  2,528,713,692.3 ns |   4,868,160.94 ns |   4,065,134.87 ns |  2,527,510,500.0 ns |            - |         - |        16672 B |
+ SameValue  | 100000 | Selection      |  2,600,599,654.5 ns |  50,803,174.60 ns |  80,579,218.55 ns |  2,574,668,700.0 ns |            - |         - |        16672 B |

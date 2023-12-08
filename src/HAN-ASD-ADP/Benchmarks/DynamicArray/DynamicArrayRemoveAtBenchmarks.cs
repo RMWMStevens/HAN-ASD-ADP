@@ -4,7 +4,7 @@ namespace HAN_ASD_ADP.Benchmarks.DynamicArray;
 
 public class DynamicArrayRemoveAtBenchmarks : SetupDynamicArrayBenchmarks
 {
-    [Params(1, 5, 10)]
+    [Params(5, 50, 5000)]
     public override int Times { get; set; }
 
     [Benchmark]

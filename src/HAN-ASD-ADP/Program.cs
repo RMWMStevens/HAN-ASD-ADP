@@ -4,7 +4,9 @@ using HAN_ASD_ADP.Benchmarks.BinarySearch;
 using HAN_ASD_ADP.Benchmarks.Deque;
 using HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
 using HAN_ASD_ADP.Benchmarks.DynamicArray;
+using HAN_ASD_ADP.Benchmarks.MergeSort;
 using HAN_ASD_ADP.Benchmarks.PriorityQueue;
+using HAN_ASD_ADP.Benchmarks.QuickSort;
 using HAN_ASD_ADP.Benchmarks.Sort;
 using HAN_ASD_ADP.Benchmarks.Stack;
 using System;
@@ -22,6 +24,8 @@ var benchmarks = new List<IBenchmarkSetup>
     //new SetupPriorityQueueBenchmarks(),
     //new SetupBinarySearchBenchmarks(),
     new SetupSortBenchmarks(),
+    new SetupMergeSortBenchmarks(),
+    new SetupQuickSortBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

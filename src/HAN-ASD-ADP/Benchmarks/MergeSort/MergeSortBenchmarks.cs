@@ -1,8 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace HAN_ASD_ADP.Benchmarks.Sort;
+namespace HAN_ASD_ADP.Benchmarks.MergeSort;
 
-public class SortBenchmarks : SetupSortBenchmarks
+public class MergeSortBenchmarks : SetupMergeSortBenchmarks
 {
     [Benchmark]
     public void Ascending() => Algorithm.Sort(ascendingArray);

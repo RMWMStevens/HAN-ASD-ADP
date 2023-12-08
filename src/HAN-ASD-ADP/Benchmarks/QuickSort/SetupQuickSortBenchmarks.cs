@@ -1,12 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
-using HAN_ASD_ADP.Implementations;
+using HAN_ASD_ADP.Benchmarks.Sort;
 using System;
 using System.Collections.Generic;
 
-namespace HAN_ASD_ADP.Benchmarks.Sort;
+namespace HAN_ASD_ADP.Benchmarks.QuickSort;
 
 [MemoryDiagnoser]
-public class SetupSortBenchmarks : BenchmarkSetup
+public class SetupQuickSortBenchmarks : BenchmarkSetup
 {
     protected int[] ascendingArray;
     protected int[] descendingArray;
@@ -21,19 +21,15 @@ public class SetupSortBenchmarks : BenchmarkSetup
 
     public delegate void SortDelegate(int[] array);
 
-    /// <summary>
-    /// Includes the fastest version of each algorithm. The rest is tested separately.
-    /// </summary>
     public static IEnumerable<SortAlgorithm> Algorithms => new SortAlgorithm[]
     {
-        new("Insertion", InsertionSort.Sort),
-        new("Selection", SelectionSort.Sort),
-        new("Merge [V2]", MergeSortV2.Sort),
+        new("Quick (High)", Implementations.QuickSort.SortHigh),
         new("Quick (Middle)", Implementations.QuickSort.SortMiddle),
+        new("Quick (Random)", Implementations.QuickSort.SortRandom),
     };
 
-    public SetupSortBenchmarks()
-        : base(nameof(SetupSortBenchmarks))
+    public SetupQuickSortBenchmarks()
+        : base(nameof(SetupQuickSortBenchmarks))
     { }
 
     [IterationSetup]
