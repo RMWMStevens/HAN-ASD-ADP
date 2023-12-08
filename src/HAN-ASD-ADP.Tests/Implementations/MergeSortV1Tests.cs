@@ -4,7 +4,7 @@ using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations;
 
-public class MergeSortTests
+public class MergeSortV1Tests
 {
     [Fact]
     public void MergeSortIntsTest()
@@ -14,7 +14,7 @@ public class MergeSortTests
         int[] sortedArrayOfInts = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         // Act
-        MergeSort.Sort(arrayOfInts);
+        MergeSortV1.Sort(arrayOfInts);
         bool theSame = true;
         for (int i = 0; i < arrayOfInts.Length; i++)
         {
@@ -36,7 +36,7 @@ public class MergeSortTests
         int[] sortedArrayOfInts = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         // Act
-        MergeSort.SortParallel(arrayOfInts);
+        MergeSortV1.SortParallel(arrayOfInts);
         bool theSame = true;
         for (int i = 0; i < arrayOfInts.Length; i++)
         {
@@ -58,7 +58,7 @@ public class MergeSortTests
         int[] sortedArrayOfInts = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
         // Act
-        MergeSort.SortAsync(arrayOfInts);
+        MergeSortV1.SortAsync(arrayOfInts);
         bool theSame = true;
         for (int i = 0; i < arrayOfInts.Length; i++)
         {
@@ -80,7 +80,7 @@ public class MergeSortTests
         float[] sortedArrayOfFloats = { 7.0f, 7.1f, 7.2f, 7.3f, 7.4f, 7.5f, 7.6f, 7.7f, 7.8f, 7.9f };
 
         // Act
-        MergeSort.Sort(arrayOfFloats);
+        MergeSortV1.Sort(arrayOfFloats);
         bool theSame = true;
         for (int i = 0; i < arrayOfFloats.Length; i++)
         {
@@ -102,7 +102,7 @@ public class MergeSortTests
         char[] sortedArrayOfChars = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
 
         // Act
-        MergeSort.Sort(arrayOfChars);
+        MergeSortV1.Sort(arrayOfChars);
         bool theSame = true;
         for (int i = 0; i < arrayOfChars.Length; i++)
         {
@@ -124,7 +124,7 @@ public class MergeSortTests
         string[] sortedArrayOfStrings = { "AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ" };
 
         // Act
-        MergeSort.Sort(arrayOfStrings);
+        MergeSortV1.Sort(arrayOfStrings);
         bool theSame = true;
         for (int i = 0; i < arrayOfStrings.Length; i++)
         {
@@ -162,7 +162,7 @@ public class MergeSortTests
         sortedArrayOfPigs[4] = pig4;
 
         // Act
-        MergeSort.Sort(arrayOfPigs);
+        MergeSortV1.Sort(arrayOfPigs);
         bool theSame = true;
         for (int i = 0; i < arrayOfPigs.Length; i++)
         {
