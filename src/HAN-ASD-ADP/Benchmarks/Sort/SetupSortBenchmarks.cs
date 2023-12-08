@@ -13,7 +13,7 @@ public class SetupSortBenchmarks : BenchmarkSetup
     protected int[] randomArray;
     protected int[] sameValueArray;
 
-    [Params(3, 100, 10000)]
+    [Params(5, 50, 5000)]
     public virtual int Length { get; set; }
 
     [ParamsSource(nameof(Algorithms))]
@@ -28,6 +28,9 @@ public class SetupSortBenchmarks : BenchmarkSetup
         new("Merge", MergeSort.Sort),
         new("Merge (Parallel)", MergeSort.SortParallel),
         new("Merge (Async)", MergeSort.SortAsync),
+        new("Quick (High)", QuickSort.SortHigh),
+        new("Quick (Middle)", QuickSort.SortMiddle),
+        new("Quick (Random)", QuickSort.SortRandom),
     };
 
     public SetupSortBenchmarks()
