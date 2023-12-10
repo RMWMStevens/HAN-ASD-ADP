@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace HAN_ASD_ADP.Implementations;
 
-public static class MergeSort
+public static class MergeSortV1
 {
     public static void Sort<T>(T[] inputArray) where T : IComparable<T>
     {
@@ -27,8 +27,7 @@ public static class MergeSort
 
         Parallel.Invoke(
             () => SortParallel(leftHalf),
-            () => SortParallel(rightHalf)
-            );
+            () => SortParallel(rightHalf));
 
         Merge(inputArray, leftHalf, rightHalf);
     }
