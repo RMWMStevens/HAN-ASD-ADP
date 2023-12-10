@@ -20,6 +20,20 @@ public class InsertionSortTests
     }
 
     [Fact]
+    public void SortOpenAiUnsortedIntArray()
+    {
+        // Arrange
+        var array = new int[] { 4, 5, 1, 3, 2 };
+        var expected = new int[] { 1, 2, 3, 4, 5 };
+
+        // Act
+        InsertionSort.SortOpenAi(array);
+
+        // Assert
+        Assert.Equal(expected, array);
+    }
+
+    [Fact]
     public void UnsortedStringArray()
     {
         // Arrange

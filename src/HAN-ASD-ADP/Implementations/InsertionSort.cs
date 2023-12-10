@@ -21,4 +21,21 @@ public static class InsertionSort
             array[insertIndex] = itemToInsert;
         }
     }
+
+    public static void SortOpenAi<T>(T[] array) where T : IComparable<T>
+    {
+        for (int index = 1; index < array.Length; index++)
+        {
+            T itemToInsert = array[index];
+            int insertIndex = index - 1;
+
+            while (insertIndex >= 0 && itemToInsert.CompareTo(array[insertIndex]) < 0)
+            {
+                array[insertIndex + 1] = array[insertIndex];
+                insertIndex--;
+            }
+
+            array[insertIndex + 1] = itemToInsert;
+        }
+    }
 }
