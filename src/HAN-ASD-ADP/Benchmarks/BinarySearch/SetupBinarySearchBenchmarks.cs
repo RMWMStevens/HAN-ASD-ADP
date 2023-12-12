@@ -26,7 +26,6 @@ public class SetupBinarySearchBenchmarks : BenchmarkSetup
         {
             intList.Add(i);
         }
-        binarySearch = new BinarySearch<int>();
-        binarySearch.list = intList;
+        binarySearch = new BinarySearch<int>(intList);
     }
 }

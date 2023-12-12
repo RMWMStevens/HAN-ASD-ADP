@@ -130,10 +130,8 @@ public class BinarySearchTests : IAsyncLifetime
 
     private BinarySearch<string> GetListOfNames()
     {
-        BinarySearch<string> binarySearch = new BinarySearch<string>();
-
-        binarySearch.list = new List<string> { "Stef", "Ruud", "Tom", "Kris", "Tim", "Nick", "Otis", "Rosie", "Lola", "Sophie" };
-        binarySearch.list.Sort();
+        var list = new List<string> { "Stef", "Ruud", "Tom", "Kris", "Tim", "Nick", "Otis", "Rosie", "Lola", "Sophie" };
+        BinarySearch<string> binarySearch = new BinarySearch<string>(list);
         return binarySearch;
     }
 

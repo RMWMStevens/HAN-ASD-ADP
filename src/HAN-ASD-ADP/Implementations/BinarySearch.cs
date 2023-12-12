@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HAN_ASD_ADP.Implementations;
 
 public class BinarySearch<T> where T : IComparable<T>
 {
-    public List<T> list { get; set; }
+    private readonly List<T> list;
 
     public BinarySearch()
     {
         list = new List<T>();
+        list.Sort();
+    }
+
+    public BinarySearch(IEnumerable<T> initialList)
+    {
+        list = initialList.ToList();
         list.Sort();
     }
 
@@ -27,7 +34,12 @@ public class BinarySearch<T> where T : IComparable<T>
 
     public int IndexOfLinearSearch(T item)
     {
-        return list.IndexOf(item);
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i].CompareTo(item) == 0)
+                return i;
+        }
+        return -1;
     }
 
     public int IndexOfBinarySearchRecursive(T searchedItem)
@@ -35,7 +47,7 @@ public class BinarySearch<T> where T : IComparable<T>
         return IndexOfBinarySearchRecursive(list, 0, list.Count - 1, searchedItem);
     }
 
-    public int IndexOfBinarySearchRecursive(List<T> sortedList, int left, int right, T searchedItem)
+    private static int IndexOfBinarySearchRecursive(List<T> sortedList, int left, int right, T searchedItem)
     {
         if (right >= left)
         {

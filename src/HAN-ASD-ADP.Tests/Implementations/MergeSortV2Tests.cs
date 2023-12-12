@@ -4,7 +4,7 @@ using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations;
 
-public class MergeSortV2Test
+public class MergeSortV2Tests
 {
     [Fact]
     public void MergeSortIntsTest()
