@@ -11,10 +11,12 @@ namespace HAN_ASD_ADP.Implementations
         public KeyValuePair<TKey, TValue>[] table { get; set; }
         private int tableSize;
         private int inUse = 0;
+        private bool linearProbing;
 
-        public HashTable(int tableSize = 11)
+        public HashTable(bool linearProbing = true, int tableSize = 11)
         {
             SetTableSize(tableSize);
+            this.linearProbing = linearProbing;
             table = new KeyValuePair<TKey, TValue>[tableSize];
         }
 
@@ -29,7 +31,7 @@ namespace HAN_ASD_ADP.Implementations
                 }
                 else
                 {
-                    index = (index + 1) % table.Length;
+                    index = Probe(index);
                 }
             }
             table[index] = new KeyValuePair<TKey, TValue>(key, value);
@@ -50,7 +52,7 @@ namespace HAN_ASD_ADP.Implementations
                     return (table[index], index);
                 }
 
-                index = (index + 1) % table.Length;
+                index = Probe(index);
             }
 
             return default;
@@ -128,6 +130,18 @@ namespace HAN_ASD_ADP.Implementations
         public int Count()
         {
             return inUse;
+        }
+
+        private int Probe(int index)
+        {
+            if (linearProbing)
+            {
+                return (index + 1) % table.Length;
+            }
+            else
+            {
+                return ((index + 1) * (index + 1)) % table.Length;
+            }
         }
     }
 }

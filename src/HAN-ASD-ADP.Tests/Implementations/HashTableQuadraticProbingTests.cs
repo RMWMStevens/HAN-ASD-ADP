@@ -1,19 +1,13 @@
 ﻿using HAN_ASD_ADP.Implementations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace HAN_ASD_ADP.Tests.Implementations
 {
-    public class HashTableTests
+    public class HashTableQuadraticProbingTests
     {
-        HashTable<string, int[]> sut = new HashTable<string, int[]>();
+        HashTable<string, int[]> sut = new HashTable<string, int[]>(false);
 
         [Fact]
         public void BasicOperationsAdd_Test()
@@ -23,7 +17,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             int[] ints = { 1, 2, 3 };
 
             // Act
-            sut.Add(name,ints);
+            sut.Add(name, ints);
 
             // Assert
             Assert.Equal(1, sut.Count());
@@ -54,7 +48,7 @@ namespace HAN_ASD_ADP.Tests.Implementations
             int correctNames = 0;
 
             // Act
-            foreach(string name in names)
+            foreach (string name in names)
             {
                 for (int i = 0; i < sut.table.Length; i++)
                 {
@@ -84,9 +78,10 @@ namespace HAN_ASD_ADP.Tests.Implementations
             // Act
             int index = sut.Get("Tom").index;
 
-            for(int i = 0; i < ints.Length; i++)
+            for (int i = 0; i < ints.Length; i++)
             {
-                if(ints[i] != sut.table[index].Value[i]) {
+                if (ints[i] != sut.table[index].Value[i])
+                {
                     checkValues = false;
                 };
             }
