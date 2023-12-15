@@ -1,4 +1,5 @@
 ﻿using HAN_ASD_ADP.Implementations;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -92,6 +93,79 @@ namespace HAN_ASD_ADP.Tests.Implementations
 
             // Assert
             Assert.True(checkValues);
+        }
+
+        [Fact]
+        public void AddDataSet_Test()
+        {
+            // Act Arrange
+            LoadDataSet();
+
+            // Assert
+            Assert.Equal(27, sut.Count());
+        }
+
+        [Fact]
+        public void CheckValuesOfDataSet_Test()
+        {
+            // Arrange
+            int[] ints = { 4545, 334344, 45454, 6576, -1 };
+            LoadDataSet();
+            bool checkValues = true;
+
+            // Act
+            int index = sut.Get("w").index;
+
+            for (int i = 0; i < ints.Length; i++)
+            {
+                if (ints[i] != sut.table[index].Value[i])
+                {
+                    checkValues = false;
+                };
+            }
+
+            // Assert
+            Assert.True(checkValues);
+        }
+
+        private void LoadDataSet()
+        {
+            string jsonData = @"
+        {
+            ""a"": [0],
+            ""b"": [1],
+            ""c"": [2],
+            ""d"": [3, 4],
+            ""e"": [],
+            ""f"": [],
+            ""g"": [],
+            ""h"": [],
+            ""i"": [],
+            ""j"": [2],
+            ""k"": [2],
+            ""l"": [2],
+            ""m"": [2],
+            ""n"": [2],
+            ""o"": [2],
+            ""p"": [4545],
+            ""q"": [4545],
+            ""r"": [4545],
+            ""s"": [4545],
+            ""t"": [4545],
+            ""u"": [4545, 4233],
+            ""v"": [4545],
+            ""w"": [4545, 334344, 45454, 6576, -1],
+            ""x"": [4545],
+            ""y"": [4545],
+            ""z"": [4545],
+            ""z0"": [99]
+        }";
+            var keyValuePairs = JsonConvert.DeserializeObject<Dictionary<string, int[]>>(jsonData);
+            foreach (var kvp in keyValuePairs)
+            {
+                sut.Add(kvp.Key, kvp.Value);
+            }
+
         }
     }
 }
