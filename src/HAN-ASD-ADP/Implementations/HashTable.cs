@@ -8,7 +8,7 @@ namespace HAN_ASD_ADP.Implementations
     public class HashTable<TKey, TValue>
     {
         private readonly int[] sizes = { 11, 23, 47, 97, 199, 401, 809, 1619, 3251, 6521, 13049, 26099, 104459, 208927 };
-        private KeyValuePair<TKey, TValue>[] table;
+        public KeyValuePair<TKey, TValue>[] table { get; set; }
         private int tableSize;
         private int inUse = 0;
 
@@ -59,6 +59,7 @@ namespace HAN_ASD_ADP.Implementations
         public void Remove(TKey key)
         {
             table[Get(key).index] = default;
+            inUse--;
         }
 
         private int GetNextTableSize()
@@ -122,6 +123,11 @@ namespace HAN_ASD_ADP.Implementations
             {
                 throw new ArgumentException("TableSize must be among the prime numbers of sizes[]");
             }
+        }
+
+        public int Count()
+        {
+            return inUse;
         }
     }
 }
