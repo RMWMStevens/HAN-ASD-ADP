@@ -14,17 +14,20 @@ public static class QuickSort
         where T : IComparable
         => Sort(array, 0, array.Length - 1, PivotStrategy.Middle);
 
+    public static void SortMedian<T>(T[] array)
+        where T : IComparable
+        => Sort(array, 0, array.Length - 1, PivotStrategy.Median);
+
     public static void SortRandom<T>(T[] array)
         where T : IComparable
         => Sort(array, 0, array.Length - 1, PivotStrategy.Random);
 
-    private static void Sort<T>(T[] array, int low, int high, PivotStrategy pivotStrategy)
-    where T : IComparable
+    private static void Sort<T>(T[] array, int low, int high, PivotStrategy pivotStrategy) where T : IComparable
     {
         if (low >= high)
             return;
 
-        int pivotIndex = ChoosePivotIndexForStrategy(low, high, pivotStrategy);
+        int pivotIndex = ChoosePivotIndexForStrategy(low, high, pivotStrategy, array);
         pivotIndex = PartitionIndex(array, low, high, pivotIndex);
         Sort(array, low, pivotIndex - 1, pivotStrategy);
         Sort(array, pivotIndex + 1, high, pivotStrategy);
@@ -57,7 +60,7 @@ public static class QuickSort
         array[j] = temp;
     }
 
-    private static int ChoosePivotIndexForStrategy(int low, int high, PivotStrategy pivotStrategy)
+    private static int ChoosePivotIndexForStrategy<T>(int low, int high, PivotStrategy pivotStrategy, T[] array) where T : IComparable
     {
         switch (pivotStrategy)
         {
@@ -65,8 +68,23 @@ public static class QuickSort
                 return low + (high - low) / 2;
             case PivotStrategy.Random:
                 return random.Next(low, high + 1);
+            case PivotStrategy.Median:
+                return MedianOfThree(array, low, high);
             default:
                 return high;
+        }
+    }
+
+    private static int MedianOfThree<T>(T[] array, int low, int high) where T : IComparable
+    {
+        int mid = low + (high - low) / 2;
+        if ((array[low].CompareTo(array[mid])) < 0)
+        {
+            return     (array[mid].CompareTo(array[high]) < 0 ? mid : ((array[low].CompareTo(array[high])) < 0 ? high : low));
+        }
+        else
+        {
+            return     (array[high].CompareTo(array[mid]) < 0 ? mid : ((array[high].CompareTo(array[low])) < 0 ? high : low));
         }
     }
 }
@@ -76,4 +94,5 @@ public enum PivotStrategy
     High,
     Middle,
     Random,
+    Median,
 }

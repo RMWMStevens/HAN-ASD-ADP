@@ -48,6 +48,20 @@ public class QuickSortTests
     }
 
     [Fact]
+    public void UnsortedIntArray_Median()
+    {
+        // Arrange
+        var array = new int[] { 4, 5, 1, 3, 2 };
+        var expected = new int[] { 1, 2, 3, 4, 5 };
+
+        // Act
+        QuickSort.SortMedian(array);
+
+        // Assert
+        Assert.Equal(expected, array);
+    }
+
+    [Fact]
     public void UnsortedStringArray_High()
     {
         // Arrange
@@ -56,6 +70,20 @@ public class QuickSortTests
 
         // Act
         QuickSort.SortHigh(array);
+
+        // Assert
+        Assert.Equal(expected, array);
+    }
+
+    [Fact]
+    public void UnsortedStringArray_Median()
+    {
+        // Arrange
+        var array = new string[] { "charlie", "alpha", "echo", "bravo", "delta" };
+        var expected = new string[] { "alpha", "bravo", "charlie", "delta", "echo" };
+
+        // Act
+        QuickSort.SortMedian(array);
 
         // Assert
         Assert.Equal(expected, array);
@@ -140,6 +168,20 @@ public class QuickSortTests
 
         // Act
         QuickSort.SortHigh(array);
+
+        // Assert
+        Assert.Equal(expected, array);
+    }
+
+    [Fact]
+    public void SameValueStringArray_Median()
+    {
+        // Arrange
+        var array = new string[] { "alpha", "alpha", "alpha", "alpha", "alpha" };
+        var expected = new string[] { "alpha", "alpha", "alpha", "alpha", "alpha" };
+
+        // Act
+        QuickSort.SortMedian(array);
 
         // Assert
         Assert.Equal(expected, array);

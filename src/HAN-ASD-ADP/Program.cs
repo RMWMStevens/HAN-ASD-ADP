@@ -23,9 +23,9 @@ var benchmarks = new List<IBenchmarkSetup>
     //new SetupDequeBenchmarks(),
     //new SetupPriorityQueueBenchmarks(),
     //new SetupBinarySearchBenchmarks(),
-    new SetupSortBenchmarks(),
+    //new SetupSortBenchmarks(),
     //new SetupMergeSortBenchmarks(),
-    //new SetupQuickSortBenchmarks(),
+    new SetupQuickSortBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

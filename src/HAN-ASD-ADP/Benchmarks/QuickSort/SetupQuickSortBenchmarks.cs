@@ -25,6 +25,7 @@ public class SetupQuickSortBenchmarks : BenchmarkSetup
     {
         new("Quick (High)", Implementations.QuickSort.SortHigh),
         new("Quick (Middle)", Implementations.QuickSort.SortMiddle),
+        new("Quick (Median)", Implementations.QuickSort.SortMedian),
         new("Quick (Random)", Implementations.QuickSort.SortRandom),
     };
 
