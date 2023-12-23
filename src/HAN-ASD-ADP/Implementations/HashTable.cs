@@ -64,6 +64,12 @@ namespace HAN_ASD_ADP.Implementations
             inUse--;
         }
 
+        public void Update(TKey key, TValue value)
+        {
+            table[Get(key).index] = new KeyValuePair<TKey, TValue>(key, value);
+
+        }
+
         private int GetNextTableSize()
         {
             for (int i = 0; i < sizes.Length - 1; i++)

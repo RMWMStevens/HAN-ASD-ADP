@@ -91,6 +91,34 @@ namespace HAN_ASD_ADP.Tests.Implementations
         }
 
         [Fact]
+        public void BasicOperationsUpdateCheckValues_Test()
+        {
+            // Arrange
+            string name = "Tom";
+            int[] ints = { -9, 15, 1779, -983 };
+            bool checkValues = true;
+            sut.Add(name, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            sut.Add("Ruud", new int[] { });
+            sut.Add("Stef", new int[] { 1, 1, 0 });
+            sut.Add("Kris", new int[] { -1, 2, 3, 12, 668 });
+
+            // Act
+            sut.Update("Tom", ints);
+            int index = sut.Get("Tom").index;
+
+            for (int i = 0; i < ints.Length; i++)
+            {
+                if (ints[i] != sut.table[index].Value[i])
+                {
+                    checkValues = false;
+                };
+            }
+
+            // Assert
+            Assert.True(checkValues);
+        }
+
+        [Fact]
         public void AddDataSet_Test()
         {
             // Act Arrange
