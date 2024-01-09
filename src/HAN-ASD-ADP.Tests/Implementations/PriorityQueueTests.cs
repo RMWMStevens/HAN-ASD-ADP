@@ -17,7 +17,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void BasicOperations_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
         var value1 = 1;
         var value2 = 2;
         var value3 = 3;
@@ -38,7 +38,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void LijstAflopend2_Add_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
 
         // Act
         foreach (var value in dataset.LijstAflopend2)
@@ -51,7 +51,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void LijstGesorteerdAflopend3_DeleteMin_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
         foreach (var value in dataset.LijstGesorteerdAflopend3)
         {
             queue.Add(value);
@@ -67,7 +67,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void LijstGesorteerdOplopend3_DeleteMin_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
         foreach (var value in dataset.LijstWillekeurig3)
         {
             queue.Add(value);
@@ -83,7 +83,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void LijstWillekeurig10000_DeleteMin_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
         foreach (var value in dataset.LijstWillekeurig10000)
         {
             queue.Add(value);
@@ -100,7 +100,7 @@ public class PriorityQueueTests : IAsyncLifetime
     public void LijstAflopend2_InvalidOperationException_Test()
     {
         // Arrange
-        var queue = new PriorityQueue<int>();
+        var queue = new PriorityQueueOld<int>();
         foreach (var value in dataset.LijstAflopend2)
         {
             queue.Add(value);
