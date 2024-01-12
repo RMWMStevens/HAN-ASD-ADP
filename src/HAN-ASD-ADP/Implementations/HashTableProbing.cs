@@ -160,7 +160,7 @@ public class HashTableProbing<TKey, TValue>
     {
         if (!sizes.Contains(value))
             throw new KeyNotFoundException("TableSize must be among the prime numbers of sizes[]");
-        
+
         tableSize = value;
     }
 

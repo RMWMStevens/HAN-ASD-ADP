@@ -80,11 +80,11 @@ public static class QuickSort
         int mid = low + (high - low) / 2;
         if ((array[low].CompareTo(array[mid])) < 0)
         {
-            return     (array[mid].CompareTo(array[high]) < 0 ? mid : ((array[low].CompareTo(array[high])) < 0 ? high : low));
+            return (array[mid].CompareTo(array[high]) < 0 ? mid : ((array[low].CompareTo(array[high])) < 0 ? high : low));
         }
         else
         {
-            return     (array[high].CompareTo(array[mid]) < 0 ? mid : ((array[high].CompareTo(array[low])) < 0 ? high : low));
+            return (array[high].CompareTo(array[mid]) < 0 ? mid : ((array[high].CompareTo(array[low])) < 0 ? high : low));
         }
     }
 }

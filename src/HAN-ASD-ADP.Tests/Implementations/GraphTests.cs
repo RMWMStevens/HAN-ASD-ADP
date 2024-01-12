@@ -1,5 +1,6 @@
 ﻿using HAN_ASD_ADP.Datasets;
 using HAN_ASD_ADP.Implementations;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -130,6 +131,36 @@ public class GraphTests : IAsyncLifetime
         Assert.True(graph.HasEdge("1", "4", 50));
         Assert.True(graph.HasEdge("2", "3", 99));
         Assert.True(graph.HasEdge("3", "4", 75));
+    }
+
+    [Fact]
+    public void FindShortestPathUnweighted_Test()
+    {
+        // Arrange
+        var graph = new Graph();
+        graph.LoadLijnlijst(dataset.Lijnlijst);
+        var expectedPath = new List<string> { "0", "1", "3" };
+
+        // Act
+        var shortestPath = graph.FindShortestPathUnweighted("0", "3");
+
+        // Assert
+        Assert.Equal(expectedPath, shortestPath);
+    }
+
+    [Fact]
+    public void FindShortestPathDijkstra_Test()
+    {
+        // Arrange
+        var graph = new Graph();
+        graph.LoadLijnlijst(dataset.LijnlijstGewogen);
+        var expectedPath = new List<string> { "0", "1", "4" };
+
+        // Act
+        var shortestPath = graph.FindShortestPathDijkstra("0", "4");
+
+        // Assert
+        Assert.Equal(expectedPath, shortestPath);
     }
 
     public Task DisposeAsync() => Task.CompletedTask;
