@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 using HAN_ASD_ADP.Benchmarks;
-using HAN_ASD_ADP.Benchmarks.Sort;
+using HAN_ASD_ADP.Benchmarks.Graph;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,9 +15,11 @@ var benchmarks = new List<IBenchmarkSetup>
     //new SetupDequeBenchmarks(),
     //new SetupPriorityQueueBenchmarks(),
     //new SetupBinarySearchBenchmarks(),
-    new SetupSortBenchmarks(),
+    //new SetupSortBenchmarks(),
     //new SetupMergeSortBenchmarks(),
     //new SetupQuickSortBenchmarks(),
+    //new SetupAvlSearchTreeBenchmarks(),
+    new SetupGraphBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

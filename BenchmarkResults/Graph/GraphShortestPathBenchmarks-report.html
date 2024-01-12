@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>HAN_ASD_ADP.Benchmarks.Graph.GraphShortestPathBenchmarks-20240112-204808</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.3007/23H2/2023Update/SunValley3)
+AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 8.0.101
+  [Host]     : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-TLKJGH : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>InvocationCount=1  UnrollFactor=1  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Find_0_1</td><td>1.919 &mu;s</td><td>0.0959 &mu;s</td><td>0.2737 &mu;s</td><td>1.800 &mu;s</td><td>1.34 KB</td>
+</tr><tr><td>Find_0_2</td><td>1.826 &mu;s</td><td>0.0478 &mu;s</td><td>0.1340 &mu;s</td><td>1.800 &mu;s</td><td>1.34 KB</td>
+</tr><tr><td>Find_0_3</td><td>1.789 &mu;s</td><td>0.0483 &mu;s</td><td>0.1362 &mu;s</td><td>1.800 &mu;s</td><td>1.34 KB</td>
+</tr><tr><td>Find_0_4</td><td>1.777 &mu;s</td><td>0.0552 &mu;s</td><td>0.1522 &mu;s</td><td>1.700 &mu;s</td><td>1.34 KB</td>
+</tr><tr><td>Find_0_5</td><td>2.561 &mu;s</td><td>0.1769 &mu;s</td><td>0.5161 &mu;s</td><td>2.450 &mu;s</td><td>1.34 KB</td>
+</tr><tr><td>Find_0_6</td><td>2.053 &mu;s</td><td>0.0986 &mu;s</td><td>0.2766 &mu;s</td><td>2.000 &mu;s</td><td>1.43 KB</td>
+</tr></tbody></table>
+</body>
+</html>
