@@ -5,7 +5,7 @@ namespace HAN_ASD_ADP.Benchmarks.Graph;
 public class GraphLoadBenchmarks : SetupGraphBenchmarks
 {
     [Benchmark]
-    public void LoadLijnlijst()=> emptyGraph.LoadLijnlijst(dataset.Lijnlijst);
+    public void LoadLijnlijst() => emptyGraph.LoadLijnlijst(dataset.Lijnlijst);
 
     [Benchmark]
     public void LoadVerbindingslijst() => emptyGraph.LoadVerbindingslijst(dataset.Verbindingslijst);

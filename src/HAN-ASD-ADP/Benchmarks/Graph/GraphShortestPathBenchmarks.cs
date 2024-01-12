@@ -5,7 +5,7 @@ namespace HAN_ASD_ADP.Benchmarks.Graph;
 public class GraphShortestPathBenchmarks : SetupGraphBenchmarks
 {
     [Benchmark]
-    public void Find_0_1()=> graph.FindShortestPathUnweighted("0", "1");
+    public void Find_0_1() => graph.FindShortestPathUnweighted("0", "1");
 
     [Benchmark]
     public void Find_0_2() => graph.FindShortestPathUnweighted("0", "2");

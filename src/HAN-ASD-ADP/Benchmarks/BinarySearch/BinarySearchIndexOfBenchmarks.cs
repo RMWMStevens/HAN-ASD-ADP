@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using HAN_ASD_ADP.Benchmarks.AvlSearchTree;
 
 namespace HAN_ASD_ADP.Benchmarks.BinarySearch;
 

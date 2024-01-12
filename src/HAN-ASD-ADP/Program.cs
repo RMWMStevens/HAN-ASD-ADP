@@ -1,6 +1,17 @@
 ﻿using BenchmarkDotNet.Running;
 using HAN_ASD_ADP.Benchmarks;
+using HAN_ASD_ADP.Benchmarks.AvlSearchTree;
+using HAN_ASD_ADP.Benchmarks.BinarySearch;
+using HAN_ASD_ADP.Benchmarks.Deque;
+using HAN_ASD_ADP.Benchmarks.DoublyLinkedList;
+using HAN_ASD_ADP.Benchmarks.DynamicArray;
 using HAN_ASD_ADP.Benchmarks.Graph;
+using HAN_ASD_ADP.Benchmarks.HashTable;
+using HAN_ASD_ADP.Benchmarks.MergeSort;
+using HAN_ASD_ADP.Benchmarks.PriorityQueue;
+using HAN_ASD_ADP.Benchmarks.QuickSort;
+using HAN_ASD_ADP.Benchmarks.Sort;
+using HAN_ASD_ADP.Benchmarks.Stack;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +30,8 @@ var benchmarks = new List<IBenchmarkSetup>
     //new SetupMergeSortBenchmarks(),
     //new SetupQuickSortBenchmarks(),
     //new SetupAvlSearchTreeBenchmarks(),
-    new SetupGraphBenchmarks(),
+    //new SetupGraphBenchmarks(),
+    new SetupHashTableBenchmarks(),
 }.SelectMany(_ => _.GetBenchmarks());
 
 Console.WriteLine("Starting benchmarks.");

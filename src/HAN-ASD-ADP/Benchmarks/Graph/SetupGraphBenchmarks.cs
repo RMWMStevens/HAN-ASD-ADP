@@ -1,6 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
 using HAN_ASD_ADP.Datasets;
-using System.Threading.Tasks;
 
 namespace HAN_ASD_ADP.Benchmarks.Graph;
 
