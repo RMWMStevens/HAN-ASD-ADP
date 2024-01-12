@@ -1,105 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HAN_ASD_ADP.Implementations;
 
 public class Graph
 {
-    private Dictionary<string, Vertex> VertexMap = new();
+    public int VertexCount => VertexMap.Count;
 
-    public Graph(int[,] lineList)
+    private readonly Dictionary<string, Vertex> VertexMap = new();
+    private const int DefaultWeight = 1;
+
+    #region Loaders
+    public void LoadLijnlijst(int[][] edges)
     {
-        for (int i = 0; i < lineList.GetLength(0); i++)
+        foreach (var edge in edges)
         {
-            AddVertex(lineList[i, 0].ToString());
-            AddVertex(lineList[i, 1].ToString());
-        }
-
-        for (int i = 0; i < lineList.GetLength(0); i++)
-        {
-            int source = lineList[i, 0];
-            int dest = lineList[i, 1];
-            double cost = lineList[i, 2];
-            AddEdge(source.ToString(), dest.ToString(), cost);
+            TryAddVertex(edge[0].ToString());
+            TryAddVertex(edge[1].ToString());
+            AddEdge(edge[0].ToString(), edge[1].ToString(), DefaultWeight);
         }
     }
 
-    public Graph(int[][][] connectionList)
+    public void LoadVerbindingslijst(int[][] list)
     {
-        for (int i = 0; i < connectionList.GetLength(0); i++)
+        for (int i = 0; i < list.Length; i++)
         {
-            AddVertex(i.ToString());
-        }
-
-        for (int i = 0; i < connectionList.GetLength(0); i++)
-        {
-            for (int j = 0; j < connectionList[i].GetLength(0); j++)
+            TryAddVertex(i.ToString());
+            foreach (int neighbor in list[i])
             {
-                int source = i;
-                int dest = connectionList[i][j][0];
-                double cost = connectionList[i][j][1];
-
-                AddEdge(source.ToString(), dest.ToString(), cost);
+                TryAddVertex(neighbor.ToString());
+                AddEdge(i.ToString(), neighbor.ToString(), DefaultWeight);
             }
         }
-
     }
 
-    public Graph(int[][,] jaggedList)
+    public void LoadVerbindingsmatrix(int[][] matrix)
     {
-        for (int i = 0; i < jaggedList.GetLength(0); i++)
+        for (int i = 0; i < matrix.Length; i++)
         {
-            AddVertex(i.ToString());
-        }
-
-        for (int i = 0; i < jaggedList.Length; i++)
-        {
-            for (int j = 0; j < jaggedList[i].GetLength(0); j++)
+            TryAddVertex(i.ToString());
+            for (int j = 0; j < matrix[i].Length; j++)
             {
-                if (jaggedList[i].GetLength(1) > 0)
+                if (matrix[i][j] != 0)
                 {
-                    int source = i;
-                    int dest = jaggedList[i][j, 0];
-                    double cost = jaggedList[i][j, 1];
-                    AddEdge(source.ToString(), dest.ToString(), cost);
-                }
-            }
-        }
-
-    }
-
-    public Graph(int[][] connectionMatrix)
-    {
-        for (int i = 0; i < connectionMatrix.Length; i++)
-        {
-            AddVertex(i.ToString());
-        }
-
-        for (int i = 0; i < connectionMatrix.Length; i++)
-        {
-            for (int j = 0; j < connectionMatrix[i].Length; j++)
-            {
-                if (connectionMatrix[i][j] != 0)
-                {
-                    int source = i;
-                    int dest = j;
-                    double cost = connectionMatrix[i][j];
-                    AddEdge(source.ToString(), dest.ToString(), cost);
+                    TryAddVertex(j.ToString());
+                    AddEdge(i.ToString(), j.ToString(), DefaultWeight);
                 }
             }
         }
     }
 
-    public void AddVertex(string vertexName)
+    public void LoadLijnlijstGewogen(int[][] edges)
     {
-        if (VertexMap.ContainsKey(vertexName))
-            throw new ArgumentException("A vertex with this name already exists.");
-        
-        Vertex newVertex = new Vertex(vertexName);
-        VertexMap.Add(vertexName, newVertex);
+        foreach (var edge in edges)
+        {
+            TryAddVertex(edge[0].ToString());
+            TryAddVertex(edge[1].ToString());
+            AddEdge(edge[0].ToString(), edge[1].ToString(), edge[2]);
+        }
     }
 
-    public void AddEdge(string sourceVertexName, string destVertexName, double cost)
+    public void LoadVerbindingslijstGewogen(int[][][] list)
+    {
+        for (int i = 0; i < list.Length; i++)
+        {
+            TryAddVertex(i.ToString());
+            foreach (var neighbor in list[i])
+            {
+                TryAddVertex(neighbor[0].ToString());
+                AddEdge(i.ToString(), neighbor[0].ToString(), neighbor[1]);
+            }
+        }
+    }
+
+    public void LoadVerbindingsmatrixGewogen(int[][] matrix)
+    {
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            TryAddVertex(i.ToString());
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                if (matrix[i][j] != 0)
+                {
+                    TryAddVertex(j.ToString());
+                    AddEdge(i.ToString(), j.ToString(), matrix[i][j]);
+                }
+            }
+        }
+    }
+    #endregion Loaders
+
+    public bool TryAddVertex(string vertexName)
+    {
+        if (!VertexMap.ContainsKey(vertexName))
+        {
+            Vertex newVertex = new Vertex(vertexName);
+            VertexMap.Add(vertexName, newVertex);
+            return true;
+        }
+        return false;
+    }
+
+    public void AddEdge(string sourceVertexName, string destVertexName, double weight)
     {
         if (!VertexMap.ContainsKey(sourceVertexName) || !VertexMap.ContainsKey(destVertexName))
             throw new ArgumentException("The provided vertices are invalid.");
@@ -107,45 +110,108 @@ public class Graph
         Vertex sourceVertex = VertexMap[sourceVertexName];
         Vertex destVertex = VertexMap[destVertexName];
 
-        sourceVertex.AddEdge(destVertex, cost);
+        sourceVertex.AddEdge(destVertex, weight);
     }
 
-    public Dictionary<Vertex, double> DijkstraShortestPath(string startVertexName)
+    public bool HasEdge(string sourceVertexName, string destVertexName, double weight = DefaultWeight)
     {
-        Dictionary<Vertex, double> distance = new Dictionary<Vertex, double>();
-        Dictionary<Vertex, Vertex> previousVertex = new Dictionary<Vertex, Vertex>();
-        PriorityQueue<Vertex> priorityQueue = new PriorityQueue<Vertex>();
+        if (!VertexMap.ContainsKey(sourceVertexName) || !VertexMap.ContainsKey(destVertexName))
+            return false;
 
-        foreach (var vertex in VertexMap.Values)
+        Vertex sourceVertex = VertexMap[sourceVertexName];
+        Edge adjacentEdge = sourceVertex.AdjacentEdges.FirstOrDefault(edge => edge.Destination.Name == destVertexName);
+        return adjacentEdge is not null && adjacentEdge.Weight == weight;
+    }
+
+    public List<string> FindShortestPathUnweighted(string startVertexName, string endVertexName)
+    {
+        if (!VertexMap.ContainsKey(startVertexName) || !VertexMap.ContainsKey(endVertexName))
+            throw new ArgumentException("Start or end vertex not found.");
+
+        ResetVertices();
+
+        Queue<Vertex> queue = new();
+        Vertex startVertex = VertexMap[startVertexName];
+        startVertex.Distance = 0;
+        queue.Enqueue(startVertex);
+
+        while (queue.Count > 0)
         {
-            distance[vertex] = double.PositiveInfinity;
-            previousVertex[vertex] = null;
-            priorityQueue.Enqueue(vertex, distance[vertex]);
+            Vertex currentVertex = queue.Dequeue();
+            foreach (Edge edge in currentVertex.AdjacentEdges)
+            {
+                Vertex adjacentVertex = edge.Destination;
+                if (adjacentVertex.Distance == double.PositiveInfinity)
+                {
+                    adjacentVertex.Distance = currentVertex.Distance + 1;
+                    adjacentVertex.PreviousVertexOnShortestPath = currentVertex;
+                    queue.Enqueue(adjacentVertex);
+                }
+            }
         }
 
+        return BuildPath(VertexMap[endVertexName]);
+    }
+
+    public List<string> FindShortestPathDijkstra(string startVertexName, string endVertexName)
+    {
+        if (!VertexMap.ContainsKey(startVertexName) || !VertexMap.ContainsKey(endVertexName))
+            throw new ArgumentException("Start or end vertex not found.");
+
+        var priorityQueue = new PriorityQueue<Vertex, double>();
+        ResetVertices();
+
         Vertex startVertex = VertexMap[startVertexName];
-        distance[startVertex] = 0;
+        startVertex.Distance = 0;
+        priorityQueue.Enqueue(startVertex, startVertex.Distance);
 
         while (priorityQueue.Count > 0)
         {
             Vertex currentVertex = priorityQueue.Dequeue();
 
+            if (currentVertex.Name == endVertexName)
+                break;
+
             foreach (Edge edge in currentVertex.AdjacentEdges)
             {
-                double newDistance = distance[currentVertex] + edge.Cost;
+                Vertex adjacentVertex = edge.Destination;
+                double weightedDistance = currentVertex.Distance + edge.Weight;
 
-                if (newDistance < distance[edge.Destination])
+                if (weightedDistance < adjacentVertex.Distance)
                 {
-                    distance[edge.Destination] = newDistance;
-                    previousVertex[edge.Destination] = currentVertex;
-                    priorityQueue.Enqueue(edge.Destination, newDistance);
+                    adjacentVertex.Distance = weightedDistance;
+                    adjacentVertex.PreviousVertexOnShortestPath = currentVertex;
+                    priorityQueue.Enqueue(adjacentVertex, adjacentVertex.Distance);
                 }
             }
         }
 
-        return distance;
+        return BuildPath(VertexMap[endVertexName]);
     }
 
+    private void ResetVertices()
+    {
+        foreach (var vertex in VertexMap.Values)
+        {
+            vertex.Distance = double.PositiveInfinity;
+            vertex.PreviousVertexOnShortestPath = null;
+        }
+    }
+
+    private static List<string> BuildPath(Vertex endVertex)
+    {
+        List<string> path = new();
+        while (endVertex != null)
+        {
+            path.Add(endVertex.Name);
+            endVertex = endVertex.PreviousVertexOnShortestPath;
+        }
+
+        path.Reverse();
+        return path;
+    }
+
+    #region Prints
     public void PrintGraph()
     {
         foreach (var vertexEntry in VertexMap)
@@ -155,7 +221,7 @@ public class Graph
 
             foreach (var edge in vertex.AdjacentEdges)
             {
-                Console.Write($"({edge.Destination.Name}, {edge.Cost}) ");
+                Console.Write($"({edge.Destination.Name}, {edge.Weight}) ");
             }
 
             Console.WriteLine();
@@ -189,7 +255,7 @@ public class Graph
             Vertex vertex = vertexEntry.Value;
             foreach (var edge in vertex.AdjacentEdges)
             {
-                display += $"  [{vertex.Name}, {edge.Destination.Name}, {edge.Cost}], \n";
+                display += $"  [{vertex.Name}, {edge.Destination.Name}, {edge.Weight}], \n";
             }
         }
         display = display.Remove(display.LastIndexOf(","));
@@ -214,7 +280,7 @@ public class Graph
                 {
                     comma = ",";
                 }
-                display += $"    [{edge.Destination.Name}, {edge.Cost}]{comma} \n";
+                display += $"    [{edge.Destination.Name}, {edge.Weight}]{comma} \n";
             }
             display += "  ],";
         }
@@ -240,7 +306,7 @@ public class Graph
             Vertex vertex = vertexEntry.Value;
             foreach (var edge in vertex.AdjacentEdges)
             {
-                matrix[int.Parse(vertex.Name), int.Parse(edge.Destination.Name)] = edge.Cost;
+                matrix[int.Parse(vertex.Name), int.Parse(edge.Destination.Name)] = edge.Weight;
             }
         }
 
@@ -267,6 +333,7 @@ public class Graph
         display += "\n]";
         Console.WriteLine(display);
     }
+    #endregion Prints
 }
 
 public class Vertex
@@ -275,20 +342,21 @@ public class Vertex
 
     public LinkedList<Edge> AdjacentEdges { get; }
 
-    private double cost;
-    private Vertex previousVertexOnShortestPath;
+    public double Distance { get; set; }
 
-    public Vertex(String name)
+    public Vertex PreviousVertexOnShortestPath { get; set; }
+
+    public Vertex(string name)
     {
-        this.Name = name;
-        this.AdjacentEdges = new LinkedList<Edge>();
-        this.previousVertexOnShortestPath = null;
-        this.cost = double.PositiveInfinity;
+        Name = name;
+        AdjacentEdges = new LinkedList<Edge>();
+        Distance = double.PositiveInfinity;
+        PreviousVertexOnShortestPath = null;
     }
 
-    public void AddEdge(Vertex dest, double cost)
+    public void AddEdge(Vertex dest, double weight)
     {
-        Edge newEdge = new Edge(dest, cost);
+        Edge newEdge = new(dest, weight);
         AdjacentEdges.AddLast(newEdge);
     }
 }
@@ -296,12 +364,13 @@ public class Vertex
 public class Edge
 {
     public Vertex Destination { get; }
-    public double Cost { get; }
 
-    public Edge(Vertex dest, double cost)
+    public double Weight { get; }
+
+    public Edge(Vertex dest, double weight)
     {
         Destination = dest;
-        Cost = cost;
+        Weight = weight;
     }
 }
 

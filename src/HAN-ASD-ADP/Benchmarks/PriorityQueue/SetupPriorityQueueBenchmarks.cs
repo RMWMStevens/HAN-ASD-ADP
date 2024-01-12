@@ -7,7 +7,7 @@ namespace HAN_ASD_ADP.Benchmarks.PriorityQueue;
 [MemoryDiagnoser]
 public class SetupPriorityQueueBenchmarks : BenchmarkSetup
 {
-    protected PriorityQueueOld<int> queue;
+    protected PriorityQueue<int> queue;
 
     [Params(100, 10000)]
     public virtual int Length { get; set; }
