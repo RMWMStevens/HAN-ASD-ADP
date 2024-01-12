@@ -1,279 +1,307 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HAN_ASD_ADP.Implementations
+namespace HAN_ASD_ADP.Implementations;
+
+public class Graph
 {
-    public class Graph
+    private Dictionary<string, Vertex> VertexMap = new();
+
+    public Graph(int[,] lineList)
     {
-        public Dictionary<string, Vertex> vertexMap = new Dictionary<string, Vertex>();
-
-        public void FillGraph(int[,] lineList)
+        for (int i = 0; i < lineList.GetLength(0); i++)
         {
-            for (int i = 0; i < lineList.GetLength(0); i++)
-            {
-                AddVertex(lineList[i, 0].ToString());
-                AddVertex(lineList[i, 1].ToString());
-            }
+            AddVertex(lineList[i, 0].ToString());
+            AddVertex(lineList[i, 1].ToString());
+        }
 
-            for (int i = 0; i < lineList.GetLength(0); i++)
+        for (int i = 0; i < lineList.GetLength(0); i++)
+        {
+            int source = lineList[i, 0];
+            int dest = lineList[i, 1];
+            double cost = lineList[i, 2];
+            AddEdge(source.ToString(), dest.ToString(), cost);
+        }
+    }
+
+    public Graph(int[][][] connectionList)
+    {
+        for (int i = 0; i < connectionList.GetLength(0); i++)
+        {
+            AddVertex(i.ToString());
+        }
+
+        for (int i = 0; i < connectionList.GetLength(0); i++)
+        {
+            for (int j = 0; j < connectionList[i].GetLength(0); j++)
             {
-                int source = lineList[i, 0];
-                int dest = lineList[i, 1];
-                double cost = lineList[i, 2];
+                int source = i;
+                int dest = connectionList[i][j][0];
+                double cost = connectionList[i][j][1];
+
                 AddEdge(source.ToString(), dest.ToString(), cost);
             }
         }
 
-        public void FillGraph(int[][][] connectionList)
-        {
-            for (int i = 0; i < connectionList.GetLength(0); i++)
-            {
-                AddVertex(i.ToString());
-            }
+    }
 
-            for (int i = 0; i < connectionList.GetLength(0); i++)
+    public Graph(int[][,] jaggedList)
+    {
+        for (int i = 0; i < jaggedList.GetLength(0); i++)
+        {
+            AddVertex(i.ToString());
+        }
+
+        for (int i = 0; i < jaggedList.Length; i++)
+        {
+            for (int j = 0; j < jaggedList[i].GetLength(0); j++)
             {
-                for (int j = 0; j < connectionList[i].GetLength(0); j++)
+                if (jaggedList[i].GetLength(1) > 0)
                 {
                     int source = i;
-                    int dest = connectionList[i][j][0];
-                    double cost = connectionList[i][j][1];
-
+                    int dest = jaggedList[i][j, 0];
+                    double cost = jaggedList[i][j, 1];
                     AddEdge(source.ToString(), dest.ToString(), cost);
                 }
             }
-
         }
 
-        public void FillGraph(int[][,] jaggedList)
+    }
+
+    public Graph(int[][] connectionMatrix)
+    {
+        for (int i = 0; i < connectionMatrix.Length; i++)
         {
-            for (int i = 0; i < jaggedList.GetLength(0); i++)
-            {
-                AddVertex(i.ToString());
-            }
-
-            for (int i = 0; i < jaggedList.Length; i++)
-            {
-                for (int j = 0; j < jaggedList[i].GetLength(0); j++)
-                {
-                    if (jaggedList[i].GetLength(1) > 0)
-                    {
-                        int source = i;
-                        int dest = jaggedList[i][j, 0];
-                        double cost = jaggedList[i][j, 1];
-                        AddEdge(source.ToString(), dest.ToString(), cost);
-                    }
-                }
-            }
-
+            AddVertex(i.ToString());
         }
 
-        public void FillGraph(int[][] connectionMatrix)
+        for (int i = 0; i < connectionMatrix.Length; i++)
         {
-            for (int i = 0; i < connectionMatrix.Length; i++)
+            for (int j = 0; j < connectionMatrix[i].Length; j++)
             {
-                AddVertex(i.ToString());
-            }
-
-            for (int i = 0; i < connectionMatrix.Length; i++)
-            {
-                for (int j = 0; j < connectionMatrix[i].Length; j++)
+                if (connectionMatrix[i][j] != 0)
                 {
-                    if (connectionMatrix[i][j] != 0)
-                    {
-                        int source = i;
-                        int dest = j;
-                        double cost = connectionMatrix[i][j];
-                        AddEdge(source.ToString(), dest.ToString(), cost);
-                    }
+                    int source = i;
+                    int dest = j;
+                    double cost = connectionMatrix[i][j];
+                    AddEdge(source.ToString(), dest.ToString(), cost);
                 }
             }
         }
+    }
 
-        public void AddVertex(string vertexName)
+    public void AddVertex(string vertexName)
+    {
+        if (VertexMap.ContainsKey(vertexName))
+            throw new ArgumentException("A vertex with this name already exists.");
+        
+        Vertex newVertex = new Vertex(vertexName);
+        VertexMap.Add(vertexName, newVertex);
+    }
+
+    public void AddEdge(string sourceVertexName, string destVertexName, double cost)
+    {
+        if (!VertexMap.ContainsKey(sourceVertexName) || !VertexMap.ContainsKey(destVertexName))
+            throw new ArgumentException("The provided vertices are invalid.");
+
+        Vertex sourceVertex = VertexMap[sourceVertexName];
+        Vertex destVertex = VertexMap[destVertexName];
+
+        sourceVertex.AddEdge(destVertex, cost);
+    }
+
+    public Dictionary<Vertex, double> DijkstraShortestPath(string startVertexName)
+    {
+        Dictionary<Vertex, double> distance = new Dictionary<Vertex, double>();
+        Dictionary<Vertex, Vertex> previousVertex = new Dictionary<Vertex, Vertex>();
+        PriorityQueue<Vertex> priorityQueue = new PriorityQueue<Vertex>();
+
+        foreach (var vertex in VertexMap.Values)
         {
-            if (!vertexMap.ContainsKey(vertexName))
-            {
-                Vertex newVertex = new Vertex(vertexName);
-                vertexMap.Add(vertexName, newVertex);
-            }
+            distance[vertex] = double.PositiveInfinity;
+            previousVertex[vertex] = null;
+            priorityQueue.Enqueue(vertex, distance[vertex]);
         }
 
-        public void AddEdge(string sourceVertexName, string destVertexName, double cost)
+        Vertex startVertex = VertexMap[startVertexName];
+        distance[startVertex] = 0;
+
+        while (priorityQueue.Count > 0)
         {
-            if (vertexMap.ContainsKey(sourceVertexName) && vertexMap.ContainsKey(destVertexName))
+            Vertex currentVertex = priorityQueue.Dequeue();
+
+            foreach (Edge edge in currentVertex.AdjacentEdges)
             {
-                Vertex sourceVertex = vertexMap[sourceVertexName];
-                Vertex destVertex = vertexMap[destVertexName];
+                double newDistance = distance[currentVertex] + edge.Cost;
 
-                sourceVertex.AddEdge(destVertex, cost);
-            }
-            else
-            {
-                Console.WriteLine("Invalid vertices!");
-            }
-        }
-
-        public Dictionary<Vertex, double> DijkstraShortestPath(string startVertexName)
-        {
-            // Initialize data structures for the algorithm
-            Dictionary<Vertex, double> distance = new Dictionary<Vertex, double>();
-            Dictionary<Vertex, Vertex> previousVertex = new Dictionary<Vertex, Vertex>();
-            PriorityQueue<Vertex> priorityQueue = new PriorityQueue<Vertex>();
-
-            // Set initial distances and add vertices to the priority queue
-            foreach (var vertex in vertexMap.Values)
-            {
-                distance[vertex] = double.PositiveInfinity;
-                previousVertex[vertex] = null;
-                priorityQueue.Enqueue(vertex, distance[vertex]);
-            }
-
-            Vertex startVertex = vertexMap[startVertexName];
-            distance[startVertex] = 0;
-
-            // Main loop of the algorithm
-            while (priorityQueue.Count > 0)
-            {
-                Vertex currentVertex = priorityQueue.Dequeue();
-
-                foreach (Edge edge in currentVertex.adjacentEdges)
+                if (newDistance < distance[edge.Destination])
                 {
-                    double newDistance = distance[currentVertex] + edge.cost;
-
-                    if (newDistance < distance[edge.dest])
-                    {
-                        distance[edge.dest] = newDistance;
-                        previousVertex[edge.dest] = currentVertex;
-                        priorityQueue.Enqueue(edge.dest, newDistance);
-                    }
+                    distance[edge.Destination] = newDistance;
+                    previousVertex[edge.Destination] = currentVertex;
+                    priorityQueue.Enqueue(edge.Destination, newDistance);
                 }
             }
-
-            // Return the results (distance and previous vertex) as dictionaries
-            return distance;
         }
 
-        public void PrintGraph()
+        return distance;
+    }
+
+    public void PrintGraph()
+    {
+        foreach (var vertexEntry in VertexMap)
         {
-            foreach (var vertexEntry in vertexMap)
+            Vertex vertex = vertexEntry.Value;
+            Console.Write($"Vertex {vertex.Name}: ");
+
+            foreach (var edge in vertex.AdjacentEdges)
             {
-                Vertex vertex = vertexEntry.Value;
-                Console.Write($"Vertex {vertex.name}: ");
-
-                foreach (var edge in vertex.adjacentEdges)
-                {
-                    Console.Write($"({edge.dest.name}, {edge.cost}) ");
-                }
-
-                Console.WriteLine();
+                Console.Write($"({edge.Destination.Name}, {edge.Cost}) ");
             }
+
+            Console.WriteLine();
         }
-        public void PrintAs(PrintLayout layout)
+    }
+
+    public void PrintAs(PrintLayout layout)
+    {
+        switch (layout)
         {
-            switch (layout)
-            {
-                case PrintLayout.LineList:
-                    PrintAsLineList();
-                    break;
-                case PrintLayout.ConnectionList:
-                    PrintAsConnectionList();
-                    break;
-                case PrintLayout.ConnectionMatrix:
-                    PrintAsConnectionMatrix();
-                    break;
-                default:
-                    PrintAsLineList();
-                    break;
-            }
+            case PrintLayout.LineList:
+                PrintAsLineList();
+                break;
+            case PrintLayout.ConnectionList:
+                PrintAsConnectionList();
+                break;
+            case PrintLayout.ConnectionMatrix:
+                PrintAsConnectionMatrix();
+                break;
+            default:
+                PrintAsLineList();
+                break;
         }
+    }
 
-        private void PrintAsLineList()
+    private void PrintAsLineList()
+    {
+        string display = "[\n";
+        foreach (var vertexEntry in VertexMap)
         {
-            string display = "[\n";
-            foreach (var vertexEntry in vertexMap)
+            Vertex vertex = vertexEntry.Value;
+            foreach (var edge in vertex.AdjacentEdges)
             {
-                Vertex vertex = vertexEntry.Value;
-                foreach (var edge in vertex.adjacentEdges)
-                {
-                    display += $"  [{vertex.name}, {edge.dest.name}, {edge.cost}], \n";
-                }
+                display += $"  [{vertex.Name}, {edge.Destination.Name}, {edge.Cost}], \n";
             }
-            display = display.Remove(display.LastIndexOf(","));
-            display = display + "\n]";
-            Console.WriteLine(display);
         }
+        display = display.Remove(display.LastIndexOf(","));
+        display = display + "\n]";
+        Console.WriteLine(display);
+    }
 
-        private void PrintAsConnectionList()
+    private void PrintAsConnectionList()
+    {
+        string display = "[";
+        foreach (var vertexEntry in VertexMap)
         {
-            string display = "[";
-            foreach (var vertexEntry in vertexMap)
+            display += "\n  [\n";
+            Vertex vertex = vertexEntry.Value;
+            int total = vertex.AdjacentEdges.Count;
+            int counter = 0;
+            foreach (var edge in vertex.AdjacentEdges)
             {
-                display += "\n  [\n";
-                Vertex vertex = vertexEntry.Value;
-                int total = vertex.adjacentEdges.Count;
-                int counter = 0;
-                foreach (var edge in vertex.adjacentEdges)
+                counter++;
+                string comma = "";
+                if (counter < total)
                 {
-                    counter++;
-                    string comma = "";
-                    if (counter < total)
-                    {
-                        comma = ",";
-                    }
-                    display += $"    [{edge.dest.name}, {edge.cost}]{comma} \n";
+                    comma = ",";
                 }
-                display += "  ],";
+                display += $"    [{edge.Destination.Name}, {edge.Cost}]{comma} \n";
             }
-            display = display.Remove(display.LastIndexOf(","));
-            display = display + "\n]";
-            Console.WriteLine(display);
+            display += "  ],";
         }
+        display = display.Remove(display.LastIndexOf(","));
+        display += "\n]";
+        Console.WriteLine(display);
+    }
 
-        private void PrintAsConnectionMatrix()
+    private void PrintAsConnectionMatrix()
+    {
+        int vertices = VertexMap.Count;
+        double[,] matrix = new double[vertices, vertices];
+        for (int i = 0; i < vertices; i++)
         {
-            int vertices = vertexMap.Count;
-            double[,] matrix = new double[vertices, vertices];
-            for (int i = 0; i < vertices; i++)
+            for (int j = 0; j < vertices; j++)
             {
-                for (int j = 0; j < vertices; j++)
-                {
-                    matrix[i, j] = 0;
-                }
+                matrix[i, j] = 0;
             }
-
-            foreach (var vertexEntry in vertexMap)
-            {
-                Vertex vertex = vertexEntry.Value;
-                foreach (var edge in vertex.adjacentEdges)
-                {
-                    matrix[Int32.Parse(vertex.name), Int32.Parse(edge.dest.name)] = edge.cost;
-                }
-            }
-
-
-            string display = "[\n";
-            for (int i = 0; i < vertices; i++)
-            {
-                display += "[";
-                for (int j = 0; j < vertices; j++)
-                {
-                    string comma = ",";
-                    if (j == vertices - 1)
-                    {
-                        comma = "";
-                    }
-                    double value = matrix[i, j];
-                    string sValue = value + comma;
-                    sValue = sValue.PadRight(3, ' ');
-                    display += sValue + " ";
-                }
-                display += "],\n";
-            }
-            display = display.Remove(display.LastIndexOf(","));
-            display = display + "\n]";
-            Console.WriteLine(display);
         }
+
+        foreach (var vertexEntry in VertexMap)
+        {
+            Vertex vertex = vertexEntry.Value;
+            foreach (var edge in vertex.AdjacentEdges)
+            {
+                matrix[int.Parse(vertex.Name), int.Parse(edge.Destination.Name)] = edge.Cost;
+            }
+        }
+
+
+        string display = "[\n";
+        for (int i = 0; i < vertices; i++)
+        {
+            display += "[";
+            for (int j = 0; j < vertices; j++)
+            {
+                string comma = ",";
+                if (j == vertices - 1)
+                {
+                    comma = "";
+                }
+                double value = matrix[i, j];
+                string sValue = value + comma;
+                sValue = sValue.PadRight(3, ' ');
+                display += sValue + " ";
+            }
+            display += "],\n";
+        }
+        display = display.Remove(display.LastIndexOf(","));
+        display += "\n]";
+        Console.WriteLine(display);
+    }
+}
+
+public class Vertex
+{
+    public string Name { get; }
+
+    public LinkedList<Edge> AdjacentEdges { get; }
+
+    private double cost;
+    private Vertex previousVertexOnShortestPath;
+
+    public Vertex(String name)
+    {
+        this.Name = name;
+        this.AdjacentEdges = new LinkedList<Edge>();
+        this.previousVertexOnShortestPath = null;
+        this.cost = double.PositiveInfinity;
+    }
+
+    public void AddEdge(Vertex dest, double cost)
+    {
+        Edge newEdge = new Edge(dest, cost);
+        AdjacentEdges.AddLast(newEdge);
+    }
+}
+
+public class Edge
+{
+    public Vertex Destination { get; }
+    public double Cost { get; }
+
+    public Edge(Vertex dest, double cost)
+    {
+        Destination = dest;
+        Cost = cost;
     }
 }
 

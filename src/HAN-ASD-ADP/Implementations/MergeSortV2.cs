@@ -77,7 +77,6 @@ public class MergeSortV2
         int rightIndex = center + 1;
         int tmpIndex = left;
 
-        // Merge the two sorted halves into a temporary array
         while (leftIndex <= center && rightIndex <= right)
         {
             if (inputArray[leftIndex].CompareTo(inputArray[rightIndex]) <= 0)
