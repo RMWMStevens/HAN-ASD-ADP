@@ -97,6 +97,10 @@ public class HashTableProbing<TKey, TValue>
     {
         table[GetIndex(key)] = default;
         inUse--;
+        if (sizes[0] != tableSize && inUse < tableSize / 5)
+        {
+            Resize(false);
+        }
     }
 
     public void Update(TKey key, TValue value)
@@ -128,10 +132,16 @@ public class HashTableProbing<TKey, TValue>
         return sizes[0];
     }
 
-    private void Resize()
+    private void Resize(bool increase = true)
     {
         var tempTable = table;
-        tableSize = GetNextTableSize();
+        if(increase)
+        {
+            tableSize = GetNextTableSize();
+        } else
+        {
+            tableSize = GetPreviousTableSize();
+        }
         table = new KeyValuePair<TKey, TValue>[tableSize];
         inUse = 0;
         for (int i = 0; i < tempTable.Length; i++)
