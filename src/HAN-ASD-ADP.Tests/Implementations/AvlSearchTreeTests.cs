@@ -21,10 +21,10 @@ public class AvlSearchTreeTests : IAsyncLifetime
         var tree = LoadFromDataset(dataset.LijstOplopend10000);
 
         // Act
-        tree.Insert(10);
+        tree.Insert(20000);
 
         // Assert
-        Assert.True(tree.Find(10));
+        Assert.True(tree.Find(20000));
     }
 
     [Fact]

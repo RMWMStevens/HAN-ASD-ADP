@@ -138,6 +138,7 @@ public class Graph
         while (queue.Count > 0)
         {
             Vertex currentVertex = queue.Dequeue();
+
             foreach (Edge edge in currentVertex.AdjacentEdges)
             {
                 Vertex adjacentVertex = edge.Destination;
@@ -158,9 +159,9 @@ public class Graph
         if (!VertexMap.ContainsKey(startVertexName) || !VertexMap.ContainsKey(endVertexName))
             throw new ArgumentException("Start or end vertex not found.");
 
-        var priorityQueue = new PriorityQueue<Vertex, double>();
         ResetVertices();
 
+        var priorityQueue = new PriorityQueue<Vertex, double>();
         Vertex startVertex = VertexMap[startVertexName];
         startVertex.Distance = 0;
         priorityQueue.Enqueue(startVertex, startVertex.Distance);

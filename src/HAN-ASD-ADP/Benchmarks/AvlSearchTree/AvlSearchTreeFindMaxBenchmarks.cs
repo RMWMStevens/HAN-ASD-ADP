@@ -5,8 +5,8 @@ namespace HAN_ASD_ADP.Benchmarks.AvlSearchTree;
 public class AvlSearchTreeFindMaxBenchmarks : SetupAvlSearchTreeBenchmarks
 {
     [Benchmark]
-    public void FindMin()
+    public void FindMax()
     {
-        filledTree.FindMin();
+        filledTree.FindMax();
     }
 }

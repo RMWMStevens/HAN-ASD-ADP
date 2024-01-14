@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HAN_ASD_ADP.Benchmarks.Graph.GraphLoadBenchmarks-20240112-204804</title>
+<title>HAN_ASD_ADP.Benchmarks.Graph.GraphLoadBenchmarks-20240114-140236</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -14,23 +14,23 @@
 <body>
 <pre><code>
 BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.3007/23H2/2023Update/SunValley3)
-AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+AMD Ryzen 7 5800U with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.101
   [Host]     : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-TLKJGH : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
+  Job-NNKNHT : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
+<thead><tr><th>Method                </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>LoadLijnlijst</td><td>2.503 &mu;s</td><td>0.0517 &mu;s</td><td>0.0834 &mu;s</td><td>2.74 KB</td>
-</tr><tr><td>LoadVerbindingslijst</td><td>3.484 &mu;s</td><td>0.1192 &mu;s</td><td>0.3160 &mu;s</td><td>3.37 KB</td>
-</tr><tr><td>LoadVerbindingsmatrix</td><td>3.226 &mu;s</td><td>0.0659 &mu;s</td><td>0.1748 &mu;s</td><td>3.37 KB</td>
-</tr><tr><td>LoadLijnlijstGewogen</td><td>2.902 &mu;s</td><td>0.0620 &mu;s</td><td>0.1293 &mu;s</td><td>2.49 KB</td>
-</tr><tr><td>LoadVerbindingslijstGewogen</td><td>2.704 &mu;s</td><td>0.0574 &mu;s</td><td>0.1376 &mu;s</td><td>2.49 KB</td>
-</tr><tr><td>LoadVerbindingsmatrixGewogen</td><td>2.753 &mu;s</td><td>0.0701 &mu;s</td><td>0.1908 &mu;s</td><td>2.49 KB</td>
+</thead><tbody><tr><td>LoadLijnlijst</td><td>10.699 &mu;s</td><td>0.7821 &mu;s</td><td>2.193 &mu;s</td><td>10.100 &mu;s</td><td>2.7 KB</td>
+</tr><tr><td>LoadVerbindingslijst</td><td>11.949 &mu;s</td><td>0.8453 &mu;s</td><td>2.342 &mu;s</td><td>11.200 &mu;s</td><td>3.32 KB</td>
+</tr><tr><td>LoadVerbindingsmatrix</td><td>12.618 &mu;s</td><td>0.8396 &mu;s</td><td>2.396 &mu;s</td><td>11.500 &mu;s</td><td>3.32 KB</td>
+</tr><tr><td>LoadLijnlijstGewogen</td><td>9.819 &mu;s</td><td>0.7679 &mu;s</td><td>2.153 &mu;s</td><td>9.350 &mu;s</td><td>2.45 KB</td>
+</tr><tr><td>LoadVerbindingslijstGewogen</td><td>13.341 &mu;s</td><td>1.3712 &mu;s</td><td>3.978 &mu;s</td><td>12.200 &mu;s</td><td>2.45 KB</td>
+</tr><tr><td>LoadVerbindingsmatrixGewogen</td><td>9.416 &mu;s</td><td>0.5307 &mu;s</td><td>1.514 &mu;s</td><td>8.900 &mu;s</td><td>2.45 KB</td>
 </tr></tbody></table>
 </body>
 </html>

@@ -1,17 +1,17 @@
 
 BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.3007/23H2/2023Update/SunValley3)
-AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+AMD Ryzen 7 5800U with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.101
   [Host]     : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-TLKJGH : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
+  Job-NNKNHT : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
 
 InvocationCount=1  UnrollFactor=1  
 
- Method                       | Mean     | Error     | StdDev    | Allocated |
------------------------------ |---------:|----------:|----------:|----------:|
- LoadLijnlijst                | 2.503 μs | 0.0517 μs | 0.0834 μs |   2.74 KB |
- LoadVerbindingslijst         | 3.484 μs | 0.1192 μs | 0.3160 μs |   3.37 KB |
- LoadVerbindingsmatrix        | 3.226 μs | 0.0659 μs | 0.1748 μs |   3.37 KB |
- LoadLijnlijstGewogen         | 2.902 μs | 0.0620 μs | 0.1293 μs |   2.49 KB |
- LoadVerbindingslijstGewogen  | 2.704 μs | 0.0574 μs | 0.1376 μs |   2.49 KB |
- LoadVerbindingsmatrixGewogen | 2.753 μs | 0.0701 μs | 0.1908 μs |   2.49 KB |
+ Method                       | Mean      | Error     | StdDev   | Median    | Allocated |
+----------------------------- |----------:|----------:|---------:|----------:|----------:|
+ LoadLijnlijst                | 10.699 μs | 0.7821 μs | 2.193 μs | 10.100 μs |    2.7 KB |
+ LoadVerbindingslijst         | 11.949 μs | 0.8453 μs | 2.342 μs | 11.200 μs |   3.32 KB |
+ LoadVerbindingsmatrix        | 12.618 μs | 0.8396 μs | 2.396 μs | 11.500 μs |   3.32 KB |
+ LoadLijnlijstGewogen         |  9.819 μs | 0.7679 μs | 2.153 μs |  9.350 μs |   2.45 KB |
+ LoadVerbindingslijstGewogen  | 13.341 μs | 1.3712 μs | 3.978 μs | 12.200 μs |   2.45 KB |
+ LoadVerbindingsmatrixGewogen |  9.416 μs | 0.5307 μs | 1.514 μs |  8.900 μs |   2.45 KB |

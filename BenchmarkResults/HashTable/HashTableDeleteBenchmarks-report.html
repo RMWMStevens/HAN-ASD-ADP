@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HAN_ASD_ADP.Benchmarks.HashTable.HashTableDeleteBenchmarks-20240114-124617</title>
+<title>HAN_ASD_ADP.Benchmarks.HashTable.HashTableDeleteBenchmarks-20240114-140222</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,7 +17,7 @@ BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.3007/23H2/2023Update/SunValley3
 AMD Ryzen 7 5800U with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.101
   [Host]     : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-LNRJDX : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
+  Job-NNKNHT : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>InvocationCount=1  UnrollFactor=1  
 </code></pre>
@@ -25,15 +25,15 @@ AMD Ryzen 7 5800U with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 <table>
 <thead><tr><th>Method           </th><th>Times</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>Delete_SeparateChaining</td><td>1</td><td>689.6 ns</td><td>50.16 ns</td><td>144.72 ns</td><td>650.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_LinearProbing</td><td>1</td><td>722.4 ns</td><td>47.61 ns</td><td>138.87 ns</td><td>700.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_QuadraticProbing</td><td>1</td><td>612.1 ns</td><td>30.92 ns</td><td>86.71 ns</td><td>600.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_SeparateChaining</td><td>5</td><td>1,117.2 ns</td><td>72.09 ns</td><td>211.43 ns</td><td>1,100.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_LinearProbing</td><td>5</td><td>1,061.3 ns</td><td>63.45 ns</td><td>180.00 ns</td><td>1,000.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_QuadraticProbing</td><td>5</td><td>1,042.3 ns</td><td>68.73 ns</td><td>199.39 ns</td><td>1,000.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_SeparateChaining</td><td>10</td><td>1,130.2 ns</td><td>33.39 ns</td><td>90.84 ns</td><td>1,100.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_LinearProbing</td><td>10</td><td>1,564.2 ns</td><td>88.04 ns</td><td>252.61 ns</td><td>1,500.0 ns</td><td>544 B</td>
-</tr><tr><td>Delete_QuadraticProbing</td><td>10</td><td>1,400.0 ns</td><td>99.36 ns</td><td>285.09 ns</td><td>1,300.0 ns</td><td>544 B</td>
+</thead><tbody><tr><td>Delete_SeparateChaining</td><td>1</td><td>1.980 &mu;s</td><td>0.1495 &mu;s</td><td>0.4264 &mu;s</td><td>1.900 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_LinearProbing</td><td>1</td><td>1.980 &mu;s</td><td>0.1397 &mu;s</td><td>0.3848 &mu;s</td><td>1.850 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_QuadraticProbing</td><td>1</td><td>1.802 &mu;s</td><td>0.0916 &mu;s</td><td>0.2553 &mu;s</td><td>1.800 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_SeparateChaining</td><td>5</td><td>2.560 &mu;s</td><td>0.1527 &mu;s</td><td>0.4382 &mu;s</td><td>2.500 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_LinearProbing</td><td>5</td><td>2.778 &mu;s</td><td>0.1885 &mu;s</td><td>0.5318 &mu;s</td><td>2.700 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_QuadraticProbing</td><td>5</td><td>2.593 &mu;s</td><td>0.1919 &mu;s</td><td>0.5350 &mu;s</td><td>2.500 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_SeparateChaining</td><td>10</td><td>3.216 &mu;s</td><td>0.1798 &mu;s</td><td>0.4982 &mu;s</td><td>3.200 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_LinearProbing</td><td>10</td><td>3.068 &mu;s</td><td>0.1686 &mu;s</td><td>0.4783 &mu;s</td><td>3.100 &mu;s</td><td>544 B</td>
+</tr><tr><td>Delete_QuadraticProbing</td><td>10</td><td>2.802 &mu;s</td><td>0.1922 &mu;s</td><td>0.5453 &mu;s</td><td>2.700 &mu;s</td><td>544 B</td>
 </tr></tbody></table>
 </body>
 </html>

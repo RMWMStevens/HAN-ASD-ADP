@@ -1,17 +1,17 @@
 
 BenchmarkDotNet v0.13.10, Windows 11 (10.0.22631.3007/23H2/2023Update/SunValley3)
-AMD Ryzen 7 7800X3D, 1 CPU, 16 logical and 8 physical cores
+AMD Ryzen 7 5800U with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 .NET SDK 8.0.101
   [Host]     : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2 [AttachedDebugger]
-  Job-TLKJGH : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
+  Job-NNKNHT : .NET 6.0.26 (6.0.2623.60508), X64 RyuJIT AVX2
 
 InvocationCount=1  UnrollFactor=1  
 
- Method   | Mean     | Error     | StdDev    | Median   | Allocated |
---------- |---------:|----------:|----------:|---------:|----------:|
- Find_0_1 | 1.919 μs | 0.0959 μs | 0.2737 μs | 1.800 μs |   1.34 KB |
- Find_0_2 | 1.826 μs | 0.0478 μs | 0.1340 μs | 1.800 μs |   1.34 KB |
- Find_0_3 | 1.789 μs | 0.0483 μs | 0.1362 μs | 1.800 μs |   1.34 KB |
- Find_0_4 | 1.777 μs | 0.0552 μs | 0.1522 μs | 1.700 μs |   1.34 KB |
- Find_0_5 | 2.561 μs | 0.1769 μs | 0.5161 μs | 2.450 μs |   1.34 KB |
- Find_0_6 | 2.053 μs | 0.0986 μs | 0.2766 μs | 2.000 μs |   1.43 KB |
+ Method   | Mean     | Error     | StdDev   | Median   | Allocated |
+--------- |---------:|----------:|---------:|---------:|----------:|
+ Find_0_1 | 7.164 μs | 0.6000 μs | 1.673 μs | 6.850 μs |    1.3 KB |
+ Find_0_2 | 7.206 μs | 0.6554 μs | 1.901 μs | 6.500 μs |   1.43 KB |
+ Find_0_3 | 8.426 μs | 0.8253 μs | 2.341 μs | 8.100 μs |    1.3 KB |
+ Find_0_4 | 7.115 μs | 0.7091 μs | 2.023 μs | 6.400 μs |    1.3 KB |
+ Find_0_5 | 7.438 μs | 0.6595 μs | 1.882 μs | 6.900 μs |    1.3 KB |
+ Find_0_6 | 7.345 μs | 0.5573 μs | 1.599 μs | 6.900 μs |   1.38 KB |

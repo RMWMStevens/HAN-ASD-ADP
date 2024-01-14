@@ -46,24 +46,24 @@ public class AvlSearchTreeInsertBenchmarks : SetupAvlSearchTreeBenchmarks
     [Benchmark]
     public void Insert_49_FilledTree()
     {
-        emptyTree.Insert(49);
+        filledTree.Insert(49);
     }
 
     [Benchmark]
     public void Insert_513_FilledTree()
     {
-        emptyTree.Insert(513);
+        filledTree.Insert(513);
     }
 
     [Benchmark]
     public void Insert_6549_FilledTree()
     {
-        emptyTree.Insert(6549);
+        filledTree.Insert(6549);
     }
 
     [Benchmark]
     public void Insert_9413_FilledTree()
     {
-        emptyTree.Insert(9413);
+        filledTree.Insert(9413);
     }
 }
