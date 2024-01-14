@@ -12,7 +12,7 @@ public class HashTableAddBenchmarks : SetupHashTableBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            hashTableChaining.Add((i * 100).ToString(), i);
+            hashTableChaining.Add($"Test_{i}", i);
         }
     }
 
@@ -21,7 +21,7 @@ public class HashTableAddBenchmarks : SetupHashTableBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            hashTableLinearProbing.Add(i.ToString(), i);
+            hashTableLinearProbing.Add($"Test_{i}", i);
         }
     }
 
@@ -30,7 +30,7 @@ public class HashTableAddBenchmarks : SetupHashTableBenchmarks
     {
         for (int i = 0; i < Times; i++)
         {
-            hashTableQuadraticProbing.Add(i.ToString(), i);
+            hashTableQuadraticProbing.Add($"Test_{i}", i);
         }
     }
 }

@@ -10,8 +10,7 @@ public class SetupHashTableBenchmarks : BenchmarkSetup
     protected HashTableProbing<string, int> hashTableLinearProbing;
     protected HashTableProbing<string, int> hashTableQuadraticProbing;
 
-    [Params(11)]
-    public virtual int Length { get; set; }
+    public int Length { get; set; } = 199;
 
     [Params(1)]
     public virtual int Times { get; set; }
@@ -27,17 +26,17 @@ public class SetupHashTableBenchmarks : BenchmarkSetup
         hashTableLinearProbing = new(linearProbing: true, tableSize: Length);
         hashTableQuadraticProbing = new(linearProbing: false, tableSize: Length);
 
-        for (int i = 0; i < Length / 2; i++)
+        for (int i = 0; i < Length / 3; i++)
         {
             hashTableChaining.Add(i.ToString(), i);
         }
 
-        for (int i = 0; i < Length / 2; i++)
+        for (int i = 0; i < Length / 3; i++)
         {
             hashTableLinearProbing.Add(i.ToString(), i);
         }
 
-        for (int i = 0; i < Length / 2; i++)
+        for (int i = 0; i < Length / 3; i++)
         {
             hashTableQuadraticProbing.Add(i.ToString(), i);
         }
